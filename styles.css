@@ -575,6 +575,10 @@ body {
   border-top: 1px dashed var(--border);
 }
 
+.store-licenses--platform .license-chip {
+  max-width: 100%;
+}
+
 .license-chip {
   display: inline-flex;
   align-items: center;

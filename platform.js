@@ -10,11 +10,12 @@
   const resetFiltersEl = document.getElementById("resetFilters");
 
   const LICENSE_LABELS = {
-    business: "营业执照",
-    food: "食品经营许可证",
+    business: "平台营业执照",
+    operating: "经营许可证",
+    prepaid: "单用途预付卡备案",
   };
 
-  const LICENSE_TYPES = ["business", "food"];
+  const LICENSE_TYPES = ["business", "operating", "prepaid"];
 
   const DOC_ICON =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2.5L18.5 9H13V4.5zM8 13h8v1.5H8V13zm0 3.5h5V18H8v-1.5z"/></svg>';
@@ -65,6 +66,16 @@
     });
   }
 
+  function renderLicenseChips(platform) {
+    return LICENSE_TYPES.map(
+      (type) => `
+        <button type="button" class="license-chip" data-license="${type}">
+          ${DOC_ICON}${LICENSE_LABELS[type]}
+        </button>
+      `
+    ).join("");
+  }
+
   function renderPlatformItem(platform) {
     const li = document.createElement("li");
     li.className = "store-card";
@@ -76,13 +87,8 @@
         <h3 class="store-name">${escapeHtml(platform.name)}</h3>
         <p class="store-desc">${escapeHtml(platform.desc)}</p>
       </div>
-      <div class="store-licenses">
-        <button type="button" class="license-chip" data-license="business">
-          ${DOC_ICON}营业执照
-        </button>
-        <button type="button" class="license-chip" data-license="food">
-          ${DOC_ICON}食品经营许可证
-        </button>
+      <div class="store-licenses store-licenses--platform">
+        ${renderLicenseChips(platform)}
       </div>
     `;
 
@@ -118,7 +124,7 @@
 
     emptyStateEl.classList.add("hidden");
     platformListEl.classList.remove("hidden");
-    resultCountEl.innerHTML = `共 <strong>${list.length}</strong> 项平台资质`;
+    resultCountEl.innerHTML = `共 <strong>${list.length}</strong> 项平台`;
 
     const frag = document.createDocumentFragment();
     for (const platform of list) {
