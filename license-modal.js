@@ -71,7 +71,7 @@ window.LicenseModal = (function () {
     const layer = ensureZoomLayer(rotator);
     if (!layer) return;
     const { scale, x, y } = getZoomState(viewport);
-    layer.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+    layer.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
     viewport.classList.toggle("is-zoomed", scale > 1.02);
   }
 
@@ -90,6 +90,17 @@ window.LicenseModal = (function () {
     return Math.hypot(dx, dy);
   }
 
+  function touchCenter(touches) {
+    return {
+      x: (touches[0].clientX + touches[1].clientX) / 2,
+      y: (touches[0].clientY + touches[1].clientY) / 2,
+    };
+  }
+
+  function setTouching(viewport, active) {
+    viewport.classList.toggle("is-touching", active);
+  }
+
   function bindPinchZoom(viewport) {
     if (!viewport || viewport.dataset.pinchBound === "1") return;
     viewport.dataset.pinchBound = "1";
@@ -97,25 +108,66 @@ window.LicenseModal = (function () {
     const rotator = viewport.querySelector(".license-rotator");
     ensureZoomLayer(rotator);
 
+    let gesture = null;
     let pinchStartDist = 0;
     let pinchStartScale = 1;
-    let panStartX = 0;
-    let panStartY = 0;
+    let pinchStartCenterX = 0;
+    let pinchStartCenterY = 0;
+    let pinchStartPanX = 0;
+    let pinchStartPanY = 0;
+    let panPointerX = 0;
+    let panPointerY = 0;
     let panOriginX = 0;
     let panOriginY = 0;
+
+    function beginPinch(touches) {
+      gesture = "pinch";
+      setTouching(viewport, true);
+      const state = getZoomState(viewport);
+      pinchStartDist = touchDistance(touches);
+      pinchStartScale = state.scale;
+      const center = touchCenter(touches);
+      pinchStartCenterX = center.x;
+      pinchStartCenterY = center.y;
+      pinchStartPanX = state.x;
+      pinchStartPanY = state.y;
+    }
+
+    function beginPan(touch) {
+      gesture = "pan";
+      setTouching(viewport, true);
+      panPointerX = touch.clientX;
+      panPointerY = touch.clientY;
+      const state = getZoomState(viewport);
+      panOriginX = state.x;
+      panOriginY = state.y;
+    }
+
+    function endGestureIfNeeded(touches) {
+      if (touches.length > 0) return;
+      const state = getZoomState(viewport);
+      if (state.scale <= 1.02) {
+        state.scale = 1;
+        state.x = 0;
+        state.y = 0;
+        applyZoom(viewport);
+      }
+      gesture = null;
+      pinchStartDist = 0;
+      setTouching(viewport, false);
+    }
 
     viewport.addEventListener(
       "touchstart",
       (e) => {
-        if (e.touches.length === 2) {
-          pinchStartDist = touchDistance(e.touches);
-          pinchStartScale = getZoomState(viewport).scale;
-        } else if (e.touches.length === 1 && getZoomState(viewport).scale > 1.02) {
-          panStartX = e.touches[0].clientX;
-          panStartY = e.touches[0].clientY;
-          const state = getZoomState(viewport);
-          panOriginX = state.x;
-          panOriginY = state.y;
+        if (e.touches.length >= 2) {
+          beginPinch(e.touches);
+        } else if (
+          e.touches.length === 1 &&
+          !gesture &&
+          getZoomState(viewport).scale > 1.02
+        ) {
+          beginPan(e.touches[0]);
         }
       },
       { passive: true }
@@ -124,7 +176,7 @@ window.LicenseModal = (function () {
     viewport.addEventListener(
       "touchmove",
       (e) => {
-        if (e.touches.length === 2) {
+        if (gesture === "pinch" && e.touches.length >= 2) {
           e.preventDefault();
           const state = getZoomState(viewport);
           const dist = touchDistance(e.touches);
@@ -133,26 +185,35 @@ window.LicenseModal = (function () {
               MAX_SCALE,
               Math.max(MIN_SCALE, pinchStartScale * (dist / pinchStartDist))
             );
-            if (state.scale <= 1.02) {
-              state.scale = 1;
-              state.x = 0;
-              state.y = 0;
-            }
-            applyZoom(viewport);
           }
-        } else if (e.touches.length === 1 && getZoomState(viewport).scale > 1.02) {
+          const center = touchCenter(e.touches);
+          state.x = pinchStartPanX + (center.x - pinchStartCenterX);
+          state.y = pinchStartPanY + (center.y - pinchStartCenterY);
+          applyZoom(viewport);
+          return;
+        }
+
+        if (
+          gesture === "pan" &&
+          e.touches.length === 1 &&
+          getZoomState(viewport).scale > 1.02
+        ) {
           e.preventDefault();
           const state = getZoomState(viewport);
-          state.x = panOriginX + (e.touches[0].clientX - panStartX);
-          state.y = panOriginY + (e.touches[0].clientY - panStartY);
+          state.x = panOriginX + (e.touches[0].clientX - panPointerX);
+          state.y = panOriginY + (e.touches[0].clientY - panPointerY);
           applyZoom(viewport);
         }
       },
       { passive: false }
     );
 
-    viewport.addEventListener("touchend", () => {
-      pinchStartDist = 0;
+    viewport.addEventListener("touchend", (e) => {
+      endGestureIfNeeded(e.touches);
+    });
+
+    viewport.addEventListener("touchcancel", (e) => {
+      endGestureIfNeeded(e.touches);
     });
   }
 

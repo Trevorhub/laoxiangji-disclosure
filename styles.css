@@ -875,7 +875,10 @@ body {
   justify-content: center;
   transform-origin: center center;
   will-change: transform;
-  transition: transform 0.05s linear;
+}
+
+.license-viewport.is-touching .license-zoom-layer {
+  transition: none;
 }
 
 .license-image {
