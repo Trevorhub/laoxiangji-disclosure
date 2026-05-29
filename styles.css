@@ -411,6 +411,18 @@ body {
   transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
 
+.store-card__body {
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  margin: -0.107rem;
+  padding: 0.107rem;
+  transition: background 0.2s ease;
+}
+
+.store-card__body:active {
+  background: var(--green-50);
+}
+
 .store-card:active {
   transform: scale(0.995);
   box-shadow: var(--shadow-md);
@@ -706,6 +718,33 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.267rem;
+}
+
+.license-viewport--stack {
+  min-height: 3.2rem;
+  max-height: 38vh;
+}
+
+.license-block {
+  margin-bottom: 0.32rem;
+}
+
+.license-block:last-child {
+  margin-bottom: 0;
+}
+
+.license-block__title {
+  margin: 0 0 0.16rem;
+  padding-left: 0.053rem;
+  font-size: 0.347rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+#licenseAll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.213rem;
 }
 
 .license-rotator {

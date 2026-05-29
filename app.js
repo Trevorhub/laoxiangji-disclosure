@@ -12,6 +12,8 @@
   const modalTagEl = document.getElementById("modalTag");
   const modalStoreNameEl = document.getElementById("modalStoreName");
   const licenseImageEl = document.getElementById("licenseImage");
+  const licenseSingleEl = document.getElementById("licenseSingle");
+  const licenseAllEl = document.getElementById("licenseAll");
   const licenseRotatorEl = document.getElementById("licenseRotator");
   const licenseViewportEl = document.getElementById("licenseViewport");
   const rotateDegreeEl = document.getElementById("rotateDegree");
@@ -85,10 +87,12 @@
     const li = document.createElement("li");
     li.className = "store-card";
     li.innerHTML = `
-      <div class="store-card__head">
-        <span class="city-tag">${escapeHtml(store.city)}</span>
+      <div class="store-card__body" role="button" tabindex="0" aria-label="查看${escapeHtml(store.name)}全部证照">
+        <div class="store-card__head">
+          <span class="city-tag">${escapeHtml(store.city)}</span>
+        </div>
+        <h3 class="store-name">${escapeHtml(store.name)}</h3>
       </div>
-      <h3 class="store-name">${escapeHtml(store.name)}</h3>
       <div class="store-licenses">
         <button type="button" class="license-chip" data-license="business">
           ${DOC_ICON}营业执照
@@ -99,10 +103,19 @@
       </div>
     `;
 
+    const cardBody = li.querySelector(".store-card__body");
+    cardBody.addEventListener("click", () => openAllLicensesModal(store));
+    cardBody.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openAllLicensesModal(store);
+      }
+    });
+
     li.querySelectorAll(".license-chip").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const type = btn.dataset.license;
-        openLicenseModal(store, type);
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openLicenseModal(store, btn.dataset.license);
       });
     });
 
@@ -151,22 +164,66 @@
     window.scrollTo(0, scrollLockY);
   }
 
+  const LICENSE_TYPES = ["business", "food"];
+
+  function getActiveRotators() {
+    if (licenseAllEl && !licenseAllEl.classList.contains("hidden")) {
+      return [...licenseAllEl.querySelectorAll(".license-rotator")];
+    }
+    return licenseRotatorEl ? [licenseRotatorEl] : [];
+  }
+
   function applyRotation() {
-    if (!licenseRotatorEl) return;
-    licenseRotatorEl.style.transform = `rotate(${imageRotation}deg)`;
+    const rotators = getActiveRotators();
     const isSideways = imageRotation % 180 !== 0;
-    licenseRotatorEl.classList.toggle("is-landscape", isSideways);
+    for (const rotator of rotators) {
+      rotator.style.transform = `rotate(${imageRotation}deg)`;
+      rotator.classList.toggle("is-landscape", isSideways);
+    }
     if (rotateDegreeEl) rotateDegreeEl.textContent = `${imageRotation}°`;
-    if (licenseViewportEl) licenseViewportEl.scrollTop = 0;
+    if (licenseViewportEl && licenseSingleEl && !licenseSingleEl.classList.contains("hidden")) {
+      licenseViewportEl.scrollTop = 0;
+    }
   }
 
-  function setRotation(deg) {
-    imageRotation = ((deg % 360) + 360) % 360;
+  function setLicenseMode(mode) {
+    const isAll = mode === "all";
+    licenseSingleEl.classList.toggle("hidden", isAll);
+    licenseAllEl.classList.toggle("hidden", !isAll);
+  }
+
+  function buildAllLicensesHtml(store) {
+    return LICENSE_TYPES.map((type) => {
+      const label = LICENSE_LABELS[type];
+      const src = store.licenses[type];
+      return `
+        <section class="license-block">
+          <h4 class="license-block__title">${label}</h4>
+          <div class="license-viewport license-viewport--stack">
+            <div class="license-rotator">
+              <img class="license-image" src="${src}" alt="${escapeHtml(store.name)} ${label}" />
+            </div>
+          </div>
+        </section>
+      `;
+    }).join("");
+  }
+
+  function openAllLicensesModal(store) {
+    if (modalTagEl) modalTagEl.textContent = "全部证照";
+    modalTitleEl.textContent = "门店证照公示";
+    modalStoreNameEl.textContent = store.name;
+    resetRotation();
+    setLicenseMode("all");
+    licenseAllEl.innerHTML = buildAllLicensesHtml(store);
+    licenseAllEl.querySelectorAll(".license-image").forEach((img) => {
+      img.onload = applyRotation;
+    });
+    licenseImageEl.onload = null;
+    licenseImageEl.src = "";
+    modalEl.classList.remove("hidden");
+    lockScroll();
     applyRotation();
-  }
-
-  function resetRotation() {
-    setRotation(0);
   }
 
   function openLicenseModal(store, type) {
@@ -176,6 +233,8 @@
     modalTitleEl.textContent = label;
     modalStoreNameEl.textContent = store.name;
     resetRotation();
+    setLicenseMode("single");
+    licenseAllEl.innerHTML = "";
     licenseImageEl.onload = applyRotation;
     licenseImageEl.src = src;
     licenseImageEl.alt = `${store.name} ${label}`;
@@ -187,8 +246,19 @@
     modalEl.classList.add("hidden");
     licenseImageEl.onload = null;
     licenseImageEl.src = "";
+    licenseAllEl.innerHTML = "";
+    setLicenseMode("single");
     resetRotation();
     unlockScroll();
+  }
+
+  function setRotation(deg) {
+    imageRotation = ((deg % 360) + 360) % 360;
+    applyRotation();
+  }
+
+  function resetRotation() {
+    setRotation(0);
   }
 
   function escapeHtml(str) {
