@@ -665,6 +665,11 @@ body {
   flex-wrap: wrap;
 }
 
+.license-toolbar--block {
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
+
 .toolbar-btn {
   display: inline-flex;
   align-items: center;

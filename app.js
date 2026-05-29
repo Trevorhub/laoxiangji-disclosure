@@ -14,6 +14,7 @@
   const licenseImageEl = document.getElementById("licenseImage");
   const licenseSingleEl = document.getElementById("licenseSingle");
   const licenseAllEl = document.getElementById("licenseAll");
+  const licenseToolbarGlobalEl = document.getElementById("licenseToolbarGlobal");
   const licenseRotatorEl = document.getElementById("licenseRotator");
   const licenseViewportEl = document.getElementById("licenseViewport");
   const rotateDegreeEl = document.getElementById("rotateDegree");
@@ -22,11 +23,18 @@
   const resetRotateEl = document.getElementById("resetRotate");
 
   let imageRotation = 0;
+  const blockRotations = { business: 0, food: 0 };
 
   const LICENSE_LABELS = {
     business: "营业执照",
     food: "食品经营许可证",
   };
+
+  const ROTATE_LEFT_SVG =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.11 8.53 5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32 1.41 1.42c1.04-1.17 1.65-2.61 1.73-4.14H8.14c-.07 1.16-.45 2.25-1.04 3.22zM12 4.07V2.05c-2.01.2-3.86.88-5.32 1.93l1.42 1.42A7.94 7.94 0 0 1 12 4.07zm7.92 2.97-1.41-1.41A7.948 7.948 0 0 0 12 5.09V7.1c1.57.18 3.02.76 4.24 1.58l1.68-1.63zm-2.02 6.98c-.14.87-.49 1.72-1.02 2.47l1.41 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.01zm-1.04 5.32c-.59.97-.97 2.06-1.04 3.22h2.02c.08-1.53.69-2.97 1.73-4.14l-1.41-1.42c-.53.75-.88 1.6-1.02 2.47zM12 19.93v2.02c2.01-.2 3.86-.88 5.32-1.93l-1.42-1.42a7.948 7.948 0 0 1-3.9 1.33zm-5.32-1.93 1.42 1.42A7.948 7.948 0 0 0 12 21.95v-2.02a7.94 7.94 0 0 1-3.9-1.33l-1.42 1.33z"/></svg>';
+
+  const ROTATE_RIGHT_SVG =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.55 5.55 14.12 4.12a8.003 8.003 0 0 0-8.07 11.88h2.02c.14-1.16.49-2.01 1.02-2.76l1.41 1.41c-.9 1.16-1.45 2.5-1.62 3.89h2.02c.17-1.39.72-2.73 1.62-3.89l-1.42-1.42c.53-.75.88-1.6 1.02-2.47zm-1.04 5.32c-.14.87-.49 1.72-1.02 2.47l1.41 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.01c-.07 1.16-.45 2.25-1.04 3.22zM12 4.07V2.05c-2.01.2-3.86.88-5.32 1.93l1.42 1.42A7.94 7.94 0 0 1 12 4.07zm7.92 2.97-1.41-1.41A7.948 7.948 0 0 0 12 5.09V7.1c1.57.18 3.02.76 4.24 1.58l1.68-1.63zm-2.02 6.98c-.14.87-.49 1.72-1.02 2.47l1.41 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.01zm-1.04 5.32c-.59.97-.97 2.06-1.04 3.22h2.02c.08-1.53.69-2.97 1.73-4.14l-1.41-1.42c-.53.75-.88 1.6-1.02 2.47zM12 19.93v2.02c2.01-.2 3.86-.88 5.32-1.93l-1.42-1.42a7.948 7.948 0 0 1-3.9 1.33zm-5.32-1.93 1.42 1.42A7.948 7.948 0 0 0 12 21.95v-2.02a7.94 7.94 0 0 1-3.9-1.33l-1.42 1.33z"/></svg>';
 
   function buildRegionMaps() {
     const provinces = new Map();
@@ -166,30 +174,71 @@
 
   const LICENSE_TYPES = ["business", "food"];
 
-  function getActiveRotators() {
-    if (licenseAllEl && !licenseAllEl.classList.contains("hidden")) {
-      return [...licenseAllEl.querySelectorAll(".license-rotator")];
-    }
-    return licenseRotatorEl ? [licenseRotatorEl] : [];
+  function buildBlockToolbarHtml() {
+    return `
+      <div class="license-toolbar license-toolbar--block">
+        <button type="button" class="toolbar-btn" data-action="left" aria-label="逆时针旋转">
+          ${ROTATE_LEFT_SVG}左转
+        </button>
+        <span class="rotate-degree" data-degree>0°</span>
+        <button type="button" class="toolbar-btn" data-action="right" aria-label="顺时针旋转">
+          ${ROTATE_RIGHT_SVG}右转
+        </button>
+        <button type="button" class="toolbar-btn toolbar-btn--ghost" data-action="reset" aria-label="重置旋转">重置</button>
+      </div>
+    `;
   }
 
-  function applyRotation() {
-    const rotators = getActiveRotators();
+  function applySingleRotation() {
+    if (!licenseRotatorEl) return;
+    licenseRotatorEl.style.transform = `rotate(${imageRotation}deg)`;
     const isSideways = imageRotation % 180 !== 0;
-    for (const rotator of rotators) {
-      rotator.style.transform = `rotate(${imageRotation}deg)`;
-      rotator.classList.toggle("is-landscape", isSideways);
-    }
+    licenseRotatorEl.classList.toggle("is-landscape", isSideways);
     if (rotateDegreeEl) rotateDegreeEl.textContent = `${imageRotation}°`;
-    if (licenseViewportEl && licenseSingleEl && !licenseSingleEl.classList.contains("hidden")) {
-      licenseViewportEl.scrollTop = 0;
+    if (licenseViewportEl) licenseViewportEl.scrollTop = 0;
+  }
+
+  function applyBlockRotation(block) {
+    const type = block.dataset.licenseType;
+    const deg = blockRotations[type] || 0;
+    const rotator = block.querySelector(".license-rotator");
+    const degreeEl = block.querySelector("[data-degree]");
+    if (rotator) {
+      rotator.style.transform = `rotate(${deg}deg)`;
+      rotator.classList.toggle("is-landscape", deg % 180 !== 0);
     }
+    if (degreeEl) degreeEl.textContent = `${deg}°`;
+  }
+
+  function bindBlockToolbar(block) {
+    const type = block.dataset.licenseType;
+    block.querySelectorAll("[data-action]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        let deg = blockRotations[type] || 0;
+        const action = btn.dataset.action;
+        if (action === "left") deg -= 90;
+        else if (action === "right") deg += 90;
+        else if (action === "reset") deg = 0;
+        blockRotations[type] = ((deg % 360) + 360) % 360;
+        applyBlockRotation(block);
+      });
+    });
+    const img = block.querySelector(".license-image");
+    if (img) img.onload = () => applyBlockRotation(block);
+  }
+
+  function resetBlockRotations() {
+    blockRotations.business = 0;
+    blockRotations.food = 0;
   }
 
   function setLicenseMode(mode) {
     const isAll = mode === "all";
     licenseSingleEl.classList.toggle("hidden", isAll);
     licenseAllEl.classList.toggle("hidden", !isAll);
+    if (licenseToolbarGlobalEl) {
+      licenseToolbarGlobalEl.classList.toggle("hidden", isAll);
+    }
   }
 
   function buildAllLicensesHtml(store) {
@@ -197,13 +246,14 @@
       const label = LICENSE_LABELS[type];
       const src = store.licenses[type];
       return `
-        <section class="license-block">
+        <section class="license-block" data-license-type="${type}">
           <h4 class="license-block__title">${label}</h4>
           <div class="license-viewport license-viewport--stack">
             <div class="license-rotator">
               <img class="license-image" src="${src}" alt="${escapeHtml(store.name)} ${label}" />
             </div>
           </div>
+          ${buildBlockToolbarHtml()}
         </section>
       `;
     }).join("");
@@ -213,17 +263,18 @@
     if (modalTagEl) modalTagEl.textContent = "全部证照";
     modalTitleEl.textContent = "门店证照公示";
     modalStoreNameEl.textContent = store.name;
+    resetBlockRotations();
     resetRotation();
     setLicenseMode("all");
     licenseAllEl.innerHTML = buildAllLicensesHtml(store);
-    licenseAllEl.querySelectorAll(".license-image").forEach((img) => {
-      img.onload = applyRotation;
+    licenseAllEl.querySelectorAll(".license-block").forEach((block) => {
+      bindBlockToolbar(block);
+      applyBlockRotation(block);
     });
     licenseImageEl.onload = null;
     licenseImageEl.src = "";
     modalEl.classList.remove("hidden");
     lockScroll();
-    applyRotation();
   }
 
   function openLicenseModal(store, type) {
@@ -235,7 +286,7 @@
     resetRotation();
     setLicenseMode("single");
     licenseAllEl.innerHTML = "";
-    licenseImageEl.onload = applyRotation;
+    licenseImageEl.onload = applySingleRotation;
     licenseImageEl.src = src;
     licenseImageEl.alt = `${store.name} ${label}`;
     modalEl.classList.remove("hidden");
@@ -249,12 +300,13 @@
     licenseAllEl.innerHTML = "";
     setLicenseMode("single");
     resetRotation();
+    resetBlockRotations();
     unlockScroll();
   }
 
   function setRotation(deg) {
     imageRotation = ((deg % 360) + 360) % 360;
-    applyRotation();
+    applySingleRotation();
   }
 
   function resetRotation() {
