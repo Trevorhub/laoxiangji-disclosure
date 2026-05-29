@@ -18,7 +18,7 @@ const PLATFORMS = [
   {
     id: "lxj-platform",
     channel: "平台",
-    name: "老乡鸡线上经营平台",
+    name: "网络平台运营主体",
     desc: "安徽老乡鸡餐饮有限公司",
     licenses: { ...PLATFORM_LICENSE_SAMPLES },
   },
