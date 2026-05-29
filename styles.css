@@ -819,8 +819,8 @@ body {
   width: 100%;
   min-height: 4.8rem;
   max-height: 55vh;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  touch-action: none;
   background: linear-gradient(180deg, var(--green-50) 0%, #fff 100%);
   border: 1px solid var(--green-100);
   border-radius: var(--radius-md);
@@ -828,6 +828,10 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.267rem;
+}
+
+.license-viewport.is-zoomed {
+  cursor: grab;
 }
 
 .license-viewport--stack {
@@ -865,6 +869,15 @@ body {
   transform-origin: center center;
 }
 
+.license-zoom-layer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
 .license-image {
   display: block;
   max-width: 100%;
@@ -873,6 +886,8 @@ body {
   box-shadow: 0 0.053rem 0.213rem rgba(0, 0, 0, 0.08);
   user-select: none;
   -webkit-user-drag: none;
+  touch-action: none;
+  pointer-events: none;
 }
 
 /* 90° / 270° 横版证照在竖屏下更易阅读 */
