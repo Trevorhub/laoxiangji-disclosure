@@ -1,18 +1,25 @@
-# 老乡鸡餐厅信息公示
+# 老乡鸡经营证照公示
 
-移动端 H5 餐厅信息公示页面，参考麦当劳公示页布局，采用老乡鸡绿色主题。
+移动端 H5 经营证照公示平台，包含 **门店资质** 与 **平台资质** 两大模块。
 
-## 移动端适配
+## 页面结构
 
-- `flex.js`：rem 弹性布局（设计稿基准 375px，大屏封顶 540px）
-- `viewport-fit=cover`：适配刘海屏 / 全面屏安全区
-- 桌面浏览器打开时居中显示手机宽度画布，不无限拉宽
+| 页面 | 说明 |
+|------|------|
+| `index.html` | 首页入口，选择资质类型 |
+| `stores.html` | 门店资质（原门店信息公示） |
+| `platform.html` | 平台资质（小程序、外卖等） |
 
 ## 功能
 
-- 省份 / 城市二级筛选门店
-- 门店名称关键词搜索
-- 点击「营业执照」「食品经营许可证」底部弹层预览证照
+### 门店资质
+- 省份 / 城市筛选、门店名称搜索
+- 查看营业执照、食品经营许可证
+- 点击卡片空白区域查看全部证照，各自独立旋转
+
+### 平台资质
+- 平台名称 / 渠道搜索
+- 查看各平台经营相关证照
 
 ## 本地预览
 
@@ -21,18 +28,14 @@ cd /Users/barryallen/Projects/laoxiangji-disclosure
 python3 -m http.server 8080
 ```
 
-手机与电脑同一局域网时，访问 `http://<本机IP>:8080`；本机可直接打开 `http://localhost:8080`。
+访问 http://localhost:8080
 
-## 部署到 Render
+## 线上地址
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Trevorhub/laoxiangji-disclosure)
+**https://laoxiangji-disclosure.onrender.com**
 
-1. 点击上方按钮（需已登录 [Render](https://render.com) 并授权 GitHub）
-2. 确认 Blueprint 中的静态站点配置，点击 **Apply**
-3. 等待部署完成，访问 `https://laoxiangji-disclosure.onrender.com`（或 Render 分配的实际域名）
+## 数据维护
 
-仓库已包含 `render.yaml`，类型为 **Static Site**，发布目录为项目根目录，无需构建命令。
-
-## 数据对接
-
-门店数据在 `data.js` 的 `STORE_LIST` 中维护；全部门店证照默认使用 `assets/licenses/business-license.png` 与 `food-license.png` 真实示例图。接入后端后，在 `map` 逻辑中按门店返回各自证照 URL 即可。
+- 门店：`data.js` → `STORE_LIST`
+- 平台：`platform-data.js` → `PLATFORMS`
+- 证照弹层逻辑：`license-modal.js`（门店页、平台页共用）

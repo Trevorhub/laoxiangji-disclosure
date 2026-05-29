@@ -94,11 +94,11 @@ body {
 
 /* 顶栏 */
 .top-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
   height: calc(1.067rem + var(--safe-top));
-  padding: var(--safe-top) 0.427rem 0;
+  padding: var(--safe-top) 0.32rem 0;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -106,6 +106,24 @@ body {
   position: sticky;
   top: 0;
   z-index: 30;
+}
+
+.top-bar:not(.top-bar--sub) {
+  display: flex;
+  justify-content: center;
+}
+
+.top-home {
+  justify-self: start;
+  font-size: 0.347rem;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+  padding: 0.107rem 0.16rem;
+}
+
+.top-home:active {
+  opacity: 0.75;
 }
 
 .top-title {
@@ -117,6 +135,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  grid-column: 2;
 }
 
 .icon-btn {
@@ -230,6 +249,93 @@ body {
   background: rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.brand-hero--sub {
+  padding: 0.4rem 0.427rem 0.56rem;
+}
+
+/* 首页入口 */
+.content--hub {
+  padding-top: 0.16rem;
+}
+
+.hub-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.267rem;
+  margin-top: -0.24rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hub-card {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.373rem;
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.hub-card:active {
+  transform: scale(0.995);
+  box-shadow: var(--shadow-md);
+}
+
+.hub-card__icon {
+  width: 1.067rem;
+  height: 1.067rem;
+  border-radius: 0.32rem;
+  background: var(--green-50);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hub-card__icon--alt {
+  background: #eef6f0;
+  color: var(--brand-dark);
+}
+
+.hub-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+}
+
+.hub-card__title {
+  font-size: 0.427rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hub-card__desc {
+  font-size: 0.32rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.hub-card__arrow {
+  font-size: 0.533rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.store-desc {
+  margin: 0.053rem 0 0;
+  font-size: 0.32rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 /* 主内容 */
