@@ -23,6 +23,16 @@ python3 -m http.server 8080
 
 手机与电脑同一局域网时，访问 `http://<本机IP>:8080`；本机可直接打开 `http://localhost:8080`。
 
+## 部署到 Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Trevorhub/laoxiangji-disclosure)
+
+1. 点击上方按钮（需已登录 [Render](https://render.com) 并授权 GitHub）
+2. 确认 Blueprint 中的静态站点配置，点击 **Apply**
+3. 等待部署完成，访问 `https://laoxiangji-disclosure.onrender.com`（或 Render 分配的实际域名）
+
+仓库已包含 `render.yaml`，类型为 **Static Site**，发布目录为项目根目录，无需构建命令。
+
 ## 数据对接
 
 门店数据在 `data.js` 的 `STORE_LIST` 中维护；全部门店证照默认使用 `assets/licenses/business-license.png` 与 `food-license.png` 真实示例图。接入后端后，在 `map` 逻辑中按门店返回各自证照 URL 即可。
