@@ -96,8 +96,9 @@ body {
 .top-bar {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: calc(1.067rem + var(--safe-top));
-  padding: var(--safe-top) 0.16rem 0;
+  padding: var(--safe-top) 0.427rem 0;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -108,7 +109,6 @@ body {
 }
 
 .top-title {
-  flex: 1;
   margin: 0;
   font-size: 0.4rem;
   font-weight: 600;
@@ -117,11 +117,6 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.top-spacer {
-  width: 1.067rem;
-  flex-shrink: 0;
 }
 
 .icon-btn {
@@ -775,14 +770,6 @@ body {
   max-width: none;
   max-height: min(72vw, 55vh);
   width: auto;
-}
-
-.modal-tip {
-  margin: 0.293rem 0 0;
-  font-size: 0.293rem;
-  color: var(--text-muted);
-  text-align: center;
-  line-height: 1.5;
 }
 
 /* 横屏 */
