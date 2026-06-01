@@ -6,18 +6,9 @@
  * 合并规则：
  * 1) 同门店按 省份+城市+门店名称 合并为单条。
  * 2) 同门店同证照多条时，按 URL 尾部时间戳保留最新一条。
+ * 3) 省市名称做归一化（如 安徽/安徽省、上海/上海市 合并）。
  */
 const STORES = [
-  {
-    "id": "1744",
-    "province": "上海",
-    "city": "上海",
-    "name": "上海佘山欢乐谷店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1744/1744-上海佘山欢乐谷店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1744/1744-上海佘山欢乐谷店-经营许可证.jpg"
-    }
-  },
   {
     "id": "8037",
     "province": "上海市",
@@ -236,6 +227,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/c81150ef-fbfd-4c24-9f64-3b3719adb9ff1734541574960.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/0ebc8c96-1a7c-4e96-ba2b-a7ea50d5e1fc1734541575614.jpg"
+    }
+  },
+  {
+    "id": "1744",
+    "province": "上海市",
+    "city": "上海市",
+    "name": "上海佘山欢乐谷店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1744/1744-上海佘山欢乐谷店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1744/1744-上海佘山欢乐谷店-经营许可证.jpg"
     }
   },
   {
@@ -1090,7 +1091,7 @@ const STORES = [
   },
   {
     "id": "1947",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州万达华府店",
     "licenses": {
@@ -1100,7 +1101,7 @@ const STORES = [
   },
   {
     "id": "1564",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州上善名郡店",
     "licenses": {
@@ -1110,7 +1111,7 @@ const STORES = [
   },
   {
     "id": "1678",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州亳芜家园店",
     "licenses": {
@@ -1120,7 +1121,7 @@ const STORES = [
   },
   {
     "id": "1793",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州依立腾奥莱店",
     "licenses": {
@@ -1130,7 +1131,7 @@ const STORES = [
   },
   {
     "id": "1093",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州利辛七彩世界餐厅",
     "licenses": {
@@ -1140,7 +1141,7 @@ const STORES = [
   },
   {
     "id": "1075",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州利辛向阳路餐厅",
     "licenses": {
@@ -1150,7 +1151,7 @@ const STORES = [
   },
   {
     "id": "1092",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州利辛淝河大道餐厅",
     "licenses": {
@@ -1160,7 +1161,7 @@ const STORES = [
   },
   {
     "id": "1527",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州华富广场餐厅",
     "licenses": {
@@ -1170,7 +1171,7 @@ const STORES = [
   },
   {
     "id": "1533",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州南半球餐厅",
     "licenses": {
@@ -1180,7 +1181,7 @@ const STORES = [
   },
   {
     "id": "1662",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州市万达广场餐厅",
     "licenses": {
@@ -1190,7 +1191,7 @@ const STORES = [
   },
   {
     "id": "1588",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州市缤纷城餐厅",
     "licenses": {
@@ -1200,7 +1201,7 @@ const STORES = [
   },
   {
     "id": "1522",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州希夷大道餐厅",
     "licenses": {
@@ -1210,7 +1211,7 @@ const STORES = [
   },
   {
     "id": "1563",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州建安文化广场店",
     "licenses": {
@@ -1220,7 +1221,7 @@ const STORES = [
   },
   {
     "id": "1826",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州建投东方名府店",
     "licenses": {
@@ -1230,7 +1231,7 @@ const STORES = [
   },
   {
     "id": "1986",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州恒大城店",
     "licenses": {
@@ -1240,7 +1241,7 @@ const STORES = [
   },
   {
     "id": "1525",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州文帝路餐厅",
     "licenses": {
@@ -1250,7 +1251,7 @@ const STORES = [
   },
   {
     "id": "1521",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州旺角广场餐厅",
     "licenses": {
@@ -1260,7 +1261,7 @@ const STORES = [
   },
   {
     "id": "1668",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州桐花路店",
     "licenses": {
@@ -1270,7 +1271,7 @@ const STORES = [
   },
   {
     "id": "1524",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州汇金广场餐厅",
     "licenses": {
@@ -1280,7 +1281,7 @@ const STORES = [
   },
   {
     "id": "1669",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州涡阳新街里店",
     "licenses": {
@@ -1290,7 +1291,7 @@ const STORES = [
   },
   {
     "id": "1520",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州涡阳站前路餐厅",
     "licenses": {
@@ -1300,7 +1301,7 @@ const STORES = [
   },
   {
     "id": "1850",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州涡阳青牛广场店",
     "licenses": {
@@ -1310,7 +1311,7 @@ const STORES = [
   },
   {
     "id": "1609",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州百大购物广场餐厅",
     "licenses": {
@@ -1320,7 +1321,7 @@ const STORES = [
   },
   {
     "id": "1428",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州蒙城万达广场店",
     "licenses": {
@@ -1330,7 +1331,7 @@ const STORES = [
   },
   {
     "id": "1519",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州蒙城天河广场餐厅",
     "licenses": {
@@ -1340,7 +1341,7 @@ const STORES = [
   },
   {
     "id": "1517",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州蒙城宝业餐厅",
     "licenses": {
@@ -1350,7 +1351,7 @@ const STORES = [
   },
   {
     "id": "1518",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州蒙城建材城餐厅",
     "licenses": {
@@ -1360,7 +1361,7 @@ const STORES = [
   },
   {
     "id": "1516",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州蒙城梦蝶广场餐厅",
     "licenses": {
@@ -1370,7 +1371,7 @@ const STORES = [
   },
   {
     "id": "1515",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州蒙城玖隆广场餐厅",
     "licenses": {
@@ -1380,7 +1381,7 @@ const STORES = [
   },
   {
     "id": "1667",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州观澜天下店",
     "licenses": {
@@ -1390,7 +1391,7 @@ const STORES = [
   },
   {
     "id": "1526",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州谯城万达餐厅",
     "licenses": {
@@ -1400,3332 +1401,12 @@ const STORES = [
   },
   {
     "id": "1587",
-    "province": "安徽",
+    "province": "安徽省",
     "city": "亳州",
     "name": "亳州谯陵路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1587/1587-亳州谯陵路餐厅-营业执照.jpg",
       "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1587/1587-亳州谯陵路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1670",
-    "province": "安徽",
-    "city": "六安",
-    "name": "六安姚李镇庆丰购物广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1670/1670-六安姚李镇庆丰购物广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1670/1670-六安姚李镇庆丰购物广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1885",
-    "province": "安徽",
-    "city": "六安",
-    "name": "六安市独山镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1885/1885-六安市独山镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1885/1885-六安市独山镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1739",
-    "province": "安徽",
-    "city": "六安",
-    "name": "六安新安镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1739/1739-六安新安镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1739/1739-六安新安镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1585",
-    "province": "安徽",
-    "city": "六安",
-    "name": "六安舒城杭埠镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1585/1585-六安舒城杭埠镇店-营业执照.mp4",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1585/1585-六安舒城杭埠镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1710",
-    "province": "安徽",
-    "city": "六安",
-    "name": "六安霍邱商之都店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1710/1710-六安霍邱商之都店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1710/1710-六安霍邱商之都店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1963",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥下塘丰迪广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1963/1963-合肥下塘丰迪广场店-营业执照.jpeg",
-      "food": ""
-    }
-  },
-  {
-    "id": "1299",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥下塘比亚迪店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1299/1299-合肥下塘比亚迪店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1299/1299-合肥下塘比亚迪店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1276",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥丰乐服务区东区餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1276/1276-合肥丰乐服务区东区餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1276/1276-合肥丰乐服务区东区餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1275",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥丰乐服务区西区餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1275/1275-合肥丰乐服务区西区餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1275/1275-合肥丰乐服务区西区餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1611",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥二里街餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1611/1611-合肥二里街餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1611/1611-合肥二里街餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1983",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥众兴服务区北店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1983/1983-合肥众兴服务区北店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1983/1983-合肥众兴服务区北店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1984",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥众兴服务区南店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1984/1984-合肥众兴服务区南店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1984/1984-合肥众兴服务区南店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1737",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥商之都优山美地店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1737/1737-合肥商之都优山美地店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1737/1737-合肥商之都优山美地店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1610",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥宿州路商之都餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1610/1610-合肥宿州路商之都餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1610/1610-合肥宿州路商之都餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1388",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥巢湖柘皋镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1388/1388-合肥巢湖柘皋镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1388/1388-合肥巢湖柘皋镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1329",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥巢湖槐林镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1329/1329-合肥巢湖槐林镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1329/1329-合肥巢湖槐林镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1638",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥新华国际广场",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1638/1638-合肥新华国际广场-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1638/1638-合肥新华国际广场-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1279",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥新桥服务区北餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1279/1279-合肥新桥服务区北餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1279/1279-合肥新桥服务区北餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1280",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥新桥服务区南餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1280/1280-合肥新桥服务区南餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1280/1280-合肥新桥服务区南餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1572",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥第二人民医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1572/1572-合肥第二人民医院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1572/1572-合肥第二人民医院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1346",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥紫蓬镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1346/1346-合肥紫蓬镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1346/1346-合肥紫蓬镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1252",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥董岗荟萃园餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1252/1252-合肥董岗荟萃园餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1252/1252-合肥董岗荟萃园餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1658",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥蔚来园区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1658/1658-合肥蔚来园区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1658/1658-合肥蔚来园区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1742",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥陈埠服务区东区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1742/1742-合肥陈埠服务区东区店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1742/1742-合肥陈埠服务区东区店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1743",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥陈埠服务区西区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1743/1743-合肥陈埠服务区西区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1743/1743-合肥陈埠服务区西区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1991",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "合肥高刘镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1991/1991-合肥高刘镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1991/1991-合肥高刘镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1639",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "巢湖商之都",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1639/1639-巢湖商之都-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1639/1639-巢湖商之都-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1811",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "巢湖黄麓半岛商业广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1811/1811-巢湖黄麓半岛商业广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1811/1811-巢湖黄麓半岛商业广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1801",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "庐江汤池鑫隆店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1801/1801-庐江汤池鑫隆店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1801/1801-庐江汤池鑫隆店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1505",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "淮北南翔云集餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1505/1505-淮北南翔云集餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1505/1505-淮北南翔云集餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1778",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "淮北恒大中央公园店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1778/1778-淮北恒大中央公园店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1778/1778-淮北恒大中央公园店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1437",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "淮南八公山餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1437/1437-淮南八公山餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1437/1437-淮南八公山餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1903",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "滁州永乐北路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1903/1903-滁州永乐北路店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1903/1903-滁州永乐北路店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1504",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "老乡鸡淮北步行街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1504/1504-老乡鸡淮北步行街店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1504/1504-老乡鸡淮北步行街店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1677",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "肥东长临河镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1677/1677-肥东长临河镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1677/1677-肥东长临河镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1760",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "肥西花岗店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1760/1760-肥西花岗店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1760/1760-肥西花岗店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1305",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "芜湖沈巷店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1305/1305-芜湖沈巷店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1305/1305-芜湖沈巷店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1940",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "长丰玛特大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1940/1940-长丰玛特大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1940/1940-长丰玛特大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1939",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "长丰长寿路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1939/1939-长丰长寿路店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1939/1939-长丰长寿路店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1475",
-    "province": "安徽",
-    "city": "合肥",
-    "name": "马鞍山市和泰国际花园餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1475/1475-马鞍山市和泰国际花园餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1475/1475-马鞍山市和泰国际花园餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1979",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆怀宁石牌镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1979/1979-安庆怀宁石牌镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1979/1979-安庆怀宁石牌镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1651",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆桐城人民医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1651/1651-安庆桐城人民医院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1651/1651-安庆桐城人民医院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1530",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆桐城新渡镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1530/1530-安庆桐城新渡镇店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1530/1530-安庆桐城新渡镇店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1924",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆桐城范岗镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1924/1924-安庆桐城范岗镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1924/1924-安庆桐城范岗镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1591",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆潜山南岳路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1591/1591-安庆潜山南岳路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1591/1591-安庆潜山南岳路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1592",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆潜山恒太城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1592/1592-安庆潜山恒太城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1592/1592-安庆潜山恒太城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1978",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "安庆潜山源潭镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1978/1978-安庆潜山源潭镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1978/1978-安庆潜山源潭镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1534",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "淮北安邦广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1534/1534-淮北安邦广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1534/1534-淮北安邦广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1612",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "潜山县潜阳路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1612/1612-潜山县潜阳路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1612/1612-潜山县潜阳路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1818",
-    "province": "安徽",
-    "city": "安庆",
-    "name": "潜山市立医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1818/1818-潜山市立医院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1818/1818-潜山市立医院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1683",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "亳州蒙城喜客甄选店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1683/1683-亳州蒙城喜客甄选店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1683/1683-亳州蒙城喜客甄选店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1170",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城东方燕园店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1170/1170-宣城东方燕园店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1170/1170-宣城东方燕园店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1032",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城中心医院餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1032/1032-宣城中心医院餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1032/1032-宣城中心医院餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1128",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城人民医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1128/1128-宣城人民医院店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1128/1128-宣城人民医院店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1006",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城大润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1006/1006-宣城大润发餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1006/1006-宣城大润发餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1008",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城宁国人民医院餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1008/1008-宣城宁国人民医院餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1008/1008-宣城宁国人民医院餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1005",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城宁国宁阳路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1005/1005-宣城宁国宁阳路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1005/1005-宣城宁国宁阳路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1725",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城广德升平街鼓角楼店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1725/1725-宣城广德升平街鼓角楼店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1725/1725-宣城广德升平街鼓角楼店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1143",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城广德商贸中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1143/1143-宣城广德商贸中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1143/1143-宣城广德商贸中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1041",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城广德大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1041/1041-宣城广德大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1041/1041-宣城广德大润发店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1345",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城广德百大中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1345/1345-宣城广德百大中心店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1345/1345-宣城广德百大中心店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1007",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城旌德港德广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1007/1007-宣城旌德港德广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1007/1007-宣城旌德港德广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1154",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城泾县环球缤纷城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1154/1154-宣城泾县环球缤纷城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1154/1154-宣城泾县环球缤纷城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1624",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城洪林服务区北区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1624/1624-宣城洪林服务区北区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1624/1624-宣城洪林服务区北区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1623",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城洪林服务区南区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1623/1623-宣城洪林服务区南区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1623/1623-宣城洪林服务区南区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1003",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城郎溪县分公司餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1003/1003-宣城郎溪县分公司餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1003/1003-宣城郎溪县分公司餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1090",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城郎溪台客隆店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1090/1090-宣城郎溪台客隆店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1090/1090-宣城郎溪台客隆店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1018",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城锦城北路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1018/1018-宣城锦城北路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1018/1018-宣城锦城北路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1144",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "宣城麦莎广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1144/1144-宣城麦莎广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1144/1144-宣城麦莎广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1122",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "泾县新世界店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1122/1122-泾县新世界店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1122/1122-泾县新世界店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1306",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "特许店-宣城国购广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1306/1306-特许店-宣城国购广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1306/1306-特许店-宣城国购广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1066",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "阜阳临泉佳源东方餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1066/1066-阜阳临泉佳源东方餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1066/1066-阜阳临泉佳源东方餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1569",
-    "province": "安徽",
-    "city": "宣城",
-    "name": "马鞍山和县和州路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1569/1569-马鞍山和县和州路店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1569/1569-马鞍山和县和州路店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1509",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州万达二餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1509/1509-宿州万达二餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1509/1509-宿州万达二餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1566",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州利群时代广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1566/1566-宿州利群时代广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1566/1566-宿州利群时代广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1767",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州天鹅湾店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1767/1767-宿州天鹅湾店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1767/1767-宿州天鹅湾店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1507",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州市万达餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1507/1507-宿州市万达餐厅-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1507/1507-宿州市万达餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1650",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州市国购广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1650/1650-宿州市国购广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1650/1650-宿州市国购广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1765",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州市立医院北区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1765/1765-宿州市立医院北区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1765/1765-宿州市立医院北区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1511",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州拂晓广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1511/1511-宿州拂晓广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1511/1511-宿州拂晓广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1512",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州新一佳餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1512/1512-宿州新一佳餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1512/1512-宿州新一佳餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1757",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州汴河丽景店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1757/1757-宿州汴河丽景店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1757/1757-宿州汴河丽景店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1510",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州汴河路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1510/1510-宿州汴河路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1510/1510-宿州汴河路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1017",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州泗县同辉广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1017/1017-宿州泗县同辉广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1017/1017-宿州泗县同辉广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1077",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州泗县清水湾餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1077/1077-宿州泗县清水湾餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1077/1077-宿州泗县清水湾餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1021",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州泗县玉兰大道店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1021/1021-宿州泗县玉兰大道店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1021/1021-宿州泗县玉兰大道店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1076",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州泗县盛世豪庭餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1076/1076-宿州泗县盛世豪庭餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1076/1076-宿州泗县盛世豪庭餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1514",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州淮海学府餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1514/1514-宿州淮海学府餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1514/1514-宿州淮海学府餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1019",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州灵璧茂和广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1019/1019-宿州灵璧茂和广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1019/1019-宿州灵璧茂和广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1030",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州灵璧莱迪广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1030/1030-宿州灵璧莱迪广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1030/1030-宿州灵璧莱迪广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1902",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州皖北总院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1902/1902-宿州皖北总院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1902/1902-宿州皖北总院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1157",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州砀山万达餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1157/1157-宿州砀山万达餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1157/1157-宿州砀山万达餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1015",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州砀山不夜城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1015/1015-宿州砀山不夜城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1015/1015-宿州砀山不夜城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1026",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州砀山县大润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1026/1026-宿州砀山县大润发餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1026/1026-宿州砀山县大润发餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1508",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州磬云路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1508/1508-宿州磬云路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1508/1508-宿州磬云路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1338",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州符离镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1338/1338-宿州符离镇店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1338/1338-宿州符离镇店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1754",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州苏宁店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1754/1754-宿州苏宁店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1754/1754-宿州苏宁店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1020",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州萧县亿洲城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1020/1020-宿州萧县亿洲城餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1020/1020-宿州萧县亿洲城餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1513",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州金方世纪城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1513/1513-宿州金方世纪城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1513/1513-宿州金方世纪城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1271",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州高速驿达符离服务区东区餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1271/1271-宿州高速驿达符离服务区东区餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1271/1271-宿州高速驿达符离服务区东区餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1272",
-    "province": "安徽",
-    "city": "宿州",
-    "name": "宿州高速驿达符离服务区西区餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1272/1272-宿州高速驿达符离服务区西区餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1272/1272-宿州高速驿达符离服务区西区餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1702",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州万成香格里拉店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1702/1702-池州万成香格里拉店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1702/1702-池州万成香格里拉店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1704",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州万盛广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1704/1704-池州万盛广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1704/1704-池州万盛广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1547",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州东至大渡口镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1547/1547-池州东至大渡口镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1547/1547-池州东至大渡口镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1700",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州东至新天地广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1700/1700-池州东至新天地广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1700/1700-池州东至新天地广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1699",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州东至汇金广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1699/1699-池州东至汇金广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1699/1699-池州东至汇金广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1583",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州东至花园服务区东区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1583/1583-池州东至花园服务区东区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1583/1583-池州东至花园服务区东区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1584",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州东至花园服务区西区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1584/1584-池州东至花园服务区西区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1584/1584-池州东至花园服务区西区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1353",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州九华山游客服务中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1353/1353-池州九华山游客服务中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1353/1353-池州九华山游客服务中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1273",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州升金湖服务区东餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1273/1273-池州升金湖服务区东餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1273/1273-池州升金湖服务区东餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1274",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州升金湖服务区西餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1274/1274-池州升金湖服务区西餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1274/1274-池州升金湖服务区西餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1703",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州商之都店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1703/1703-池州商之都店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1703/1703-池州商之都店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1701",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州远东国际广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1701/1701-池州远东国际广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1701/1701-池州远东国际广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1882",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州青阳城上城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1882/1882-池州青阳城上城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1882/1882-池州青阳城上城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1705",
-    "province": "安徽",
-    "city": "池州",
-    "name": "池州青阳大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1705/1705-池州青阳大润发店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1705/1705-池州青阳大润发店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1016",
-    "province": "安徽",
-    "city": "池州",
-    "name": "滁州天长吾悦广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1016/1016-滁州天长吾悦广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1016/1016-滁州天长吾悦广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1814",
-    "province": "安徽",
-    "city": "淮北",
-    "name": "淮北吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1814/1814-淮北吾悦广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1814/1814-淮北吾悦广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1506",
-    "province": "安徽",
-    "city": "淮北",
-    "name": "淮北濉溪新百餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1506/1506-淮北濉溪新百餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1506/1506-淮北濉溪新百餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1602",
-    "province": "安徽",
-    "city": "淮北",
-    "name": "淮北碧乐城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1602/1602-淮北碧乐城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1602/1602-淮北碧乐城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1503",
-    "province": "安徽",
-    "city": "淮北",
-    "name": "淮北老乡鸡三餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1503/1503-淮北老乡鸡三餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1503/1503-淮北老乡鸡三餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1541",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南万茂餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1541/1541-淮南万茂餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1541/1541-淮南万茂餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1452",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南万达广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1452/1452-淮南万达广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1452/1452-淮南万达广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1619",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南三和镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1619/1619-淮南三和镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1619/1619-淮南三和镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1444",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南上东锦城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1444/1444-淮南上东锦城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1444/1444-淮南上东锦城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1752",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南东方医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1752/1752-淮南东方医院店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1752/1752-淮南东方医院店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1443",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南中化国际城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1443/1443-淮南中化国际城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1443/1443-淮南中化国际城餐厅-经营许可证.png"
-    }
-  },
-  {
-    "id": "1644",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南八公山服务区北区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1644/1644-淮南八公山服务区北区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1644/1644-淮南八公山服务区北区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1643",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南八公山服务区南区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1643/1643-淮南八公山服务区南区店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1643/1643-淮南八公山服务区南区店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1789",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南凤凰湾店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1789/1789-淮南凤凰湾店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1789/1789-淮南凤凰湾店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1900",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南凤台中山北路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1900/1900-淮南凤台中山北路店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1900/1900-淮南凤台中山北路店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1440",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南凤台明珠大道餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1440/1440-淮南凤台明珠大道餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1440/1440-淮南凤台明珠大道餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1439",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南凤台未来城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1439/1439-淮南凤台未来城餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1439/1439-淮南凤台未来城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1553",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南天一时代城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1553/1553-淮南天一时代城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1553/1553-淮南天一时代城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1586",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南天柱山路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1586/1586-淮南天柱山路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1586/1586-淮南天柱山路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1434",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南寿县二餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1434/1434-淮南寿县二餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1434/1434-淮南寿县二餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1431",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南寿县大顺路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1431/1431-淮南寿县大顺路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1431/1431-淮南寿县大顺路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1432",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南寿县玫瑰公馆餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1432/1432-淮南寿县玫瑰公馆餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1432/1432-淮南寿县玫瑰公馆餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1A02",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南寿县环球港店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A02/1A02-淮南寿县环球港店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A02/1A02-淮南寿县环球港店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1551",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南寿县鼎鑫幸福城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1551/1551-淮南寿县鼎鑫幸福城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1551/1551-淮南寿县鼎鑫幸福城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1433",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南尚泰广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1433/1433-淮南尚泰广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1433/1433-淮南尚泰广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1565",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南山南印象店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1565/1565-淮南山南印象店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1565/1565-淮南山南印象店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1453",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南市人民医院餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1453/1453-淮南市人民医院餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1453/1453-淮南市人民医院餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1447",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南市淮河新城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1447/1447-淮南市淮河新城餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1447/1447-淮南市淮河新城餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1445",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南广场路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1445/1445-淮南广场路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1445/1445-淮南广场路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1446",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南惠利花园店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1446/1446-淮南惠利花园店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1446/1446-淮南惠利花园店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1351",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南毛集店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1351/1351-淮南毛集店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1351/1351-淮南毛集店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1454",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南泉山湖餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1454/1454-淮南泉山湖餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1454/1454-淮南泉山湖餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1442",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南潘集世瑞大厦餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1442/1442-淮南潘集世瑞大厦餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1442/1442-淮南潘集世瑞大厦餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1798",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南潘集珠江路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1798/1798-淮南潘集珠江路店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1798/1798-淮南潘集珠江路店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1450",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南火车站餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1450/1450-淮南火车站餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1450/1450-淮南火车站餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1589",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南科技大厦餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1589/1589-淮南科技大厦餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1589/1589-淮南科技大厦餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1796",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南绿茵里店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1796/1796-淮南绿茵里店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1796/1796-淮南绿茵里店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1919",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南英伦联邦店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1919/1919-淮南英伦联邦店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1919/1919-淮南英伦联邦店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1436",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南蔡新路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1436/1436-淮南蔡新路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1436/1436-淮南蔡新路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1435",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南西城国际店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1435/1435-淮南西城国际店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1435/1435-淮南西城国际店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1712",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南谢家集祥云府店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1712/1712-淮南谢家集祥云府店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1712/1712-淮南谢家集祥云府店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1621",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南迎河服务区东区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1621/1621-淮南迎河服务区东区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1621/1621-淮南迎河服务区东区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1622",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南迎河服务区西区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1622/1622-淮南迎河服务区西区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1622/1622-淮南迎河服务区西区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1769",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南金域蓝湾店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1769/1769-淮南金域蓝湾店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1769/1769-淮南金域蓝湾店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1645",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南香樟苑店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1645/1645-淮南香樟苑店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1645/1645-淮南香樟苑店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1448",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南龙湖中心餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1448/1448-淮南龙湖中心餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1448/1448-淮南龙湖中心餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1449",
-    "province": "安徽",
-    "city": "淮南",
-    "name": "淮南龙湖路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1449/1449-淮南龙湖路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1449/1449-淮南龙湖路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1467",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "全椒城东花园餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1467/1467-全椒城东花园餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1467/1467-全椒城东花园餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1892",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "凤阳临淮关镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1892/1892-凤阳临淮关镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1892/1892-凤阳临淮关镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1022",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "天长天发广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1022/1022-天长天发广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1022/1022-天长天发广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1049",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "来安嘉年华店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1049/1049-来安嘉年华店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1049/1049-来安嘉年华店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1922",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州七彩联华超市店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1922/1922-滁州七彩联华超市店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1922/1922-滁州七彩联华超市店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1A12",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州东升花园店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A12/1A12-滁州东升花园店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A12/1A12-滁州东升花园店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1461",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州中州国际广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1461/1461-滁州中州国际广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1461/1461-滁州中州国际广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1463",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州中都大道餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1463/1463-滁州中都大道餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1463/1463-滁州中都大道餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1593",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州丰乐大道餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1593/1593-滁州丰乐大道餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1593/1593-滁州丰乐大道餐厅-经营许可证.png"
-    }
-  },
-  {
-    "id": "1822",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州乐彩城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1822/1822-滁州乐彩城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1822/1822-滁州乐彩城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1283",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州全椒十字店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1283/1283-滁州全椒十字店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1283/1283-滁州全椒十字店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1470",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州全椒县城南大道餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1470/1470-滁州全椒县城南大道餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1470/1470-滁州全椒县城南大道餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1469",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州全椒新江海城市广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1469/1469-滁州全椒新江海城市广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1469/1469-滁州全椒新江海城市广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1277",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州全椒服务区北餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1277/1277-滁州全椒服务区北餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1277/1277-滁州全椒服务区北餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1278",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州全椒服务区南餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1278/1278-滁州全椒服务区南餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1278/1278-滁州全椒服务区南餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1471",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州全椒站前广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1471/1471-滁州全椒站前广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1471/1471-滁州全椒站前广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1567",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州凤阳商贸城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1567/1567-滁州凤阳商贸城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1567/1567-滁州凤阳商贸城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1456",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州凤阳联华超市店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1456/1456-滁州凤阳联华超市店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1456/1456-滁州凤阳联华超市店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1606",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州凯迪置地广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1606/1606-滁州凯迪置地广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1606/1606-滁州凯迪置地广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1590",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1590/1590-滁州吾悦广场店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1590/1590-滁州吾悦广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1027",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州天长市苏果店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1027/1027-滁州天长市苏果店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1027/1027-滁州天长市苏果店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1458",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州定远县餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1458/1458-滁州定远县餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1458/1458-滁州定远县餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1637",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州定远大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1637/1637-滁州定远大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1637/1637-滁州定远大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1457",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州定远曲阳国际餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1457/1457-滁州定远曲阳国际餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1457/1457-滁州定远曲阳国际餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1409",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州定远炉桥镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1409/1409-滁州定远炉桥镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1409/1409-滁州定远炉桥镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1459",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州定远金山丽景餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1459/1459-滁州定远金山丽景餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1459/1459-滁州定远金山丽景餐厅-经营许可证.png"
-    }
-  },
-  {
-    "id": "1753",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州定远金鹏玖玖店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1753/1753-滁州定远金鹏玖玖店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1753/1753-滁州定远金鹏玖玖店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1964",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州市全椒店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1964/1964-滁州市全椒店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1964/1964-滁州市全椒店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1124",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州明光名都汇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1124/1124-滁州明光名都汇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1124/1124-滁州明光名都汇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1029",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州明光大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1029/1029-滁州明光大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1029/1029-滁州明光大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1031",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州明光市餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1031/1031-滁州明光市餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1031/1031-滁州明光市餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1023",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州来安世纪华联店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1023/1023-滁州来安世纪华联店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1023/1023-滁州来安世纪华联店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1411",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州来安汊河店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1411/1411-滁州来安汊河店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1411/1411-滁州来安汊河店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1053",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州来安苏润国际餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1053/1053-滁州来安苏润国际餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1053/1053-滁州来安苏润国际餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1676",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州白云商厦店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1676/1676-滁州白云商厦店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1676/1676-滁州白云商厦店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1466",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州紫金广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1466/1466-滁州紫金广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1466/1466-滁州紫金广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1460",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州金鹏琅琊玖玖广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1460/1460-滁州金鹏琅琊玖玖广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1460/1460-滁州金鹏琅琊玖玖广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1542",
-    "province": "安徽",
-    "city": "滁州",
-    "name": "滁州龙蟠大道餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1542/1542-滁州龙蟠大道餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1542/1542-滁州龙蟠大道餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1973",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "无为竹丝湖服务区东店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1973/1973-无为竹丝湖服务区东店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1973/1973-无为竹丝湖服务区东店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1974",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "无为竹丝湖服务区西店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1974/1974-无为竹丝湖服务区西店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1974/1974-无为竹丝湖服务区西店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1777",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "滁州天长秦栏镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1777/1777-滁州天长秦栏镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1777/1777-滁州天长秦栏镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1575",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "芜湖南陵许镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1575/1575-芜湖南陵许镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1575/1575-芜湖南陵许镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1941",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "芜湖悦达广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1941/1941-芜湖悦达广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1941/1941-芜湖悦达广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1956",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "芜湖湾址城东新城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1956/1956-芜湖湾址城东新城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1956/1956-芜湖湾址城东新城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1942",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "芜湖湾沚静安阳光城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1942/1942-芜湖湾沚静安阳光城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1942/1942-芜湖湾沚静安阳光城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1483",
-    "province": "安徽",
-    "city": "芜湖",
-    "name": "马鞍山含山环峰西路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1483/1483-马鞍山含山环峰西路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1483/1483-马鞍山含山环峰西路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1055",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "怀远大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1055/1055-怀远大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1055/1055-怀远大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1147",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠万方新都汇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1147/1147-蚌埠万方新都汇店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1147/1147-蚌埠万方新都汇店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1628",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠五河人民医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1628/1628-蚌埠五河人民医院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1628/1628-蚌埠五河人民医院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1028",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠五河彩虹时代广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1028/1028-蚌埠五河彩虹时代广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1028/1028-蚌埠五河彩虹时代广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1056",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠兴业街餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1056/1056-蚌埠兴业街餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1056/1056-蚌埠兴业街餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1341",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠合家福店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1341/1341-蚌埠合家福店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1341/1341-蚌埠合家福店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1844",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1844/1844-蚌埠吾悦广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1844/1844-蚌埠吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1068",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠和顺名都城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1068/1068-蚌埠和顺名都城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1068/1068-蚌埠和顺名都城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1052",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠商之都餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1052/1052-蚌埠商之都餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1052/1052-蚌埠商之都餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1138",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠固镇新天地店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1138/1138-蚌埠固镇新天地店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1138/1138-蚌埠固镇新天地店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1131",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠固镇百大购物中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1131/1131-蚌埠固镇百大购物中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1131/1131-蚌埠固镇百大购物中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1137",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠国购广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1137/1137-蚌埠国购广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1137/1137-蚌埠国购广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1965",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠大学城融实购物中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1965/1965-蚌埠大学城融实购物中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1965/1965-蚌埠大学城融实购物中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1062",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠工农路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1062/1062-蚌埠工农路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1062/1062-蚌埠工农路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1057",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠怀远新河路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1057/1057-蚌埠怀远新河路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1057/1057-蚌埠怀远新河路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1127",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠怀远泰谷玖街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1127/1127-蚌埠怀远泰谷玖街店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1127/1127-蚌埠怀远泰谷玖街店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1044",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠拓基餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1044/1044-蚌埠拓基餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1044/1044-蚌埠拓基餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1047",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠文化广场大润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1047/1047-蚌埠文化广场大润发餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1047/1047-蚌埠文化广场大润发餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1133",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠明珠大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1133/1133-蚌埠明珠大润发店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1133/1133-蚌埠明珠大润发店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1132",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠永昌国际大厦店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1132/1132-蚌埠永昌国际大厦店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1132/1132-蚌埠永昌国际大厦店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1051",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠淮上万达餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1051/1051-蚌埠淮上万达餐厅-营业执照.jpg",
-      "food": ""
-    }
-  },
-  {
-    "id": "1107",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠绿地珠峰店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1107/1107-蚌埠绿地珠峰店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1107/1107-蚌埠绿地珠峰店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1896",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠蚌医一附院东门店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1896/1896-蚌埠蚌医一附院东门店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1896/1896-蚌埠蚌医一附院东门店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1111",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠蚌山万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1111/1111-蚌埠蚌山万达店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1111/1111-蚌埠蚌山万达店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1165",
-    "province": "安徽",
-    "city": "蚌埠",
-    "name": "蚌埠鼎元府邸餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1165/1165-蚌埠鼎元府邸餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1165/1165-蚌埠鼎元府邸餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1717",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵五环店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1717/1717-铜陵五环店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1717/1717-铜陵五环店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1690",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵县店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1690/1690-铜陵县店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1690/1690-铜陵县店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1813",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1813/1813-铜陵吾悦广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1813/1813-铜陵吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1823",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵嘉华国际广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1823/1823-铜陵嘉华国际广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1823/1823-铜陵嘉华国际广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1693",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵嘉禾广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1693/1693-铜陵嘉禾广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1693/1693-铜陵嘉禾广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1692",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵天润嘉园店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1692/1692-铜陵天润嘉园店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1692/1692-铜陵天润嘉园店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1696",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵市万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1696/1696-铜陵市万达店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1696/1696-铜陵市万达店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1689",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵枞阳港城广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1689/1689-铜陵枞阳港城广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1689/1689-铜陵枞阳港城广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1806",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵枞阳逸龙山庄店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1806/1806-铜陵枞阳逸龙山庄店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1806/1806-铜陵枞阳逸龙山庄店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1909",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵柏庄香域店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1909/1909-铜陵柏庄香域店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1909/1909-铜陵柏庄香域店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1694",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵石城大道店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1694/1694-铜陵石城大道店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1694/1694-铜陵石城大道店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1698",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵西湖春城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1698/1698-铜陵西湖春城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1698/1698-铜陵西湖春城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1697",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵长江中路乐都店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1697/1697-铜陵长江中路乐都店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1697/1697-铜陵长江中路乐都店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1695",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵长江二路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1695/1695-铜陵长江二路店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1695/1695-铜陵长江二路店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1763",
-    "province": "安徽",
-    "city": "铜陵",
-    "name": "铜陵顺安镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1763/1763-铜陵顺安镇店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1763/1763-铜陵顺安镇店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1488",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳万象城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1488/1488-阜阳万象城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1488/1488-阜阳万象城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1487",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳万达广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1487/1487-阜阳万达广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1487/1487-阜阳万达广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1617",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳临沂商城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1617/1617-阜阳临沂商城餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1617/1617-阜阳临沂商城餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1084",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳临泉华安城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1084/1084-阜阳临泉华安城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1084/1084-阜阳临泉华安城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1067",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳临泉大润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1067/1067-阜阳临泉大润发餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1067/1067-阜阳临泉大润发餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1064",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳临泉御园财富广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1064/1064-阜阳临泉御园财富广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1064/1064-阜阳临泉御园财富广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1492",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳丽丰一品餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1492/1492-阜阳丽丰一品餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1492/1492-阜阳丽丰一品餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1071",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳五洲万汇餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1071/1071-阜阳五洲万汇餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1071/1071-阜阳五洲万汇餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1707",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳双清湾水街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1707/1707-阜阳双清湾水街店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1707/1707-阜阳双清湾水街店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1500",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳商厦时代广场新餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1500/1500-阜阳商厦时代广场新餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1500/1500-阜阳商厦时代广场新餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1494",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳天瑞名城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1494/1494-阜阳天瑞名城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1494/1494-阜阳天瑞名城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1537",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳太和万达餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1537/1537-阜阳太和万达餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1537/1537-阜阳太和万达餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1681",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳太和印象城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1681/1681-阜阳太和印象城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1681/1681-阜阳太和印象城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1571",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳太和永辉店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1571/1571-阜阳太和永辉店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1571/1571-阜阳太和永辉店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1502",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳太和第五街区餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1502/1502-阜阳太和第五街区餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1502/1502-阜阳太和第五街区餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1501",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳太和长征北路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1501/1501-阜阳太和长征北路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1501/1501-阜阳太和长征北路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1745",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳如意豪庭店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1745/1745-阜阳如意豪庭店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1745/1745-阜阳如意豪庭店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1499",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳安医餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1499/1499-阜阳安医餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1499/1499-阜阳安医餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1498",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳市幸福公馆店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1498/1498-阜阳市幸福公馆店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1498/1498-阜阳市幸福公馆店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1497",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳开乐广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1497/1497-阜阳开乐广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1497/1497-阜阳开乐广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1535",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳怡和广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1535/1535-阜阳怡和广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1535/1535-阜阳怡和广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1496",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳新五院餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1496/1496-阜阳新五院餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1496/1496-阜阳新五院餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1538",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳正基首府餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1538/1538-阜阳正基首府餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1538/1538-阜阳正基首府餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1493",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳汇美城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1493/1493-阜阳汇美城餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1493/1493-阜阳汇美城餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1069",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳沣泽悦城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1069/1069-阜阳沣泽悦城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1069/1069-阜阳沣泽悦城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1490",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳清河东路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1490/1490-阜阳清河东路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1490/1490-阜阳清河东路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1129",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳界首万吉广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1129/1129-阜阳界首万吉广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1129/1129-阜阳界首万吉广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1088",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳界首人民路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1088/1088-阜阳界首人民路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1088/1088-阜阳界首人民路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1065",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳界首国祯广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1065/1065-阜阳界首国祯广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1065/1065-阜阳界首国祯广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1953",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳界首漫乐城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1953/1953-阜阳界首漫乐城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1953/1953-阜阳界首漫乐城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1485",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳祥源城公园餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1485/1485-阜阳祥源城公园餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1485/1485-阜阳祥源城公园餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1489",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳站前广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1489/1489-阜阳站前广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1489/1489-阜阳站前广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1562",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳聚隆美墅店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1562/1562-阜阳聚隆美墅店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1562/1562-阜阳聚隆美墅店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1491",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳金悦广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1491/1491-阜阳金悦广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1491/1491-阜阳金悦广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1950",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳阜南万宇步行街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1950/1950-阜阳阜南万宇步行街店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1950/1950-阜阳阜南万宇步行街店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1779",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳阜南中医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1779/1779-阜阳阜南中医院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1779/1779-阜阳阜南中医院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1536",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳阜南天筑广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1536/1536-阜阳阜南天筑广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1536/1536-阜阳阜南天筑广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1486",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳阜南曹集路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1486/1486-阜阳阜南曹集路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1486/1486-阜阳阜南曹集路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1081",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍上前进路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1081/1081-阜阳颍上前进路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1081/1081-阜阳颍上前进路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1082",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍上县人民路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1082/1082-阜阳颍上县人民路餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1082/1082-阜阳颍上县人民路餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1079",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍上县颖阳路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1079/1079-阜阳颍上县颖阳路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1079/1079-阜阳颍上县颖阳路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1070",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍上太平洋广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1070/1070-阜阳颍上太平洋广场餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1070/1070-阜阳颍上太平洋广场餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1582",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍上服务区北区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1582/1582-阜阳颍上服务区北区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1582/1582-阜阳颍上服务区北区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1581",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍上服务区南区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1581/1581-阜阳颍上服务区南区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1581/1581-阜阳颍上服务区南区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1876",
-    "province": "安徽",
-    "city": "阜阳",
-    "name": "阜阳颍东发到家店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1876/1876-阜阳颍东发到家店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1876/1876-阜阳颍东发到家店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1480",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山万达广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1480/1480-马鞍山万达广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1480/1480-马鞍山万达广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1539",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山东方明珠餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1539/1539-马鞍山东方明珠餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1539/1539-马鞍山东方明珠餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1540",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山伟星广场餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1540/1540-马鞍山伟星广场餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1540/1540-马鞍山伟星广场餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1479",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山军民路餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1479/1479-马鞍山军民路餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1479/1479-马鞍山军民路餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1626",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山博望店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1626/1626-马鞍山博望店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1626/1626-马鞍山博望店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1884",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山向山镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1884/1884-马鞍山向山镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1884/1884-马鞍山向山镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1842",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山含山县鑫乐广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1842/1842-马鞍山含山县鑫乐广场店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1842/1842-马鞍山含山县鑫乐广场店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1482",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山含山天润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1482/1482-马鞍山含山天润发餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1482/1482-马鞍山含山天润发餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1570",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山含山昭关东路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1570/1570-马鞍山含山昭关东路店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1570/1570-马鞍山含山昭关东路店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1285",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山和县乌江店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1285/1285-马鞍山和县乌江店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1285/1285-马鞍山和县乌江店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1741",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山和县安德利购物中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1741/1741-马鞍山和县安德利购物中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1741/1741-马鞍山和县安德利购物中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1598",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山哥伦布广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1598/1598-马鞍山哥伦布广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1598/1598-马鞍山哥伦布广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1714",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山大学城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1714/1714-马鞍山大学城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1714/1714-马鞍山大学城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1608",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山大润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1608/1608-马鞍山大润发餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1608/1608-马鞍山大润发餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1759",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山太白滨江汇商业中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1759/1759-马鞍山太白滨江汇商业中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1759/1759-马鞍山太白滨江汇商业中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1476",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山市金色新天地餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1476/1476-马鞍山市金色新天地餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1476/1476-马鞍山市金色新天地餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1780",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山康泰佳苑店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1780/1780-马鞍山康泰佳苑店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1780/1780-马鞍山康泰佳苑店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1881",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山当涂君悦华庭店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1881/1881-马鞍山当涂君悦华庭店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1881/1881-马鞍山当涂君悦华庭店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1607",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山当涂大润发餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1607/1607-马鞍山当涂大润发餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1607/1607-马鞍山当涂大润发餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1954",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山恒大御景湾店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1954/1954-马鞍山恒大御景湾店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1954/1954-马鞍山恒大御景湾店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1478",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山欣明国际餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1478/1478-马鞍山欣明国际餐厅-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1478/1478-马鞍山欣明国际餐厅-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1962",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山绿洲花园店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1962/1962-马鞍山绿洲花园店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1962/1962-马鞍山绿洲花园店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1568",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山郑蒲港店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1568/1568-马鞍山郑蒲港店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1568/1568-马鞍山郑蒲港店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1477",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山金鹰购物中心餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1477/1477-马鞍山金鹰购物中心餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1477/1477-马鞍山金鹰购物中心餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1817",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山银河湾店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1817/1817-马鞍山银河湾店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1817/1817-马鞍山银河湾店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1649",
-    "province": "安徽",
-    "city": "马鞍山",
-    "name": "马鞍山雨山路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1649/1649-马鞍山雨山路店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1649/1649-马鞍山雨山路店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1146",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "休宁萝宁新天地店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1146/1146-休宁萝宁新天地店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1146/1146-休宁萝宁新天地店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1640",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山休宁服务区东区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1640/1640-黄山休宁服务区东区店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1640/1640-黄山休宁服务区东区店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1641",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山休宁服务区西区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1641/1641-黄山休宁服务区西区店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1641/1641-黄山休宁服务区西区店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1982",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山凫峰服务区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1982/1982-黄山凫峰服务区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1982/1982-黄山凫峰服务区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1544",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山呈坎服务区东区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1544/1544-黄山呈坎服务区东区店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1544/1544-黄山呈坎服务区东区店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1706",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1706/1706-黄山大润发店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1706/1706-黄山大润发店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1824",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山大观店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1824/1824-黄山大观店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1824/1824-黄山大观店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1688",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山太平洋购物中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1688/1688-黄山太平洋购物中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1688/1688-黄山太平洋购物中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1255",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山宏村店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1255/1255-黄山宏村店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1255/1255-黄山宏村店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1687",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山岩寺老街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1687/1687-黄山岩寺老街店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1687/1687-黄山岩寺老街店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1421",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山歙县紫阳广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1421/1421-黄山歙县紫阳广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1421/1421-黄山歙县紫阳广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1898",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山汤口镇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1898/1898-黄山汤口镇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1898/1898-黄山汤口镇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1890",
-    "province": "安徽",
-    "city": "黄山",
-    "name": "黄山浩创城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1890/1890-黄山浩创城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1890/1890-黄山浩创城店-经营许可证.jpg"
     }
   },
   {
@@ -4869,6 +1550,26 @@ const STORES = [
     }
   },
   {
+    "id": "1670",
+    "province": "安徽省",
+    "city": "六安市",
+    "name": "六安姚李镇庆丰购物广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1670/1670-六安姚李镇庆丰购物广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1670/1670-六安姚李镇庆丰购物广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1885",
+    "province": "安徽省",
+    "city": "六安市",
+    "name": "六安市独山镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1885/1885-六安市独山镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1885/1885-六安市独山镇店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2211",
     "province": "安徽省",
     "city": "六安市",
@@ -4906,6 +1607,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/4b69194d-6f70-4cbb-a66d-5bb9df67a7c81757697250555.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/fe9c6337-aef0-4e68-b36f-3f86eb68f1fd1757697251256.jpg"
+    }
+  },
+  {
+    "id": "1739",
+    "province": "安徽省",
+    "city": "六安市",
+    "name": "六安新安镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1739/1739-六安新安镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1739/1739-六安新安镇店-经营许可证.jpg"
     }
   },
   {
@@ -5039,6 +1750,16 @@ const STORES = [
     }
   },
   {
+    "id": "1585",
+    "province": "安徽省",
+    "city": "六安市",
+    "name": "六安舒城杭埠镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1585/1585-六安舒城杭埠镇店-营业执照.mp4",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1585/1585-六安舒城杭埠镇店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2032",
     "province": "安徽省",
     "city": "六安市",
@@ -5126,6 +1847,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/351b5955-3f06-41d0-bd61-b9686005ad681757697127347.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/e33e5295-2ddd-4fe8-97b0-c9e39e3e31e81757697127718.jpg"
+    }
+  },
+  {
+    "id": "1710",
+    "province": "安徽省",
+    "city": "六安市",
+    "name": "六安霍邱商之都店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1710/1710-六安霍邱商之都店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1710/1710-六安霍邱商之都店-经营许可证.jpg"
     }
   },
   {
@@ -5399,6 +2130,26 @@ const STORES = [
     }
   },
   {
+    "id": "1963",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥下塘丰迪广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1963/1963-合肥下塘丰迪广场店-营业执照.jpeg",
+      "food": ""
+    }
+  },
+  {
+    "id": "1299",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥下塘比亚迪店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1299/1299-合肥下塘比亚迪店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1299/1299-合肥下塘比亚迪店-经营许可证.jpeg"
+    }
+  },
+  {
     "id": "2324",
     "province": "安徽省",
     "city": "合肥市",
@@ -5449,6 +2200,26 @@ const STORES = [
     }
   },
   {
+    "id": "1276",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥丰乐服务区东区餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1276/1276-合肥丰乐服务区东区餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1276/1276-合肥丰乐服务区东区餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1275",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥丰乐服务区西区餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1275/1275-合肥丰乐服务区西区餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1275/1275-合肥丰乐服务区西区餐厅-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2006",
     "province": "安徽省",
     "city": "合肥市",
@@ -5489,6 +2260,16 @@ const STORES = [
     }
   },
   {
+    "id": "1611",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥二里街餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1611/1611-合肥二里街餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1611/1611-合肥二里街餐厅-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2176",
     "province": "安徽省",
     "city": "合肥市",
@@ -5516,6 +2297,26 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/d3368602-0d42-4389-9057-0431f9a6c19a1757696498117.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/f8aa9bdb-d1d6-4c9f-a1ba-70be7a8a67e81757696498473.jpg"
+    }
+  },
+  {
+    "id": "1983",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥众兴服务区北店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1983/1983-合肥众兴服务区北店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1983/1983-合肥众兴服务区北店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1984",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥众兴服务区南店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1984/1984-合肥众兴服务区南店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1984/1984-合肥众兴服务区南店-经营许可证.jpeg"
     }
   },
   {
@@ -5809,6 +2610,16 @@ const STORES = [
     }
   },
   {
+    "id": "1737",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥商之都优山美地店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1737/1737-合肥商之都优山美地店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1737/1737-合肥商之都优山美地店-经营许可证.jpeg"
+    }
+  },
+  {
     "id": "2778",
     "province": "安徽省",
     "city": "合肥市",
@@ -5999,6 +2810,16 @@ const STORES = [
     }
   },
   {
+    "id": "1610",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥宿州路商之都餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1610/1610-合肥宿州路商之都餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1610/1610-合肥宿州路商之都餐厅-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2495",
     "province": "安徽省",
     "city": "合肥市",
@@ -6056,6 +2877,26 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/0df8f2e4-31d7-4db2-9516-ad91cd6063661757697410446.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/4790b157-627c-4e7d-8964-7a08a8118d741757697410835.jpg"
+    }
+  },
+  {
+    "id": "1388",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥巢湖柘皋镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1388/1388-合肥巢湖柘皋镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1388/1388-合肥巢湖柘皋镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1329",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥巢湖槐林镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1329/1329-合肥巢湖槐林镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1329/1329-合肥巢湖槐林镇店-经营许可证.jpg"
     }
   },
   {
@@ -6289,6 +3130,16 @@ const STORES = [
     }
   },
   {
+    "id": "1638",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥新华国际广场",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1638/1638-合肥新华国际广场-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1638/1638-合肥新华国际广场-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2304",
     "province": "安徽省",
     "city": "合肥市",
@@ -6306,6 +3157,26 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/c9bb8738-b61a-47fb-b1a0-a4b91cbe3c251757697421412.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/f7a12f50-8356-4239-8cd5-ae590f6c0fc61757697422364.jpg"
+    }
+  },
+  {
+    "id": "1279",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥新桥服务区北餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1279/1279-合肥新桥服务区北餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1279/1279-合肥新桥服务区北餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1280",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥新桥服务区南餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1280/1280-合肥新桥服务区南餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1280/1280-合肥新桥服务区南餐厅-经营许可证.jpg"
     }
   },
   {
@@ -6889,6 +3760,16 @@ const STORES = [
     }
   },
   {
+    "id": "1572",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥第二人民医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1572/1572-合肥第二人民医院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1572/1572-合肥第二人民医院店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2076",
     "province": "安徽省",
     "city": "合肥市",
@@ -6906,6 +3787,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/67179c90-845e-4039-8238-4180aaf296921757697100671.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/34ee86bd-61e2-4aee-81f8-049a0de9035e1757697101025.jpg"
+    }
+  },
+  {
+    "id": "1346",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥紫蓬镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1346/1346-合肥紫蓬镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1346/1346-合肥紫蓬镇店-经营许可证.jpg"
     }
   },
   {
@@ -7019,6 +3910,16 @@ const STORES = [
     }
   },
   {
+    "id": "1252",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥董岗荟萃园餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1252/1252-合肥董岗荟萃园餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1252/1252-合肥董岗荟萃园餐厅-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2457",
     "province": "安徽省",
     "city": "合肥市",
@@ -7026,6 +3927,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/a6dad937-6d07-40c2-a2d8-95fd4b7e4e051757697080108.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/b87fa2dc-f9d1-4e67-886f-141b5271bfd51757697080808.jpg"
+    }
+  },
+  {
+    "id": "1658",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥蔚来园区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1658/1658-合肥蔚来园区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1658/1658-合肥蔚来园区店-经营许可证.jpg"
     }
   },
   {
@@ -7169,6 +4080,26 @@ const STORES = [
     }
   },
   {
+    "id": "1742",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥陈埠服务区东区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1742/1742-合肥陈埠服务区东区店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1742/1742-合肥陈埠服务区东区店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1743",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥陈埠服务区西区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1743/1743-合肥陈埠服务区西区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1743/1743-合肥陈埠服务区西区店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2450",
     "province": "安徽省",
     "city": "合肥市",
@@ -7236,6 +4167,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/eba08bf7-73fa-4b1b-a5ad-4fa273b7c36d1757696998147.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/5e791a86-7f15-4a5d-b37c-c13d7bfab16f1757696998532.jpg"
+    }
+  },
+  {
+    "id": "1991",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "合肥高刘镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1991/1991-合肥高刘镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1991/1991-合肥高刘镇店-经营许可证.jpg"
     }
   },
   {
@@ -7459,6 +4400,26 @@ const STORES = [
     }
   },
   {
+    "id": "1639",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "巢湖商之都",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1639/1639-巢湖商之都-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1639/1639-巢湖商之都-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1811",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "巢湖黄麓半岛商业广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1811/1811-巢湖黄麓半岛商业广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1811/1811-巢湖黄麓半岛商业广场店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2381",
     "province": "安徽省",
     "city": "合肥市",
@@ -7486,6 +4447,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/65efc41d-414a-4b3a-9399-5d34660704871757696928147.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/d20fd02f-2dd9-46fa-b903-ce8d88e4f0791757696928519.jpg"
+    }
+  },
+  {
+    "id": "1801",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "庐江汤池鑫隆店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1801/1801-庐江汤池鑫隆店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1801/1801-庐江汤池鑫隆店-经营许可证.jpeg"
     }
   },
   {
@@ -7609,6 +4580,46 @@ const STORES = [
     }
   },
   {
+    "id": "1505",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "淮北南翔云集餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1505/1505-淮北南翔云集餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1505/1505-淮北南翔云集餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1778",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "淮北恒大中央公园店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1778/1778-淮北恒大中央公园店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1778/1778-淮北恒大中央公园店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1437",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "淮南八公山餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1437/1437-淮南八公山餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1437/1437-淮南八公山餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1903",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "滁州永乐北路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1903/1903-滁州永乐北路店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1903/1903-滁州永乐北路店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2198",
     "province": "安徽省",
     "city": "合肥市",
@@ -7719,6 +4730,16 @@ const STORES = [
     }
   },
   {
+    "id": "1504",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "老乡鸡淮北步行街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1504/1504-老乡鸡淮北步行街店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1504/1504-老乡鸡淮北步行街店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2035",
     "province": "安徽省",
     "city": "合肥市",
@@ -7766,6 +4787,36 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/a096f5e2-0a70-426d-9f1c-6a2cb594ac581777568524470.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/235062c1-7bbb-4b6a-b5ab-7606a7db5c6c1777568524848.jpg"
+    }
+  },
+  {
+    "id": "1677",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "肥东长临河镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1677/1677-肥东长临河镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1677/1677-肥东长临河镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1760",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "肥西花岗店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1760/1760-肥西花岗店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1760/1760-肥西花岗店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1305",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "芜湖沈巷店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1305/1305-芜湖沈巷店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1305/1305-芜湖沈巷店-经营许可证.jpg"
     }
   },
   {
@@ -7889,6 +4940,26 @@ const STORES = [
     }
   },
   {
+    "id": "1940",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "长丰玛特大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1940/1940-长丰玛特大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1940/1940-长丰玛特大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1939",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "长丰长寿路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1939/1939-长丰长寿路店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1939/1939-长丰长寿路店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2002",
     "province": "安徽省",
     "city": "合肥市",
@@ -7946,6 +5017,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/7d272694-fc24-4f6a-bf5a-5383d66c4fab1757696537688.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/dfec8793-999a-409b-8c4d-f776ec9718051757696538075.jpg"
+    }
+  },
+  {
+    "id": "1475",
+    "province": "安徽省",
+    "city": "合肥市",
+    "name": "马鞍山市和泰国际花园餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1475/1475-马鞍山市和泰国际花园餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1475/1475-马鞍山市和泰国际花园餐厅-经营许可证.jpeg"
     }
   },
   {
@@ -8109,6 +5190,16 @@ const STORES = [
     }
   },
   {
+    "id": "1979",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆怀宁石牌镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1979/1979-安庆怀宁石牌镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1979/1979-安庆怀宁石牌镇店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2505",
     "province": "安徽省",
     "city": "安庆市",
@@ -8149,6 +5240,26 @@ const STORES = [
     }
   },
   {
+    "id": "1651",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆桐城人民医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1651/1651-安庆桐城人民医院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1651/1651-安庆桐城人民医院店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1530",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆桐城新渡镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1530/1530-安庆桐城新渡镇店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1530/1530-安庆桐城新渡镇店-经营许可证.jpeg"
+    }
+  },
+  {
     "id": "2771",
     "province": "安徽省",
     "city": "安庆市",
@@ -8156,6 +5267,46 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/1a36ec20-9b76-4c46-b350-85c160efa7441757697429712.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/19445d0c-28cf-42d6-81a1-42bc7c602edc1757697430543.jpg"
+    }
+  },
+  {
+    "id": "1924",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆桐城范岗镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1924/1924-安庆桐城范岗镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1924/1924-安庆桐城范岗镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1591",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆潜山南岳路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1591/1591-安庆潜山南岳路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1591/1591-安庆潜山南岳路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1592",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆潜山恒太城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1592/1592-安庆潜山恒太城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1592/1592-安庆潜山恒太城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1978",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "安庆潜山源潭镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1978/1978-安庆潜山源潭镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1978/1978-安庆潜山源潭镇店-经营许可证.jpg"
     }
   },
   {
@@ -8239,6 +5390,1536 @@ const STORES = [
     }
   },
   {
+    "id": "1534",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "淮北安邦广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1534/1534-淮北安邦广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1534/1534-淮北安邦广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1612",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "潜山县潜阳路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1612/1612-潜山县潜阳路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1612/1612-潜山县潜阳路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1818",
+    "province": "安徽省",
+    "city": "安庆市",
+    "name": "潜山市立医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1818/1818-潜山市立医院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1818/1818-潜山市立医院店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1683",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "亳州蒙城喜客甄选店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1683/1683-亳州蒙城喜客甄选店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1683/1683-亳州蒙城喜客甄选店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1170",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城东方燕园店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1170/1170-宣城东方燕园店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1170/1170-宣城东方燕园店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1032",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城中心医院餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1032/1032-宣城中心医院餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1032/1032-宣城中心医院餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1128",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城人民医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1128/1128-宣城人民医院店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1128/1128-宣城人民医院店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1006",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城大润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1006/1006-宣城大润发餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1006/1006-宣城大润发餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1008",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城宁国人民医院餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1008/1008-宣城宁国人民医院餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1008/1008-宣城宁国人民医院餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1005",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城宁国宁阳路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1005/1005-宣城宁国宁阳路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1005/1005-宣城宁国宁阳路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1725",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城广德升平街鼓角楼店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1725/1725-宣城广德升平街鼓角楼店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1725/1725-宣城广德升平街鼓角楼店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1143",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城广德商贸中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1143/1143-宣城广德商贸中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1143/1143-宣城广德商贸中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1041",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城广德大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1041/1041-宣城广德大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1041/1041-宣城广德大润发店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1345",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城广德百大中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1345/1345-宣城广德百大中心店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1345/1345-宣城广德百大中心店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1007",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城旌德港德广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1007/1007-宣城旌德港德广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1007/1007-宣城旌德港德广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1154",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城泾县环球缤纷城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1154/1154-宣城泾县环球缤纷城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1154/1154-宣城泾县环球缤纷城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1624",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城洪林服务区北区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1624/1624-宣城洪林服务区北区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1624/1624-宣城洪林服务区北区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1623",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城洪林服务区南区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1623/1623-宣城洪林服务区南区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1623/1623-宣城洪林服务区南区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1003",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城郎溪县分公司餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1003/1003-宣城郎溪县分公司餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1003/1003-宣城郎溪县分公司餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1090",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城郎溪台客隆店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1090/1090-宣城郎溪台客隆店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1090/1090-宣城郎溪台客隆店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1018",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城锦城北路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1018/1018-宣城锦城北路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1018/1018-宣城锦城北路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1144",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "宣城麦莎广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1144/1144-宣城麦莎广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1144/1144-宣城麦莎广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1122",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "泾县新世界店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1122/1122-泾县新世界店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1122/1122-泾县新世界店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1306",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "特许店-宣城国购广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1306/1306-特许店-宣城国购广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1306/1306-特许店-宣城国购广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1066",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "阜阳临泉佳源东方餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1066/1066-阜阳临泉佳源东方餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1066/1066-阜阳临泉佳源东方餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1569",
+    "province": "安徽省",
+    "city": "宣城市",
+    "name": "马鞍山和县和州路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1569/1569-马鞍山和县和州路店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1569/1569-马鞍山和县和州路店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1509",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州万达二餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1509/1509-宿州万达二餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1509/1509-宿州万达二餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1566",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州利群时代广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1566/1566-宿州利群时代广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1566/1566-宿州利群时代广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1767",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州天鹅湾店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1767/1767-宿州天鹅湾店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1767/1767-宿州天鹅湾店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1507",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州市万达餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1507/1507-宿州市万达餐厅-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1507/1507-宿州市万达餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1650",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州市国购广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1650/1650-宿州市国购广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1650/1650-宿州市国购广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1765",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州市立医院北区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1765/1765-宿州市立医院北区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1765/1765-宿州市立医院北区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1511",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州拂晓广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1511/1511-宿州拂晓广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1511/1511-宿州拂晓广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1512",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州新一佳餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1512/1512-宿州新一佳餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1512/1512-宿州新一佳餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1757",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州汴河丽景店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1757/1757-宿州汴河丽景店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1757/1757-宿州汴河丽景店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1510",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州汴河路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1510/1510-宿州汴河路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1510/1510-宿州汴河路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1017",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州泗县同辉广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1017/1017-宿州泗县同辉广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1017/1017-宿州泗县同辉广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1077",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州泗县清水湾餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1077/1077-宿州泗县清水湾餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1077/1077-宿州泗县清水湾餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1021",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州泗县玉兰大道店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1021/1021-宿州泗县玉兰大道店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1021/1021-宿州泗县玉兰大道店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1076",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州泗县盛世豪庭餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1076/1076-宿州泗县盛世豪庭餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1076/1076-宿州泗县盛世豪庭餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1514",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州淮海学府餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1514/1514-宿州淮海学府餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1514/1514-宿州淮海学府餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1019",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州灵璧茂和广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1019/1019-宿州灵璧茂和广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1019/1019-宿州灵璧茂和广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1030",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州灵璧莱迪广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1030/1030-宿州灵璧莱迪广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1030/1030-宿州灵璧莱迪广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1902",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州皖北总院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1902/1902-宿州皖北总院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1902/1902-宿州皖北总院店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1157",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州砀山万达餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1157/1157-宿州砀山万达餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1157/1157-宿州砀山万达餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1015",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州砀山不夜城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1015/1015-宿州砀山不夜城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1015/1015-宿州砀山不夜城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1026",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州砀山县大润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1026/1026-宿州砀山县大润发餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1026/1026-宿州砀山县大润发餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1508",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州磬云路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1508/1508-宿州磬云路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1508/1508-宿州磬云路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1338",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州符离镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1338/1338-宿州符离镇店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1338/1338-宿州符离镇店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1754",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州苏宁店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1754/1754-宿州苏宁店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1754/1754-宿州苏宁店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1020",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州萧县亿洲城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1020/1020-宿州萧县亿洲城餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1020/1020-宿州萧县亿洲城餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1513",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州金方世纪城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1513/1513-宿州金方世纪城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1513/1513-宿州金方世纪城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1271",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州高速驿达符离服务区东区餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1271/1271-宿州高速驿达符离服务区东区餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1271/1271-宿州高速驿达符离服务区东区餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1272",
+    "province": "安徽省",
+    "city": "宿州",
+    "name": "宿州高速驿达符离服务区西区餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1272/1272-宿州高速驿达符离服务区西区餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1272/1272-宿州高速驿达符离服务区西区餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1702",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州万成香格里拉店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1702/1702-池州万成香格里拉店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1702/1702-池州万成香格里拉店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1704",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州万盛广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1704/1704-池州万盛广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1704/1704-池州万盛广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1547",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州东至大渡口镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1547/1547-池州东至大渡口镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1547/1547-池州东至大渡口镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1700",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州东至新天地广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1700/1700-池州东至新天地广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1700/1700-池州东至新天地广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1699",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州东至汇金广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1699/1699-池州东至汇金广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1699/1699-池州东至汇金广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1583",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州东至花园服务区东区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1583/1583-池州东至花园服务区东区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1583/1583-池州东至花园服务区东区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1584",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州东至花园服务区西区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1584/1584-池州东至花园服务区西区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1584/1584-池州东至花园服务区西区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1353",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州九华山游客服务中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1353/1353-池州九华山游客服务中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1353/1353-池州九华山游客服务中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1273",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州升金湖服务区东餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1273/1273-池州升金湖服务区东餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1273/1273-池州升金湖服务区东餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1274",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州升金湖服务区西餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1274/1274-池州升金湖服务区西餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1274/1274-池州升金湖服务区西餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1703",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州商之都店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1703/1703-池州商之都店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1703/1703-池州商之都店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1701",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州远东国际广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1701/1701-池州远东国际广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1701/1701-池州远东国际广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1882",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州青阳城上城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1882/1882-池州青阳城上城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1882/1882-池州青阳城上城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1705",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "池州青阳大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1705/1705-池州青阳大润发店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1705/1705-池州青阳大润发店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1016",
+    "province": "安徽省",
+    "city": "池州",
+    "name": "滁州天长吾悦广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1016/1016-滁州天长吾悦广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1016/1016-滁州天长吾悦广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1814",
+    "province": "安徽省",
+    "city": "淮北市",
+    "name": "淮北吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1814/1814-淮北吾悦广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1814/1814-淮北吾悦广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1506",
+    "province": "安徽省",
+    "city": "淮北市",
+    "name": "淮北濉溪新百餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1506/1506-淮北濉溪新百餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1506/1506-淮北濉溪新百餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1602",
+    "province": "安徽省",
+    "city": "淮北市",
+    "name": "淮北碧乐城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1602/1602-淮北碧乐城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1602/1602-淮北碧乐城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1503",
+    "province": "安徽省",
+    "city": "淮北市",
+    "name": "淮北老乡鸡三餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1503/1503-淮北老乡鸡三餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1503/1503-淮北老乡鸡三餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1541",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南万茂餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1541/1541-淮南万茂餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1541/1541-淮南万茂餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1452",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南万达广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1452/1452-淮南万达广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1452/1452-淮南万达广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1619",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南三和镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1619/1619-淮南三和镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1619/1619-淮南三和镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1444",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南上东锦城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1444/1444-淮南上东锦城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1444/1444-淮南上东锦城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1752",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南东方医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1752/1752-淮南东方医院店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1752/1752-淮南东方医院店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1443",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南中化国际城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1443/1443-淮南中化国际城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1443/1443-淮南中化国际城餐厅-经营许可证.png"
+    }
+  },
+  {
+    "id": "1644",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南八公山服务区北区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1644/1644-淮南八公山服务区北区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1644/1644-淮南八公山服务区北区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1643",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南八公山服务区南区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1643/1643-淮南八公山服务区南区店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1643/1643-淮南八公山服务区南区店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1789",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南凤凰湾店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1789/1789-淮南凤凰湾店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1789/1789-淮南凤凰湾店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1900",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南凤台中山北路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1900/1900-淮南凤台中山北路店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1900/1900-淮南凤台中山北路店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1440",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南凤台明珠大道餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1440/1440-淮南凤台明珠大道餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1440/1440-淮南凤台明珠大道餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1439",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南凤台未来城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1439/1439-淮南凤台未来城餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1439/1439-淮南凤台未来城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1553",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南天一时代城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1553/1553-淮南天一时代城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1553/1553-淮南天一时代城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1586",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南天柱山路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1586/1586-淮南天柱山路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1586/1586-淮南天柱山路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1434",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南寿县二餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1434/1434-淮南寿县二餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1434/1434-淮南寿县二餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1431",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南寿县大顺路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1431/1431-淮南寿县大顺路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1431/1431-淮南寿县大顺路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1432",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南寿县玫瑰公馆餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1432/1432-淮南寿县玫瑰公馆餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1432/1432-淮南寿县玫瑰公馆餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1A02",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南寿县环球港店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A02/1A02-淮南寿县环球港店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A02/1A02-淮南寿县环球港店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1551",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南寿县鼎鑫幸福城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1551/1551-淮南寿县鼎鑫幸福城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1551/1551-淮南寿县鼎鑫幸福城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1433",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南尚泰广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1433/1433-淮南尚泰广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1433/1433-淮南尚泰广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1565",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南山南印象店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1565/1565-淮南山南印象店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1565/1565-淮南山南印象店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1453",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南市人民医院餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1453/1453-淮南市人民医院餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1453/1453-淮南市人民医院餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1447",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南市淮河新城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1447/1447-淮南市淮河新城餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1447/1447-淮南市淮河新城餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1445",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南广场路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1445/1445-淮南广场路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1445/1445-淮南广场路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1446",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南惠利花园店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1446/1446-淮南惠利花园店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1446/1446-淮南惠利花园店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1351",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南毛集店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1351/1351-淮南毛集店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1351/1351-淮南毛集店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1454",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南泉山湖餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1454/1454-淮南泉山湖餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1454/1454-淮南泉山湖餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1442",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南潘集世瑞大厦餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1442/1442-淮南潘集世瑞大厦餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1442/1442-淮南潘集世瑞大厦餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1798",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南潘集珠江路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1798/1798-淮南潘集珠江路店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1798/1798-淮南潘集珠江路店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1450",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南火车站餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1450/1450-淮南火车站餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1450/1450-淮南火车站餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1589",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南科技大厦餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1589/1589-淮南科技大厦餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1589/1589-淮南科技大厦餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1796",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南绿茵里店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1796/1796-淮南绿茵里店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1796/1796-淮南绿茵里店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1919",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南英伦联邦店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1919/1919-淮南英伦联邦店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1919/1919-淮南英伦联邦店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1436",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南蔡新路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1436/1436-淮南蔡新路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1436/1436-淮南蔡新路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1435",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南西城国际店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1435/1435-淮南西城国际店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1435/1435-淮南西城国际店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1712",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南谢家集祥云府店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1712/1712-淮南谢家集祥云府店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1712/1712-淮南谢家集祥云府店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1621",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南迎河服务区东区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1621/1621-淮南迎河服务区东区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1621/1621-淮南迎河服务区东区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1622",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南迎河服务区西区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1622/1622-淮南迎河服务区西区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1622/1622-淮南迎河服务区西区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1769",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南金域蓝湾店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1769/1769-淮南金域蓝湾店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1769/1769-淮南金域蓝湾店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1645",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南香樟苑店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1645/1645-淮南香樟苑店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1645/1645-淮南香樟苑店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1448",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南龙湖中心餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1448/1448-淮南龙湖中心餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1448/1448-淮南龙湖中心餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1449",
+    "province": "安徽省",
+    "city": "淮南市",
+    "name": "淮南龙湖路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1449/1449-淮南龙湖路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1449/1449-淮南龙湖路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1467",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "全椒城东花园餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1467/1467-全椒城东花园餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1467/1467-全椒城东花园餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1892",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "凤阳临淮关镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1892/1892-凤阳临淮关镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1892/1892-凤阳临淮关镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1022",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "天长天发广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1022/1022-天长天发广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1022/1022-天长天发广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1049",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "来安嘉年华店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1049/1049-来安嘉年华店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1049/1049-来安嘉年华店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1922",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州七彩联华超市店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1922/1922-滁州七彩联华超市店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1922/1922-滁州七彩联华超市店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1A12",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州东升花园店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A12/1A12-滁州东升花园店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A12/1A12-滁州东升花园店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1461",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州中州国际广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1461/1461-滁州中州国际广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1461/1461-滁州中州国际广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1463",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州中都大道餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1463/1463-滁州中都大道餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1463/1463-滁州中都大道餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1593",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州丰乐大道餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1593/1593-滁州丰乐大道餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1593/1593-滁州丰乐大道餐厅-经营许可证.png"
+    }
+  },
+  {
+    "id": "1822",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州乐彩城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1822/1822-滁州乐彩城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1822/1822-滁州乐彩城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1283",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州全椒十字店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1283/1283-滁州全椒十字店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1283/1283-滁州全椒十字店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1470",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州全椒县城南大道餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1470/1470-滁州全椒县城南大道餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1470/1470-滁州全椒县城南大道餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1469",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州全椒新江海城市广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1469/1469-滁州全椒新江海城市广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1469/1469-滁州全椒新江海城市广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1277",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州全椒服务区北餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1277/1277-滁州全椒服务区北餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1277/1277-滁州全椒服务区北餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1278",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州全椒服务区南餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1278/1278-滁州全椒服务区南餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1278/1278-滁州全椒服务区南餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1471",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州全椒站前广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1471/1471-滁州全椒站前广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1471/1471-滁州全椒站前广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1567",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州凤阳商贸城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1567/1567-滁州凤阳商贸城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1567/1567-滁州凤阳商贸城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1456",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州凤阳联华超市店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1456/1456-滁州凤阳联华超市店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1456/1456-滁州凤阳联华超市店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1606",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州凯迪置地广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1606/1606-滁州凯迪置地广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1606/1606-滁州凯迪置地广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1590",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1590/1590-滁州吾悦广场店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1590/1590-滁州吾悦广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1027",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州天长市苏果店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1027/1027-滁州天长市苏果店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1027/1027-滁州天长市苏果店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1458",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州定远县餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1458/1458-滁州定远县餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1458/1458-滁州定远县餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1637",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州定远大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1637/1637-滁州定远大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1637/1637-滁州定远大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1457",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州定远曲阳国际餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1457/1457-滁州定远曲阳国际餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1457/1457-滁州定远曲阳国际餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1409",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州定远炉桥镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1409/1409-滁州定远炉桥镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1409/1409-滁州定远炉桥镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1459",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州定远金山丽景餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1459/1459-滁州定远金山丽景餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1459/1459-滁州定远金山丽景餐厅-经营许可证.png"
+    }
+  },
+  {
+    "id": "1753",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州定远金鹏玖玖店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1753/1753-滁州定远金鹏玖玖店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1753/1753-滁州定远金鹏玖玖店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1964",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州市全椒店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1964/1964-滁州市全椒店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1964/1964-滁州市全椒店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1124",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州明光名都汇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1124/1124-滁州明光名都汇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1124/1124-滁州明光名都汇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1029",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州明光大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1029/1029-滁州明光大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1029/1029-滁州明光大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1031",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州明光市餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1031/1031-滁州明光市餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1031/1031-滁州明光市餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1023",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州来安世纪华联店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1023/1023-滁州来安世纪华联店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1023/1023-滁州来安世纪华联店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1411",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州来安汊河店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1411/1411-滁州来安汊河店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1411/1411-滁州来安汊河店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1053",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州来安苏润国际餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1053/1053-滁州来安苏润国际餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1053/1053-滁州来安苏润国际餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1676",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州白云商厦店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1676/1676-滁州白云商厦店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1676/1676-滁州白云商厦店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1466",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州紫金广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1466/1466-滁州紫金广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1466/1466-滁州紫金广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1460",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州金鹏琅琊玖玖广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1460/1460-滁州金鹏琅琊玖玖广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1460/1460-滁州金鹏琅琊玖玖广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1542",
+    "province": "安徽省",
+    "city": "滁州",
+    "name": "滁州龙蟠大道餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1542/1542-滁州龙蟠大道餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1542/1542-滁州龙蟠大道餐厅-经营许可证.jpeg"
+    }
+  },
+  {
     "id": "2339",
     "province": "安徽省",
     "city": "芜湖市",
@@ -8259,6 +6940,26 @@ const STORES = [
     }
   },
   {
+    "id": "1973",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "无为竹丝湖服务区东店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1973/1973-无为竹丝湖服务区东店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1973/1973-无为竹丝湖服务区东店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1974",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "无为竹丝湖服务区西店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1974/1974-无为竹丝湖服务区西店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1974/1974-无为竹丝湖服务区西店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2502",
     "province": "安徽省",
     "city": "芜湖市",
@@ -8266,6 +6967,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/8c090b30-c31f-4284-ba76-81b767e3d6d61757697130047.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/a294867d-380d-4df2-be64-07ace28a66771757697130421.jpg"
+    }
+  },
+  {
+    "id": "1777",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "滁州天长秦栏镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1777/1777-滁州天长秦栏镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1777/1777-滁州天长秦栏镇店-经营许可证.jpg"
     }
   },
   {
@@ -8359,6 +7070,16 @@ const STORES = [
     }
   },
   {
+    "id": "1575",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "芜湖南陵许镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1575/1575-芜湖南陵许镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1575/1575-芜湖南陵许镇店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2408",
     "province": "安徽省",
     "city": "芜湖市",
@@ -8399,6 +7120,16 @@ const STORES = [
     }
   },
   {
+    "id": "1941",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "芜湖悦达广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1941/1941-芜湖悦达广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1941/1941-芜湖悦达广场店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "2464",
     "province": "安徽省",
     "city": "芜湖市",
@@ -8436,6 +7167,26 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/87d4a174-8730-490a-b4d0-afc23543fa341757697205314.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/1b5adf01-2819-4cde-b3d4-752400f74d291757697205697.jpg"
+    }
+  },
+  {
+    "id": "1956",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "芜湖湾址城东新城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1956/1956-芜湖湾址城东新城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1956/1956-芜湖湾址城东新城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1942",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "芜湖湾沚静安阳光城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1942/1942-芜湖湾沚静安阳光城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1942/1942-芜湖湾沚静安阳光城店-经营许可证.jpg"
     }
   },
   {
@@ -8499,9 +7250,1259 @@ const STORES = [
     }
   },
   {
+    "id": "1483",
+    "province": "安徽省",
+    "city": "芜湖市",
+    "name": "马鞍山含山环峰西路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1483/1483-马鞍山含山环峰西路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1483/1483-马鞍山含山环峰西路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1055",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "怀远大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1055/1055-怀远大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1055/1055-怀远大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1147",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠万方新都汇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1147/1147-蚌埠万方新都汇店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1147/1147-蚌埠万方新都汇店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1628",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠五河人民医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1628/1628-蚌埠五河人民医院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1628/1628-蚌埠五河人民医院店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1028",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠五河彩虹时代广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1028/1028-蚌埠五河彩虹时代广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1028/1028-蚌埠五河彩虹时代广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1056",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠兴业街餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1056/1056-蚌埠兴业街餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1056/1056-蚌埠兴业街餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1341",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠合家福店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1341/1341-蚌埠合家福店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1341/1341-蚌埠合家福店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1844",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1844/1844-蚌埠吾悦广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1844/1844-蚌埠吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1068",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠和顺名都城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1068/1068-蚌埠和顺名都城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1068/1068-蚌埠和顺名都城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1052",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠商之都餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1052/1052-蚌埠商之都餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1052/1052-蚌埠商之都餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1138",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠固镇新天地店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1138/1138-蚌埠固镇新天地店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1138/1138-蚌埠固镇新天地店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1131",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠固镇百大购物中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1131/1131-蚌埠固镇百大购物中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1131/1131-蚌埠固镇百大购物中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1137",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠国购广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1137/1137-蚌埠国购广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1137/1137-蚌埠国购广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1965",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠大学城融实购物中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1965/1965-蚌埠大学城融实购物中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1965/1965-蚌埠大学城融实购物中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1062",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠工农路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1062/1062-蚌埠工农路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1062/1062-蚌埠工农路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1057",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠怀远新河路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1057/1057-蚌埠怀远新河路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1057/1057-蚌埠怀远新河路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1127",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠怀远泰谷玖街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1127/1127-蚌埠怀远泰谷玖街店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1127/1127-蚌埠怀远泰谷玖街店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1044",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠拓基餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1044/1044-蚌埠拓基餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1044/1044-蚌埠拓基餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1047",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠文化广场大润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1047/1047-蚌埠文化广场大润发餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1047/1047-蚌埠文化广场大润发餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1133",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠明珠大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1133/1133-蚌埠明珠大润发店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1133/1133-蚌埠明珠大润发店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1132",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠永昌国际大厦店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1132/1132-蚌埠永昌国际大厦店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1132/1132-蚌埠永昌国际大厦店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1051",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠淮上万达餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1051/1051-蚌埠淮上万达餐厅-营业执照.jpg",
+      "food": ""
+    }
+  },
+  {
+    "id": "1107",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠绿地珠峰店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1107/1107-蚌埠绿地珠峰店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1107/1107-蚌埠绿地珠峰店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1896",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠蚌医一附院东门店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1896/1896-蚌埠蚌医一附院东门店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1896/1896-蚌埠蚌医一附院东门店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1111",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠蚌山万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1111/1111-蚌埠蚌山万达店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1111/1111-蚌埠蚌山万达店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1165",
+    "province": "安徽省",
+    "city": "蚌埠市",
+    "name": "蚌埠鼎元府邸餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1165/1165-蚌埠鼎元府邸餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1165/1165-蚌埠鼎元府邸餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1717",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵五环店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1717/1717-铜陵五环店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1717/1717-铜陵五环店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1690",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵县店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1690/1690-铜陵县店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1690/1690-铜陵县店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1813",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1813/1813-铜陵吾悦广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1813/1813-铜陵吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1823",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵嘉华国际广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1823/1823-铜陵嘉华国际广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1823/1823-铜陵嘉华国际广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1693",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵嘉禾广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1693/1693-铜陵嘉禾广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1693/1693-铜陵嘉禾广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1692",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵天润嘉园店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1692/1692-铜陵天润嘉园店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1692/1692-铜陵天润嘉园店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1696",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵市万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1696/1696-铜陵市万达店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1696/1696-铜陵市万达店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1689",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵枞阳港城广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1689/1689-铜陵枞阳港城广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1689/1689-铜陵枞阳港城广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1806",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵枞阳逸龙山庄店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1806/1806-铜陵枞阳逸龙山庄店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1806/1806-铜陵枞阳逸龙山庄店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1909",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵柏庄香域店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1909/1909-铜陵柏庄香域店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1909/1909-铜陵柏庄香域店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1694",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵石城大道店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1694/1694-铜陵石城大道店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1694/1694-铜陵石城大道店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1698",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵西湖春城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1698/1698-铜陵西湖春城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1698/1698-铜陵西湖春城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1697",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵长江中路乐都店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1697/1697-铜陵长江中路乐都店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1697/1697-铜陵长江中路乐都店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1695",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵长江二路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1695/1695-铜陵长江二路店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1695/1695-铜陵长江二路店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1763",
+    "province": "安徽省",
+    "city": "铜陵市",
+    "name": "铜陵顺安镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1763/1763-铜陵顺安镇店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1763/1763-铜陵顺安镇店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1488",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳万象城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1488/1488-阜阳万象城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1488/1488-阜阳万象城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1487",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳万达广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1487/1487-阜阳万达广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1487/1487-阜阳万达广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1617",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳临沂商城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1617/1617-阜阳临沂商城餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1617/1617-阜阳临沂商城餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1084",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳临泉华安城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1084/1084-阜阳临泉华安城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1084/1084-阜阳临泉华安城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1067",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳临泉大润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1067/1067-阜阳临泉大润发餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1067/1067-阜阳临泉大润发餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1064",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳临泉御园财富广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1064/1064-阜阳临泉御园财富广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1064/1064-阜阳临泉御园财富广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1492",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳丽丰一品餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1492/1492-阜阳丽丰一品餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1492/1492-阜阳丽丰一品餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1071",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳五洲万汇餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1071/1071-阜阳五洲万汇餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1071/1071-阜阳五洲万汇餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1707",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳双清湾水街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1707/1707-阜阳双清湾水街店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1707/1707-阜阳双清湾水街店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1500",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳商厦时代广场新餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1500/1500-阜阳商厦时代广场新餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1500/1500-阜阳商厦时代广场新餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1494",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳天瑞名城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1494/1494-阜阳天瑞名城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1494/1494-阜阳天瑞名城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1537",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳太和万达餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1537/1537-阜阳太和万达餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1537/1537-阜阳太和万达餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1681",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳太和印象城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1681/1681-阜阳太和印象城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1681/1681-阜阳太和印象城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1571",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳太和永辉店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1571/1571-阜阳太和永辉店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1571/1571-阜阳太和永辉店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1502",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳太和第五街区餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1502/1502-阜阳太和第五街区餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1502/1502-阜阳太和第五街区餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1501",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳太和长征北路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1501/1501-阜阳太和长征北路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1501/1501-阜阳太和长征北路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1745",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳如意豪庭店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1745/1745-阜阳如意豪庭店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1745/1745-阜阳如意豪庭店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1499",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳安医餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1499/1499-阜阳安医餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1499/1499-阜阳安医餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1498",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳市幸福公馆店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1498/1498-阜阳市幸福公馆店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1498/1498-阜阳市幸福公馆店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1497",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳开乐广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1497/1497-阜阳开乐广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1497/1497-阜阳开乐广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1535",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳怡和广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1535/1535-阜阳怡和广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1535/1535-阜阳怡和广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1496",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳新五院餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1496/1496-阜阳新五院餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1496/1496-阜阳新五院餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1538",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳正基首府餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1538/1538-阜阳正基首府餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1538/1538-阜阳正基首府餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1493",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳汇美城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1493/1493-阜阳汇美城餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1493/1493-阜阳汇美城餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1069",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳沣泽悦城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1069/1069-阜阳沣泽悦城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1069/1069-阜阳沣泽悦城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1490",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳清河东路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1490/1490-阜阳清河东路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1490/1490-阜阳清河东路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1129",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳界首万吉广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1129/1129-阜阳界首万吉广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1129/1129-阜阳界首万吉广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1088",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳界首人民路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1088/1088-阜阳界首人民路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1088/1088-阜阳界首人民路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1065",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳界首国祯广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1065/1065-阜阳界首国祯广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1065/1065-阜阳界首国祯广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1953",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳界首漫乐城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1953/1953-阜阳界首漫乐城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1953/1953-阜阳界首漫乐城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1485",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳祥源城公园餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1485/1485-阜阳祥源城公园餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1485/1485-阜阳祥源城公园餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1489",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳站前广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1489/1489-阜阳站前广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1489/1489-阜阳站前广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1562",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳聚隆美墅店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1562/1562-阜阳聚隆美墅店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1562/1562-阜阳聚隆美墅店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1491",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳金悦广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1491/1491-阜阳金悦广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1491/1491-阜阳金悦广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1950",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳阜南万宇步行街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1950/1950-阜阳阜南万宇步行街店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1950/1950-阜阳阜南万宇步行街店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1779",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳阜南中医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1779/1779-阜阳阜南中医院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1779/1779-阜阳阜南中医院店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1536",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳阜南天筑广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1536/1536-阜阳阜南天筑广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1536/1536-阜阳阜南天筑广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1486",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳阜南曹集路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1486/1486-阜阳阜南曹集路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1486/1486-阜阳阜南曹集路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1081",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍上前进路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1081/1081-阜阳颍上前进路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1081/1081-阜阳颍上前进路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1082",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍上县人民路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1082/1082-阜阳颍上县人民路餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1082/1082-阜阳颍上县人民路餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1079",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍上县颖阳路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1079/1079-阜阳颍上县颖阳路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1079/1079-阜阳颍上县颖阳路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1070",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍上太平洋广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1070/1070-阜阳颍上太平洋广场餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1070/1070-阜阳颍上太平洋广场餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1582",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍上服务区北区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1582/1582-阜阳颍上服务区北区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1582/1582-阜阳颍上服务区北区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1581",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍上服务区南区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1581/1581-阜阳颍上服务区南区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1581/1581-阜阳颍上服务区南区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1876",
+    "province": "安徽省",
+    "city": "阜阳市",
+    "name": "阜阳颍东发到家店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1876/1876-阜阳颍东发到家店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1876/1876-阜阳颍东发到家店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1480",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山万达广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1480/1480-马鞍山万达广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1480/1480-马鞍山万达广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1539",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山东方明珠餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1539/1539-马鞍山东方明珠餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1539/1539-马鞍山东方明珠餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1540",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山伟星广场餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1540/1540-马鞍山伟星广场餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1540/1540-马鞍山伟星广场餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1479",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山军民路餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1479/1479-马鞍山军民路餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1479/1479-马鞍山军民路餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1626",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山博望店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1626/1626-马鞍山博望店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1626/1626-马鞍山博望店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1884",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山向山镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1884/1884-马鞍山向山镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1884/1884-马鞍山向山镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1842",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山含山县鑫乐广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1842/1842-马鞍山含山县鑫乐广场店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1842/1842-马鞍山含山县鑫乐广场店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1482",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山含山天润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1482/1482-马鞍山含山天润发餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1482/1482-马鞍山含山天润发餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1570",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山含山昭关东路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1570/1570-马鞍山含山昭关东路店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1570/1570-马鞍山含山昭关东路店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1285",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山和县乌江店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1285/1285-马鞍山和县乌江店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1285/1285-马鞍山和县乌江店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1741",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山和县安德利购物中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1741/1741-马鞍山和县安德利购物中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1741/1741-马鞍山和县安德利购物中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1598",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山哥伦布广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1598/1598-马鞍山哥伦布广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1598/1598-马鞍山哥伦布广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1714",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山大学城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1714/1714-马鞍山大学城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1714/1714-马鞍山大学城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1608",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山大润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1608/1608-马鞍山大润发餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1608/1608-马鞍山大润发餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1759",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山太白滨江汇商业中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1759/1759-马鞍山太白滨江汇商业中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1759/1759-马鞍山太白滨江汇商业中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1476",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山市金色新天地餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1476/1476-马鞍山市金色新天地餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1476/1476-马鞍山市金色新天地餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1780",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山康泰佳苑店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1780/1780-马鞍山康泰佳苑店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1780/1780-马鞍山康泰佳苑店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1881",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山当涂君悦华庭店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1881/1881-马鞍山当涂君悦华庭店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1881/1881-马鞍山当涂君悦华庭店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1607",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山当涂大润发餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1607/1607-马鞍山当涂大润发餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1607/1607-马鞍山当涂大润发餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1954",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山恒大御景湾店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1954/1954-马鞍山恒大御景湾店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1954/1954-马鞍山恒大御景湾店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1478",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山欣明国际餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1478/1478-马鞍山欣明国际餐厅-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1478/1478-马鞍山欣明国际餐厅-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1962",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山绿洲花园店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1962/1962-马鞍山绿洲花园店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1962/1962-马鞍山绿洲花园店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1568",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山郑蒲港店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1568/1568-马鞍山郑蒲港店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1568/1568-马鞍山郑蒲港店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1477",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山金鹰购物中心餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1477/1477-马鞍山金鹰购物中心餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1477/1477-马鞍山金鹰购物中心餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1817",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山银河湾店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1817/1817-马鞍山银河湾店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1817/1817-马鞍山银河湾店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1649",
+    "province": "安徽省",
+    "city": "马鞍山市",
+    "name": "马鞍山雨山路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1649/1649-马鞍山雨山路店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1649/1649-马鞍山雨山路店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1146",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "休宁萝宁新天地店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1146/1146-休宁萝宁新天地店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1146/1146-休宁萝宁新天地店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1640",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山休宁服务区东区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1640/1640-黄山休宁服务区东区店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1640/1640-黄山休宁服务区东区店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1641",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山休宁服务区西区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1641/1641-黄山休宁服务区西区店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1641/1641-黄山休宁服务区西区店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1982",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山凫峰服务区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1982/1982-黄山凫峰服务区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1982/1982-黄山凫峰服务区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1544",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山呈坎服务区东区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1544/1544-黄山呈坎服务区东区店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1544/1544-黄山呈坎服务区东区店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1706",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1706/1706-黄山大润发店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1706/1706-黄山大润发店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1824",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山大观店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1824/1824-黄山大观店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1824/1824-黄山大观店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1688",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山太平洋购物中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1688/1688-黄山太平洋购物中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1688/1688-黄山太平洋购物中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1255",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山宏村店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1255/1255-黄山宏村店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1255/1255-黄山宏村店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1687",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山岩寺老街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1687/1687-黄山岩寺老街店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1687/1687-黄山岩寺老街店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1421",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山歙县紫阳广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1421/1421-黄山歙县紫阳广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1421/1421-黄山歙县紫阳广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1898",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山汤口镇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1898/1898-黄山汤口镇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1898/1898-黄山汤口镇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1890",
+    "province": "安徽省",
+    "city": "黄山市",
+    "name": "黄山浩创城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1890/1890-黄山浩创城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1890/1890-黄山浩创城店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "1937",
-    "province": "广东",
-    "city": "中山",
+    "province": "广东省",
+    "city": "中山市",
     "name": "中山石岐万象汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1937/1937-中山石岐万象汇店-营业执照.jpg",
@@ -8510,8 +8511,8 @@ const STORES = [
   },
   {
     "id": "1721",
-    "province": "广东",
-    "city": "佛山",
+    "province": "广东省",
+    "city": "佛山市",
     "name": "佛山万科金融中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1721/1721-佛山万科金融中心店-营业执照.jpg",
@@ -8520,8 +8521,8 @@ const STORES = [
   },
   {
     "id": "1989",
-    "province": "广东",
-    "city": "佛山",
+    "province": "广东省",
+    "city": "佛山市",
     "name": "佛山千灯湖环宇城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1989/1989-佛山千灯湖环宇城店-营业执照.jpg",
@@ -8530,8 +8531,8 @@ const STORES = [
   },
   {
     "id": "1946",
-    "province": "广东",
-    "city": "佛山",
+    "province": "广东省",
+    "city": "佛山市",
     "name": "佛山南海万科广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1946/1946-佛山南海万科广场店-营业执照.jpeg",
@@ -8540,8 +8541,8 @@ const STORES = [
   },
   {
     "id": "1995",
-    "province": "广东",
-    "city": "佛山",
+    "province": "广东省",
+    "city": "佛山市",
     "name": "佛山悦然广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1995/1995-佛山悦然广场店-营业执照.jpg",
@@ -8550,8 +8551,8 @@ const STORES = [
   },
   {
     "id": "1839",
-    "province": "广东",
-    "city": "佛山",
+    "province": "广东省",
+    "city": "佛山市",
     "name": "佛山金铂中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1839/1839-佛山金铂中心店-营业执照.jpeg",
@@ -8560,22 +8561,12 @@ const STORES = [
   },
   {
     "id": "1711",
-    "province": "广东",
-    "city": "佛山",
+    "province": "广东省",
+    "city": "佛山市",
     "name": "佛山顺德万象汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1711/1711-佛山顺德万象汇店-营业执照.jpg",
       "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1711/1711-佛山顺德万象汇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1722",
-    "province": "广东",
-    "city": "珠海",
-    "name": "珠海万象汇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1722/1722-珠海万象汇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1722/1722-珠海万象汇店-经营许可证.jpg"
     }
   },
   {
@@ -8719,9 +8710,19 @@ const STORES = [
     }
   },
   {
+    "id": "1722",
+    "province": "广东省",
+    "city": "珠海市",
+    "name": "珠海万象汇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1722/1722-珠海万象汇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1722/1722-珠海万象汇店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "1242",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京万寿购物中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1242/1242-南京万寿购物中心餐厅-营业执照.jpg",
@@ -8730,8 +8731,8 @@ const STORES = [
   },
   {
     "id": "1913",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京万科都荟天地城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1913/1913-南京万科都荟天地城店-营业执照.jpeg",
@@ -8740,8 +8741,8 @@ const STORES = [
   },
   {
     "id": "1809",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京万谷慧生活广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1809/1809-南京万谷慧生活广场店-营业执照.jpg",
@@ -8750,8 +8751,8 @@ const STORES = [
   },
   {
     "id": "1783",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京万达永辉超市店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1783/1783-南京万达永辉超市店-营业执照.jpg",
@@ -8760,8 +8761,8 @@ const STORES = [
   },
   {
     "id": "1405",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京万达茂店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1405/1405-南京万达茂店-营业执照.jpg",
@@ -8770,8 +8771,8 @@ const STORES = [
   },
   {
     "id": "1319",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京世纪雅苑店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1319/1319-南京世纪雅苑店-营业执照.jpeg",
@@ -8780,8 +8781,8 @@ const STORES = [
   },
   {
     "id": "1652",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京东善桥店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1652/1652-南京东善桥店-营业执照.jpg",
@@ -8790,8 +8791,8 @@ const STORES = [
   },
   {
     "id": "1370",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京东来荟邻生活广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1370/1370-南京东来荟邻生活广场店-营业执照.jpeg",
@@ -8800,8 +8801,8 @@ const STORES = [
   },
   {
     "id": "1106",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京中南棉花糖餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1106/1106-南京中南棉花糖餐厅-营业执照.jpg",
@@ -8810,8 +8811,8 @@ const STORES = [
   },
   {
     "id": "1190",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京中山东路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1190/1190-南京中山东路餐厅-营业执照.jpg",
@@ -8820,8 +8821,8 @@ const STORES = [
   },
   {
     "id": "1758",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京中海龙湾财富中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1758/1758-南京中海龙湾财富中心店-营业执照.jpg",
@@ -8830,8 +8831,8 @@ const STORES = [
   },
   {
     "id": "1406",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京中粮鸿云坊店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1406/1406-南京中粮鸿云坊店-营业执照.jpg",
@@ -8840,8 +8841,8 @@ const STORES = [
   },
   {
     "id": "1326",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京仁恒置地广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1326/1326-南京仁恒置地广场店-营业执照.jpg",
@@ -8850,8 +8851,8 @@ const STORES = [
   },
   {
     "id": "1546",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京仙林金鹰店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1546/1546-南京仙林金鹰店-营业执照.jpg",
@@ -8860,8 +8861,8 @@ const STORES = [
   },
   {
     "id": "1552",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京伟星万科店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1552/1552-南京伟星万科店-营业执照.jpeg",
@@ -8870,8 +8871,8 @@ const STORES = [
   },
   {
     "id": "1635",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京传媒学院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1635/1635-南京传媒学院店-营业执照.jpeg",
@@ -8880,8 +8881,8 @@ const STORES = [
   },
   {
     "id": "1196",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京俊杰大厦餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1196/1196-南京俊杰大厦餐厅-营业执照.jpg",
@@ -8890,8 +8891,8 @@ const STORES = [
   },
   {
     "id": "1216",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京保利樾广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1216/1216-南京保利樾广场餐厅-营业执照.jpg",
@@ -8900,8 +8901,8 @@ const STORES = [
   },
   {
     "id": "1243",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京六合服务区东餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1243/1243-南京六合服务区东餐厅-营业执照.jpg",
@@ -8910,8 +8911,8 @@ const STORES = [
   },
   {
     "id": "1244",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京六合服务区西餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1244/1244-南京六合服务区西餐厅-营业执照.jpg",
@@ -8920,8 +8921,8 @@ const STORES = [
   },
   {
     "id": "1894",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京共享大厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1894/1894-南京共享大厦店-营业执照.jpg",
@@ -8930,8 +8931,8 @@ const STORES = [
   },
   {
     "id": "1212",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京凤展路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1212/1212-南京凤展路餐厅-营业执照.jpg",
@@ -8940,8 +8941,8 @@ const STORES = [
   },
   {
     "id": "1240",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京升龙汇金餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1240/1240-南京升龙汇金餐厅-营业执照.jpg",
@@ -8950,8 +8951,8 @@ const STORES = [
   },
   {
     "id": "1359",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京华贸中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1359/1359-南京华贸中心店-营业执照.jpg",
@@ -8960,8 +8961,8 @@ const STORES = [
   },
   {
     "id": "1746",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京南理工科技园店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1746/1746-南京南理工科技园店-营业执照.jpg",
@@ -8970,8 +8971,8 @@ const STORES = [
   },
   {
     "id": "1233",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京吴侯街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1233/1233-南京吴侯街餐厅-营业执照.jpeg",
@@ -8980,8 +8981,8 @@ const STORES = [
   },
   {
     "id": "1184",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京喜玛拉雅餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1184/1184-南京喜玛拉雅餐厅-营业执照.jpg",
@@ -8990,8 +8991,8 @@ const STORES = [
   },
   {
     "id": "1395",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京城南茂店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1395/1395-南京城南茂店-营业执照.jpg",
@@ -9000,8 +9001,8 @@ const STORES = [
   },
   {
     "id": "1265",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京大田悦生活店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1265/1265-南京大田悦生活店-营业执照.jpg",
@@ -9010,8 +9011,8 @@ const STORES = [
   },
   {
     "id": "1109",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京天元路店餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1109/1109-南京天元路店餐厅-营业执照.jpg",
@@ -9020,8 +9021,8 @@ const STORES = [
   },
   {
     "id": "1238",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京天印大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1238/1238-南京天印大道餐厅-营业执照.jpeg",
@@ -9030,8 +9031,8 @@ const STORES = [
   },
   {
     "id": "1727",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京夫子庙地铁站店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1727/1727-南京夫子庙地铁站店-营业执照.jpg",
@@ -9040,8 +9041,8 @@ const STORES = [
   },
   {
     "id": "1380",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京尧佳路苏果店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1380/1380-南京尧佳路苏果店-营业执照.jpg",
@@ -9050,8 +9051,8 @@ const STORES = [
   },
   {
     "id": "1209",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京市三山街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1209/1209-南京市三山街餐厅-营业执照.jpg",
@@ -9060,8 +9061,8 @@ const STORES = [
   },
   {
     "id": "1189",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京市保利餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1189/1189-南京市保利餐厅-营业执照.jpg",
@@ -9070,8 +9071,8 @@ const STORES = [
   },
   {
     "id": "1103",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京市华侨城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1103/1103-南京市华侨城餐厅-营业执照.jpeg",
@@ -9080,8 +9081,8 @@ const STORES = [
   },
   {
     "id": "1211",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京市殷华街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1211/1211-南京市殷华街餐厅-营业执照.jpg",
@@ -9090,8 +9091,8 @@ const STORES = [
   },
   {
     "id": "1213",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京市观竹苑餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1213/1213-南京市观竹苑餐厅-营业执照.jpg",
@@ -9100,8 +9101,8 @@ const STORES = [
   },
   {
     "id": "1108",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京市郁金香路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1108/1108-南京市郁金香路餐厅-营业执照.jpeg",
@@ -9110,8 +9111,8 @@ const STORES = [
   },
   {
     "id": "1967",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京常发广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1967/1967-南京常发广场店-营业执照.jpg",
@@ -9120,8 +9121,8 @@ const STORES = [
   },
   {
     "id": "1317",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京幸福里商业街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1317/1317-南京幸福里商业街店-营业执照.jpg",
@@ -9130,8 +9131,8 @@ const STORES = [
   },
   {
     "id": "1648",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京建邺万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1648/1648-南京建邺万达店-营业执照.jpg",
@@ -9140,8 +9141,8 @@ const STORES = [
   },
   {
     "id": "1659",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京建邺区海峡城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1659/1659-南京建邺区海峡城店-营业执照.jpg",
@@ -9150,8 +9151,8 @@ const STORES = [
   },
   {
     "id": "1100",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京弘阳大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1100/1100-南京弘阳大道餐厅-营业执照.jpeg",
@@ -9160,8 +9161,8 @@ const STORES = [
   },
   {
     "id": "1169",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京弘阳广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1169/1169-南京弘阳广场餐厅-营业执照.jpeg",
@@ -9170,8 +9171,8 @@ const STORES = [
   },
   {
     "id": "1425",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京招商花园城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1425/1425-南京招商花园城店-营业执照.jpeg",
@@ -9180,8 +9181,8 @@ const STORES = [
   },
   {
     "id": "1178",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京文博路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1178/1178-南京文博路餐厅-营业执照.jpeg",
@@ -9190,8 +9191,8 @@ const STORES = [
   },
   {
     "id": "1905",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新世纪广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1905/1905-南京新世纪广场店-营业执照.jpg",
@@ -9200,8 +9201,8 @@ const STORES = [
   },
   {
     "id": "1114",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新城总部餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1114/1114-南京新城总部餐厅-营业执照.jpg",
@@ -9210,8 +9211,8 @@ const STORES = [
   },
   {
     "id": "1228",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新城汇餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1228/1228-南京新城汇餐厅-营业执照.jpeg",
@@ -9220,8 +9221,8 @@ const STORES = [
   },
   {
     "id": "1231",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新城科技园餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1231/1231-南京新城科技园餐厅-营业执照.jpg",
@@ -9230,8 +9231,8 @@ const STORES = [
   },
   {
     "id": "1181",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新尧金地广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1181/1181-南京新尧金地广场餐厅-营业执照.jpeg",
@@ -9240,8 +9241,8 @@ const STORES = [
   },
   {
     "id": "1660",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新街口大洋百货店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1660/1660-南京新街口大洋百货店-营业执照.jpg",
@@ -9250,8 +9251,8 @@ const STORES = [
   },
   {
     "id": "1191",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京新街口金鹰餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1191/1191-南京新街口金鹰餐厅-营业执照.jpg",
@@ -9260,8 +9261,8 @@ const STORES = [
   },
   {
     "id": "1186",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京明发国际中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1186/1186-南京明发国际中心餐厅-营业执照.jpg",
@@ -9270,8 +9271,8 @@ const STORES = [
   },
   {
     "id": "1224",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京欢乐港餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1224/1224-南京欢乐港餐厅-营业执照.jpeg",
@@ -9280,8 +9281,8 @@ const STORES = [
   },
   {
     "id": "1220",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京正丰街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1220/1220-南京正丰街餐厅-营业执照.jpg",
@@ -9290,8 +9291,8 @@ const STORES = [
   },
   {
     "id": "1201",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京汉中门地铁口餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1201/1201-南京汉中门地铁口餐厅-营业执照.jpg",
@@ -9300,8 +9301,8 @@ const STORES = [
   },
   {
     "id": "1226",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京江东中路三餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1226/1226-南京江东中路三餐厅-营业执照.jpg",
@@ -9310,8 +9311,8 @@ const STORES = [
   },
   {
     "id": "1115",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京江浦市民中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1115/1115-南京江浦市民中心餐厅-营业执照.jpg",
@@ -9320,8 +9321,8 @@ const STORES = [
   },
   {
     "id": "1180",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京浦口侨康路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1180/1180-南京浦口侨康路餐厅-营业执照.jpeg",
@@ -9330,8 +9331,8 @@ const STORES = [
   },
   {
     "id": "1994",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京浦口江月府店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1994/1994-南京浦口江月府店-营业执照.jpg",
@@ -9340,8 +9341,8 @@ const STORES = [
   },
   {
     "id": "1901",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京淳化德购超市店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1901/1901-南京淳化德购超市店-营业执照.jpeg",
@@ -9350,8 +9351,8 @@ const STORES = [
   },
   {
     "id": "1316",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京清江苏宁广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1316/1316-南京清江苏宁广场店-营业执照.jpeg",
@@ -9360,8 +9361,8 @@ const STORES = [
   },
   {
     "id": "1234",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京湖东路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1234/1234-南京湖东路餐厅-营业执照.jpg",
@@ -9370,8 +9371,8 @@ const STORES = [
   },
   {
     "id": "1236",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京溧水乐活城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1236/1236-南京溧水乐活城餐厅-营业执照.jpg",
@@ -9380,8 +9381,8 @@ const STORES = [
   },
   {
     "id": "1101",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京溧水珍珠路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1101/1101-南京溧水珍珠路餐厅-营业执照.jpeg",
@@ -9390,8 +9391,8 @@ const STORES = [
   },
   {
     "id": "1720",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京澳林广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1720/1720-南京澳林广场店-营业执照.jpg",
@@ -9400,8 +9401,8 @@ const STORES = [
   },
   {
     "id": "1960",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京熙乐汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1960/1960-南京熙乐汇店-营业执照.jpg",
@@ -9410,8 +9411,8 @@ const STORES = [
   },
   {
     "id": "1247",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京燕亭路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1247/1247-南京燕亭路餐厅-营业执照.jpg",
@@ -9420,8 +9421,8 @@ const STORES = [
   },
   {
     "id": "1225",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京珠江路金鹰餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1225/1225-南京珠江路金鹰餐厅-营业执照.jpg",
@@ -9430,8 +9431,8 @@ const STORES = [
   },
   {
     "id": "1098",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京甬利广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1098/1098-南京甬利广场餐厅-营业执照.jpg",
@@ -9440,8 +9441,8 @@ const STORES = [
   },
   {
     "id": "1195",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京百利广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1195/1195-南京百利广场餐厅-营业执照.jpeg",
@@ -9450,8 +9451,8 @@ const STORES = [
   },
   {
     "id": "1335",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京百家湖金鹰店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1335/1335-南京百家湖金鹰店-营业执照.jpg",
@@ -9460,8 +9461,8 @@ const STORES = [
   },
   {
     "id": "1917",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京盘金华府店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1917/1917-南京盘金华府店-营业执照.jpg",
@@ -9470,8 +9471,8 @@ const STORES = [
   },
   {
     "id": "1327",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京砂之船店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1327/1327-南京砂之船店-营业执照.png",
@@ -9480,8 +9481,8 @@ const STORES = [
   },
   {
     "id": "1215",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京紫东创意园餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1215/1215-南京紫东创意园餐厅-营业执照.jpeg",
@@ -9490,8 +9491,8 @@ const STORES = [
   },
   {
     "id": "1182",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京紫峰大厦餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1182/1182-南京紫峰大厦餐厅-营业执照.jpg",
@@ -9500,8 +9501,8 @@ const STORES = [
   },
   {
     "id": "1208",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京绿地之窗二餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1208/1208-南京绿地之窗二餐厅-营业执照.jpg",
@@ -9510,8 +9511,8 @@ const STORES = [
   },
   {
     "id": "1120",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京绿地花茂餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1120/1120-南京绿地花茂餐厅-营业执照.jpg",
@@ -9520,8 +9521,8 @@ const STORES = [
   },
   {
     "id": "1204",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京胜利路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1204/1204-南京胜利路餐厅-营业执照.jpg",
@@ -9530,8 +9531,8 @@ const STORES = [
   },
   {
     "id": "1207",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京能仁里餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1207/1207-南京能仁里餐厅-营业执照.jpeg",
@@ -9540,8 +9541,8 @@ const STORES = [
   },
   {
     "id": "1875",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京花园路店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1875/1875-南京花园路店-营业执照.jpg",
@@ -9550,8 +9551,8 @@ const STORES = [
   },
   {
     "id": "1199",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京花生唐购物广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1199/1199-南京花生唐购物广场餐厅-营业执照.jpg",
@@ -9560,8 +9561,8 @@ const STORES = [
   },
   {
     "id": "1321",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京苏宁睿城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1321/1321-南京苏宁睿城店-营业执照.jpg",
@@ -9570,8 +9571,8 @@ const STORES = [
   },
   {
     "id": "1179",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京苏宁青创园餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1179/1179-南京苏宁青创园餐厅-营业执照.jpg",
@@ -9580,8 +9581,8 @@ const STORES = [
   },
   {
     "id": "1096",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京莲池路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1096/1096-南京莲池路餐厅-营业执照.jpeg",
@@ -9590,8 +9591,8 @@ const STORES = [
   },
   {
     "id": "1246",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京虹桥中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1246/1246-南京虹桥中心餐厅-营业执照.jpeg",
@@ -9600,8 +9601,8 @@ const STORES = [
   },
   {
     "id": "1980",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京谷里U购U生活超市店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1980/1980-南京谷里U购U生活超市店-营业执照.jpg",
@@ -9610,8 +9611,8 @@ const STORES = [
   },
   {
     "id": "1113",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京财富中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1113/1113-南京财富中心餐厅-营业执照.jpg",
@@ -9620,8 +9621,8 @@ const STORES = [
   },
   {
     "id": "1119",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京财智广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1119/1119-南京财智广场餐厅-营业执照.jpg",
@@ -9630,8 +9631,8 @@ const STORES = [
   },
   {
     "id": "1740",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京软件谷云密城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1740/1740-南京软件谷云密城店-营业执照.jpg",
@@ -9640,8 +9641,8 @@ const STORES = [
   },
   {
     "id": "1217",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京远洋国际中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1217/1217-南京远洋国际中心餐厅-营业执照.jpg",
@@ -9650,8 +9651,8 @@ const STORES = [
   },
   {
     "id": "1121",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京通淮街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1121/1121-南京通淮街餐厅-营业执照.jpg",
@@ -9660,8 +9661,8 @@ const STORES = [
   },
   {
     "id": "1227",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京金奥国际中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1227/1227-南京金奥国际中心餐厅-营业执照.jpg",
@@ -9670,8 +9671,8 @@ const STORES = [
   },
   {
     "id": "1230",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京金威广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1230/1230-南京金威广场餐厅-营业执照.jpg",
@@ -9680,8 +9681,8 @@ const STORES = [
   },
   {
     "id": "1102",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京金盛路二店.",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1102/1102-南京金盛路二店.-营业执照.jpg",
@@ -9690,8 +9691,8 @@ const STORES = [
   },
   {
     "id": "1239",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京金融城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1239/1239-南京金融城餐厅-营业执照.jpg",
@@ -9700,8 +9701,8 @@ const STORES = [
   },
   {
     "id": "1318",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京金象城购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1318/1318-南京金象城购物中心店-营业执照.jpeg",
@@ -9710,8 +9711,8 @@ const STORES = [
   },
   {
     "id": "1117",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京金马路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1117/1117-南京金马路餐厅-营业执照.jpeg",
@@ -9720,8 +9721,8 @@ const STORES = [
   },
   {
     "id": "1874",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京鑫乐生活广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1874/1874-南京鑫乐生活广场店-营业执照.jpeg",
@@ -9730,8 +9731,8 @@ const STORES = [
   },
   {
     "id": "1863",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京钟鼎名悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1863/1863-南京钟鼎名悦广场店-营业执照.jpg",
@@ -9740,8 +9741,8 @@ const STORES = [
   },
   {
     "id": "1734",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京铂丽大厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1734/1734-南京铂丽大厦店-营业执照.jpg",
@@ -9750,8 +9751,8 @@ const STORES = [
   },
   {
     "id": "1237",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京银城东苑餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1237/1237-南京银城东苑餐厅-营业执照.jpeg",
@@ -9760,8 +9761,8 @@ const STORES = [
   },
   {
     "id": "1185",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京银城中心餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1185/1185-南京银城中心餐厅-营业执照.jpg",
@@ -9770,8 +9771,8 @@ const STORES = [
   },
   {
     "id": "1202",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京锁金村餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1202/1202-南京锁金村餐厅-营业执照.jpeg",
@@ -9780,8 +9781,8 @@ const STORES = [
   },
   {
     "id": "1781",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京陈沛桥商业邻里中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1781/1781-南京陈沛桥商业邻里中心店-营业执照.jpg",
@@ -9790,8 +9791,8 @@ const STORES = [
   },
   {
     "id": "1843",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京雨山龙湖天街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1843/1843-南京雨山龙湖天街店-营业执照.jpg",
@@ -9800,8 +9801,8 @@ const STORES = [
   },
   {
     "id": "1095",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京雨润大街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1095/1095-南京雨润大街餐厅-营业执照.jpg",
@@ -9810,8 +9811,8 @@ const STORES = [
   },
   {
     "id": "1210",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京雨花世茂餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1210/1210-南京雨花世茂餐厅-营业执照.jpg",
@@ -9820,8 +9821,8 @@ const STORES = [
   },
   {
     "id": "1219",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京顾家营路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1219/1219-南京顾家营路餐厅-营业执照.jpg",
@@ -9830,8 +9831,8 @@ const STORES = [
   },
   {
     "id": "1118",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京高淳人民医院餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1118/1118-南京高淳人民医院餐厅-营业执照.jpg",
@@ -9840,8 +9841,8 @@ const STORES = [
   },
   {
     "id": "1985",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京高淳医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1985/1985-南京高淳医院店-营业执照.jpg",
@@ -9850,8 +9851,8 @@ const STORES = [
   },
   {
     "id": "1738",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京高淳宝龙店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1738/1738-南京高淳宝龙店-营业执照.jpg",
@@ -9860,8 +9861,8 @@ const STORES = [
   },
   {
     "id": "1269",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京高科荣境店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1269/1269-南京高科荣境店-营业执照.jpg",
@@ -9870,8 +9871,8 @@ const STORES = [
   },
   {
     "id": "1235",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京高铁网谷餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1235/1235-南京高铁网谷餐厅-营业执照.jpg",
@@ -9880,8 +9881,8 @@ const STORES = [
   },
   {
     "id": "1175",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京鸿利广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1175/1175-南京鸿利广场餐厅-营业执照.jpg",
@@ -9890,8 +9891,8 @@ const STORES = [
   },
   {
     "id": "1192",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京麒麟东路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1192/1192-南京麒麟东路餐厅-营业执照.jpg",
@@ -9900,8 +9901,8 @@ const STORES = [
   },
   {
     "id": "1322",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京麒麟街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1322/1322-南京麒麟街店-营业执照.jpg",
@@ -9910,8 +9911,8 @@ const STORES = [
   },
   {
     "id": "1173",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京龙池餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1173/1173-南京龙池餐厅-营业执照.jpeg",
@@ -9920,8 +9921,8 @@ const STORES = [
   },
   {
     "id": "1116",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京龙湖文景路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1116/1116-南京龙湖文景路餐厅-营业执照.jpeg",
@@ -9930,8 +9931,8 @@ const STORES = [
   },
   {
     "id": "1857",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京龙湖河西天街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1857/1857-南京龙湖河西天街店-营业执照.jpeg",
@@ -9940,8 +9941,8 @@ const STORES = [
   },
   {
     "id": "1218",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "南京龙蟠汇餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1218/1218-南京龙蟠汇餐厅-营业执照.png",
@@ -9950,8 +9951,8 @@ const STORES = [
   },
   {
     "id": "1804",
-    "province": "江苏",
-    "city": "南京",
+    "province": "江苏省",
+    "city": "南京市",
     "name": "高淳八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1804/1804-高淳八佰伴店-营业执照.jpg",
@@ -9960,8 +9961,8 @@ const STORES = [
   },
   {
     "id": "1354",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通七彩城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1354/1354-南通七彩城店-营业执照.jpg",
@@ -9970,8 +9971,8 @@ const STORES = [
   },
   {
     "id": "1812",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通万佑广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1812/1812-南通万佑广场店-营业执照.png",
@@ -9980,8 +9981,8 @@ const STORES = [
   },
   {
     "id": "1399",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通万象城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1399/1399-南通万象城餐厅-营业执照.jpg",
@@ -9990,8 +9991,8 @@ const STORES = [
   },
   {
     "id": "1926",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通世茂广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1926/1926-南通世茂广场店-营业执照.jpeg",
@@ -10000,8 +10001,8 @@ const STORES = [
   },
   {
     "id": "1417",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通中南城彩虹漾店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1417/1417-南通中南城彩虹漾店-营业执照.jpeg",
@@ -10010,8 +10011,8 @@ const STORES = [
   },
   {
     "id": "1654",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通利群时代龙王桥店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1654/1654-南通利群时代龙王桥店-营业执照.jpg",
@@ -10020,8 +10021,8 @@ const STORES = [
   },
   {
     "id": "1718",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通南大街步行街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1718/1718-南通南大街步行街店-营业执照.jpg",
@@ -10030,8 +10031,8 @@ const STORES = [
   },
   {
     "id": "1374",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通印象城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1374/1374-南通印象城店-营业执照.jpg",
@@ -10040,8 +10041,8 @@ const STORES = [
   },
   {
     "id": "1627",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通叠石桥罗缦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1627/1627-南通叠石桥罗缦广场店-营业执照.jpg",
@@ -10050,8 +10051,8 @@ const STORES = [
   },
   {
     "id": "1762",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通启东文峰大世界店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1762/1762-南通启东文峰大世界店-营业执照.jpeg",
@@ -10060,8 +10061,8 @@ const STORES = [
   },
   {
     "id": "1748",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通启东申港城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1748/1748-南通启东申港城店-营业执照.jpg",
@@ -10070,8 +10071,8 @@ const STORES = [
   },
   {
     "id": "1545",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通圆融嘉悦汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1545/1545-南通圆融嘉悦汇店-营业执照.jpg",
@@ -10080,8 +10081,8 @@ const STORES = [
   },
   {
     "id": "1408",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通如东大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1408/1408-南通如东大润发店-营业执照.jpg",
@@ -10090,8 +10091,8 @@ const STORES = [
   },
   {
     "id": "1221",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通如皋万达餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1221/1221-南通如皋万达餐厅-营业执照.jpeg",
@@ -10100,8 +10101,8 @@ const STORES = [
   },
   {
     "id": "1576",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通如皋文峰大世界店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1576/1576-南通如皋文峰大世界店-营业执照.jpeg",
@@ -10110,8 +10111,8 @@ const STORES = [
   },
   {
     "id": "1267",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通崇川大有境店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1267/1267-南通崇川大有境店-营业执照.jpg",
@@ -10120,8 +10121,8 @@ const STORES = [
   },
   {
     "id": "1936",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通文峰广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1936/1936-南通文峰广场店-营业执照.jpg",
@@ -10130,8 +10131,8 @@ const STORES = [
   },
   {
     "id": "1355",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通海安万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1355/1355-南通海安万达店-营业执照.jpg",
@@ -10140,8 +10141,8 @@ const STORES = [
   },
   {
     "id": "1927",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通海安大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1927/1927-南通海安大润发店-营业执照.jpeg",
@@ -10150,8 +10151,8 @@ const STORES = [
   },
   {
     "id": "1162",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通海安盛世名门餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1162/1162-南通海安盛世名门餐厅-营业执照.jpeg",
@@ -10160,8 +10161,8 @@ const STORES = [
   },
   {
     "id": "1861",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通海门利群时代店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1861/1861-南通海门利群时代店-营业执照.jpg",
@@ -10170,8 +10171,8 @@ const STORES = [
   },
   {
     "id": "1301",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通海门龙信广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1301/1301-南通海门龙信广场店-营业执照.jpg",
@@ -10180,8 +10181,8 @@ const STORES = [
   },
   {
     "id": "1130",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通深南路大润发餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1130/1130-南通深南路大润发餐厅-营业执照.jpg",
@@ -10190,8 +10191,8 @@ const STORES = [
   },
   {
     "id": "1360",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通财富广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1360/1360-南通财富广场店-营业执照.jpeg",
@@ -10200,8 +10201,8 @@ const STORES = [
   },
   {
     "id": "1381",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通通州万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1381/1381-南通通州万达店-营业执照.jpg",
@@ -10210,8 +10211,8 @@ const STORES = [
   },
   {
     "id": "1866",
-    "province": "江苏",
-    "city": "南通",
+    "province": "江苏省",
+    "city": "南通市",
     "name": "南通金鹰餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1866/1866-南通金鹰餐厅-营业执照.jpeg",
@@ -10220,8 +10221,8 @@ const STORES = [
   },
   {
     "id": "1333",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁人民医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1333/1333-宿迁人民医院店-营业执照.jpg",
@@ -10230,8 +10231,8 @@ const STORES = [
   },
   {
     "id": "1164",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁宝龙广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1164/1164-宿迁宝龙广场店-营业执照.jpg",
@@ -10240,8 +10241,8 @@ const STORES = [
   },
   {
     "id": "1261",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁宿城吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1261/1261-宿迁宿城吾悦广场店-营业执照.jpg",
@@ -10250,8 +10251,8 @@ const STORES = [
   },
   {
     "id": "1790",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁市泗阳哥伦布店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1790/1790-宿迁市泗阳哥伦布店-营业执照.jpeg",
@@ -10260,8 +10261,8 @@ const STORES = [
   },
   {
     "id": "1270",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁沭阳中央广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1270/1270-宿迁沭阳中央广场店-营业执照.jpg",
@@ -10270,8 +10271,8 @@ const STORES = [
   },
   {
     "id": "1325",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁沭阳浙江商城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1325/1325-宿迁沭阳浙江商城店-营业执照.jpg",
@@ -10280,8 +10281,8 @@ const STORES = [
   },
   {
     "id": "1529",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁泗洪泗州吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1529/1529-宿迁泗洪泗州吾悦广场店-营业执照.jpeg",
@@ -10290,8 +10291,8 @@ const STORES = [
   },
   {
     "id": "1159",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁泗洪花园口店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1159/1159-宿迁泗洪花园口店-营业执照.jpeg",
@@ -10300,8 +10301,8 @@ const STORES = [
   },
   {
     "id": "1558",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁泗阳吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1558/1558-宿迁泗阳吾悦广场店-营业执照.jpeg",
@@ -10310,8 +10311,8 @@ const STORES = [
   },
   {
     "id": "1313",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "宿迁泗阳大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1313/1313-宿迁泗阳大润发店-营业执照.jpeg",
@@ -10320,8 +10321,8 @@ const STORES = [
   },
   {
     "id": "1367",
-    "province": "江苏",
-    "city": "宿迁",
+    "province": "江苏省",
+    "city": "宿迁市",
     "name": "镇江句容御东国际店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1367/1367-镇江句容御东国际店-营业执照.png",
@@ -10330,7 +10331,7 @@ const STORES = [
   },
   {
     "id": "1358",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州T-PARK蓝海豚店",
     "licenses": {
@@ -10340,7 +10341,7 @@ const STORES = [
   },
   {
     "id": "1300",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州万和城店",
     "licenses": {
@@ -10350,7 +10351,7 @@ const STORES = [
   },
   {
     "id": "1868",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州世茂广场店",
     "licenses": {
@@ -10360,7 +10361,7 @@ const STORES = [
   },
   {
     "id": "1141",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州九洲新世界店",
     "licenses": {
@@ -10370,7 +10371,7 @@ const STORES = [
   },
   {
     "id": "1150",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州关河大润发店",
     "licenses": {
@@ -10380,7 +10381,7 @@ const STORES = [
   },
   {
     "id": "1298",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州典雅广场店",
     "licenses": {
@@ -10390,7 +10391,7 @@ const STORES = [
   },
   {
     "id": "1348",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州天宁吾悦店",
     "licenses": {
@@ -10400,7 +10401,7 @@ const STORES = [
   },
   {
     "id": "1382",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州好利广场店",
     "licenses": {
@@ -10410,7 +10411,7 @@ const STORES = [
   },
   {
     "id": "1879",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州弘阳广场店",
     "licenses": {
@@ -10420,7 +10421,7 @@ const STORES = [
   },
   {
     "id": "1A09",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州怀德大润发店",
     "licenses": {
@@ -10430,7 +10431,7 @@ const STORES = [
   },
   {
     "id": "1775",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州星湖荟店",
     "licenses": {
@@ -10440,7 +10441,7 @@ const STORES = [
   },
   {
     "id": "1966",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州星耀吾悦广场店",
     "licenses": {
@@ -10450,7 +10451,7 @@ const STORES = [
   },
   {
     "id": "1356",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州曼哈顿广场店",
     "licenses": {
@@ -10460,7 +10461,7 @@ const STORES = [
   },
   {
     "id": "1865",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州歌林公园店",
     "licenses": {
@@ -10470,7 +10471,7 @@ const STORES = [
   },
   {
     "id": "1264",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州武进万达店",
     "licenses": {
@@ -10480,7 +10481,7 @@ const STORES = [
   },
   {
     "id": "1148",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州武进大润发店",
     "licenses": {
@@ -10490,7 +10491,7 @@ const STORES = [
   },
   {
     "id": "1601",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州湖塘万博店",
     "licenses": {
@@ -10500,7 +10501,7 @@ const STORES = [
   },
   {
     "id": "1160",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州溧阳大润发店",
     "licenses": {
@@ -10510,7 +10511,7 @@ const STORES = [
   },
   {
     "id": "1153",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州火车站店",
     "licenses": {
@@ -10520,7 +10521,7 @@ const STORES = [
   },
   {
     "id": "1384",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州环球港店",
     "licenses": {
@@ -10530,7 +10531,7 @@ const STORES = [
   },
   {
     "id": "1342",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州科教城北店",
     "licenses": {
@@ -10540,7 +10541,7 @@ const STORES = [
   },
   {
     "id": "1259",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州购物中心店",
     "licenses": {
@@ -10550,7 +10551,7 @@ const STORES = [
   },
   {
     "id": "1556",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州遥观大润发店",
     "licenses": {
@@ -10560,7 +10561,7 @@ const STORES = [
   },
   {
     "id": "1268",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州邹区泰富时代广场",
     "licenses": {
@@ -10570,7 +10571,7 @@ const STORES = [
   },
   {
     "id": "1123",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州金坛万科店",
     "licenses": {
@@ -10580,7 +10581,7 @@ const STORES = [
   },
   {
     "id": "1657",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州金坛八佰伴店",
     "licenses": {
@@ -10590,7 +10591,7 @@ const STORES = [
   },
   {
     "id": "1377",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州金坛吾悦广场店",
     "licenses": {
@@ -10600,7 +10601,7 @@ const STORES = [
   },
   {
     "id": "1349",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州金坛新天地店",
     "licenses": {
@@ -10610,7 +10611,7 @@ const STORES = [
   },
   {
     "id": "1149",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州马杭店",
     "licenses": {
@@ -10620,7 +10621,7 @@ const STORES = [
   },
   {
     "id": "1891",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "常州",
     "name": "常州高力国际汽博城店",
     "licenses": {
@@ -10630,7 +10631,7 @@ const STORES = [
   },
   {
     "id": "1012",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州万福街餐厅（儿童医院）",
     "licenses": {
@@ -10640,7 +10641,7 @@ const STORES = [
   },
   {
     "id": "1981",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州万科新淮印象城店",
     "licenses": {
@@ -10650,7 +10651,7 @@ const STORES = [
   },
   {
     "id": "1A05",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州东关大润发店",
     "licenses": {
@@ -10660,7 +10661,7 @@ const STORES = [
   },
   {
     "id": "1560",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州云龙万达店",
     "licenses": {
@@ -10670,7 +10671,7 @@ const STORES = [
   },
   {
     "id": "1010",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州和信宝龙广场店",
     "licenses": {
@@ -10680,7 +10681,7 @@ const STORES = [
   },
   {
     "id": "1869",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州市中医院新院区店",
     "licenses": {
@@ -10690,7 +10691,7 @@ const STORES = [
   },
   {
     "id": "1661",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州市建国路大润发店",
     "licenses": {
@@ -10700,7 +10701,7 @@ const STORES = [
   },
   {
     "id": "1646",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州市铜山万达广场店",
     "licenses": {
@@ -10710,7 +10711,7 @@ const STORES = [
   },
   {
     "id": "1852",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州彭城苏宁广场店",
     "licenses": {
@@ -10720,7 +10721,7 @@ const STORES = [
   },
   {
     "id": "1747",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州招商花园城店",
     "licenses": {
@@ -10730,7 +10731,7 @@ const STORES = [
   },
   {
     "id": "1105",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州新沂金桥国际店",
     "licenses": {
@@ -10740,7 +10741,7 @@ const STORES = [
   },
   {
     "id": "1037",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州泰隆商业街餐厅",
     "licenses": {
@@ -10750,7 +10751,7 @@ const STORES = [
   },
   {
     "id": "1911",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州淮海环球港店",
     "licenses": {
@@ -10760,7 +10761,7 @@ const STORES = [
   },
   {
     "id": "1655",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州第一人民医院店",
     "licenses": {
@@ -10770,7 +10771,7 @@ const STORES = [
   },
   {
     "id": "1035",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州美的广场餐厅",
     "licenses": {
@@ -10780,7 +10781,7 @@ const STORES = [
   },
   {
     "id": "1620",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州苏宁广场餐厅",
     "licenses": {
@@ -10790,7 +10791,7 @@ const STORES = [
   },
   {
     "id": "1045",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州邳州大润发店",
     "licenses": {
@@ -10800,7 +10801,7 @@ const STORES = [
   },
   {
     "id": "1013",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "徐州颐和汇邻湾餐厅",
     "licenses": {
@@ -10810,7 +10811,7 @@ const STORES = [
   },
   {
     "id": "1838",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "徐州",
     "name": "邳州通城欢乐买店",
     "licenses": {
@@ -10820,7 +10821,7 @@ const STORES = [
   },
   {
     "id": "1038",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州三盛国际餐厅",
     "licenses": {
@@ -10830,7 +10831,7 @@ const STORES = [
   },
   {
     "id": "1042",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州仪征宝能餐厅",
     "licenses": {
@@ -10840,7 +10841,7 @@ const STORES = [
   },
   {
     "id": "1072",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州国庆路餐厅",
     "licenses": {
@@ -10850,7 +10851,7 @@ const STORES = [
   },
   {
     "id": "1036",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州广陵新城餐厅",
     "licenses": {
@@ -10860,7 +10861,7 @@ const STORES = [
   },
   {
     "id": "1063",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州昌建广场店",
     "licenses": {
@@ -10870,7 +10871,7 @@ const STORES = [
   },
   {
     "id": "1074",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州江都东方红路餐厅",
     "licenses": {
@@ -10880,7 +10881,7 @@ const STORES = [
   },
   {
     "id": "1089",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州江都大润发店",
     "licenses": {
@@ -10890,7 +10891,7 @@ const STORES = [
   },
   {
     "id": "1723",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州邗江吾悦广场店",
     "licenses": {
@@ -10900,7 +10901,7 @@ const STORES = [
   },
   {
     "id": "1308",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州邗江宝龙广场店",
     "licenses": {
@@ -10910,7 +10911,7 @@ const STORES = [
   },
   {
     "id": "1078",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州顺达广场店",
     "licenses": {
@@ -10920,7 +10921,7 @@ const STORES = [
   },
   {
     "id": "1073",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "扬州",
     "name": "扬州高邮世贸广场餐厅",
     "licenses": {
@@ -10930,8 +10931,8 @@ const STORES = [
   },
   {
     "id": "1080",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡11广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1080/1080-无锡11广场店-营业执照.jpeg",
@@ -10940,8 +10941,8 @@ const STORES = [
   },
   {
     "id": "1085",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡Kpark商务中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1085/1085-无锡Kpark商务中心店-营业执照.jpg",
@@ -10950,8 +10951,8 @@ const STORES = [
   },
   {
     "id": "1058",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡中山路红豆店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1058/1058-无锡中山路红豆店-营业执照.jpeg",
@@ -10960,8 +10961,8 @@ const STORES = [
   },
   {
     "id": "1805",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡九里东韵店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1805/1805-无锡九里东韵店-营业执照.jpg",
@@ -10970,8 +10971,8 @@ const STORES = [
   },
   {
     "id": "1997",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡五洲国际工业博览城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1997/1997-无锡五洲国际工业博览城店-营业执照.jpg",
@@ -10980,8 +10981,8 @@ const STORES = [
   },
   {
     "id": "1629",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡佛奥天佑城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1629/1629-无锡佛奥天佑城店-营业执照.jpeg",
@@ -10990,8 +10991,8 @@ const STORES = [
   },
   {
     "id": "1847",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡和畅睦邻广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1847/1847-无锡和畅睦邻广场店-营业执照.jpg",
@@ -11000,8 +11001,8 @@ const STORES = [
   },
   {
     "id": "1928",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡国际招商城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1928/1928-无锡国际招商城店-营业执照.jpg",
@@ -11010,8 +11011,8 @@ const STORES = [
   },
   {
     "id": "1719",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡圆融嘉悦汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1719/1719-无锡圆融嘉悦汇店-营业执照.jpg",
@@ -11020,8 +11021,8 @@ const STORES = [
   },
   {
     "id": "1559",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡圆融广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1559/1559-无锡圆融广场店-营业执照.jpeg",
@@ -11030,8 +11031,8 @@ const STORES = [
   },
   {
     "id": "1094",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡太平洋城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1094/1094-无锡太平洋城店-营业执照.jpg",
@@ -11040,8 +11041,8 @@ const STORES = [
   },
   {
     "id": "1292",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡太湖智谷店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1292/1292-无锡太湖智谷店-营业执照.jpeg",
@@ -11050,8 +11051,8 @@ const STORES = [
   },
   {
     "id": "1603",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡宜兴东郊店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1603/1603-无锡宜兴东郊店-营业执照.jpg",
@@ -11060,8 +11061,8 @@ const STORES = [
   },
   {
     "id": "1296",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡宜兴八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1296/1296-无锡宜兴八佰伴店-营业执照.jpeg",
@@ -11070,8 +11071,8 @@ const STORES = [
   },
   {
     "id": "1554",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡宜兴和信广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1554/1554-无锡宜兴和信广场店-营业执照.jpg",
@@ -11080,8 +11081,8 @@ const STORES = [
   },
   {
     "id": "1549",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡宜兴大统华店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1549/1549-无锡宜兴大统华店-营业执照.jpg",
@@ -11090,8 +11091,8 @@ const STORES = [
   },
   {
     "id": "1251",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡宝龙城市广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1251/1251-无锡宝龙城市广场餐厅-营业执照.jpg",
@@ -11100,8 +11101,8 @@ const STORES = [
   },
   {
     "id": "1373",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡市民中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1373/1373-无锡市民中心店-营业执照.jpg",
@@ -11110,8 +11111,8 @@ const STORES = [
   },
   {
     "id": "1931",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡市阳光广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1931/1931-无锡市阳光广场店-营业执照.jpg",
@@ -11120,8 +11121,8 @@ const STORES = [
   },
   {
     "id": "1634",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡惠山万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1634/1634-无锡惠山万达店-营业执照.jpeg",
@@ -11130,8 +11131,8 @@ const STORES = [
   },
   {
     "id": "1343",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡新之城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1343/1343-无锡新之城店-营业执照.jpg",
@@ -11140,8 +11141,8 @@ const STORES = [
   },
   {
     "id": "1787",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡方圆荟购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1787/1787-无锡方圆荟购物中心店-营业执照.jpeg",
@@ -11150,8 +11151,8 @@ const STORES = [
   },
   {
     "id": "1372",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡梦享城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1372/1372-无锡梦享城店-营业执照.jpg",
@@ -11160,8 +11161,8 @@ const STORES = [
   },
   {
     "id": "1166",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡永乐万悦集店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1166/1166-无锡永乐万悦集店-营业执照.jpg",
@@ -11170,8 +11171,8 @@ const STORES = [
   },
   {
     "id": "1156",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1156/1156-无锡江阴万达广场店-营业执照.pdf",
@@ -11180,8 +11181,8 @@ const STORES = [
   },
   {
     "id": "1134",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴临港红豆店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1134/1134-无锡江阴临港红豆店-营业执照.jpeg",
@@ -11190,8 +11191,8 @@ const STORES = [
   },
   {
     "id": "1394",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1394/1394-无锡江阴八佰伴店-营业执照.jpg",
@@ -11200,8 +11201,8 @@ const STORES = [
   },
   {
     "id": "1819",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴华士镇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1819/1819-无锡江阴华士镇店-营业执照.jpg",
@@ -11210,8 +11211,8 @@ const STORES = [
   },
   {
     "id": "1550",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1550/1550-无锡江阴大润发店-营业执照.jpg",
@@ -11220,8 +11221,8 @@ const STORES = [
   },
   {
     "id": "1254",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴小湖新村店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1254/1254-无锡江阴小湖新村店-营业执照.jpg",
@@ -11230,8 +11231,8 @@ const STORES = [
   },
   {
     "id": "1893",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡江阴海岸城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1893/1893-无锡江阴海岸城店-营业执照.jpeg",
@@ -11240,8 +11241,8 @@ const STORES = [
   },
   {
     "id": "1751",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡清扬茂业店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1751/1751-无锡清扬茂业店-营业执照.jpeg",
@@ -11250,8 +11251,8 @@ const STORES = [
   },
   {
     "id": "1061",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡清扬路店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1061/1061-无锡清扬路店-营业执照.jpg",
@@ -11260,8 +11261,8 @@ const STORES = [
   },
   {
     "id": "1647",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡滨湖万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1647/1647-无锡滨湖万达店-营业执照.png",
@@ -11270,8 +11271,8 @@ const STORES = [
   },
   {
     "id": "1404",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡璟隆广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1404/1404-无锡璟隆广场店-营业执照.jpeg",
@@ -11280,8 +11281,8 @@ const STORES = [
   },
   {
     "id": "1046",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡红豆万花城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1046/1046-无锡红豆万花城餐厅-营业执照.jpg",
@@ -11290,8 +11291,8 @@ const STORES = [
   },
   {
     "id": "1386",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡苏宁广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1870/1870-无锡苏宁广场店-营业执照.jpeg",
@@ -11300,8 +11301,8 @@ const STORES = [
   },
   {
     "id": "1315",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡金悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1315/1315-无锡金悦广场店-营业执照.jpg",
@@ -11310,8 +11311,8 @@ const STORES = [
   },
   {
     "id": "1555",
-    "province": "江苏",
-    "city": "无锡",
+    "province": "江苏省",
+    "city": "无锡市",
     "name": "无锡钱桥大街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1555/1555-无锡钱桥大街店-营业执照.jpeg",
@@ -11320,7 +11321,7 @@ const STORES = [
   },
   {
     "id": "1726",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰兴新城吾悦广场店",
     "licenses": {
@@ -11330,7 +11331,7 @@ const STORES = [
   },
   {
     "id": "1A06",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州万象城店",
     "licenses": {
@@ -11340,7 +11341,7 @@ const STORES = [
   },
   {
     "id": "1605",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州中骏世界城餐厅",
     "licenses": {
@@ -11350,7 +11351,7 @@ const STORES = [
   },
   {
     "id": "1290",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州人民医院店",
     "licenses": {
@@ -11360,7 +11361,7 @@ const STORES = [
   },
   {
     "id": "1385",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州兴化吾悦店",
     "licenses": {
@@ -11370,7 +11371,7 @@ const STORES = [
   },
   {
     "id": "1158",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州天虹广场店",
     "licenses": {
@@ -11380,7 +11381,7 @@ const STORES = [
   },
   {
     "id": "1415",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州市靖江吾悦广场店",
     "licenses": {
@@ -11390,7 +11391,7 @@ const STORES = [
   },
   {
     "id": "1135",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州时代商业广场店",
     "licenses": {
@@ -11400,7 +11401,7 @@ const STORES = [
   },
   {
     "id": "1347",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州泰兴中南悠曼里店",
     "licenses": {
@@ -11410,7 +11411,7 @@ const STORES = [
   },
   {
     "id": "1350",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州海陵万达店",
     "licenses": {
@@ -11420,7 +11421,7 @@ const STORES = [
   },
   {
     "id": "1968",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州靖江荟品仓店",
     "licenses": {
@@ -11430,7 +11431,7 @@ const STORES = [
   },
   {
     "id": "1599",
-    "province": "江苏",
+    "province": "江苏省",
     "city": "泰州",
     "name": "泰州龙河城投店",
     "licenses": {
@@ -11440,8 +11441,8 @@ const STORES = [
   },
   {
     "id": "1840",
-    "province": "江苏",
-    "city": "淮北",
+    "province": "江苏省",
+    "city": "淮北市",
     "name": "淮安楚州万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1840/1840-淮安楚州万达广场店-营业执照.jpeg",
@@ -11450,8 +11451,8 @@ const STORES = [
   },
   {
     "id": "1398",
-    "province": "江苏",
-    "city": "淮安",
+    "province": "江苏省",
+    "city": "淮安市",
     "name": "淮安幸福城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1398/1398-淮安幸福城店-营业执照.jpg",
@@ -11460,8 +11461,8 @@ const STORES = [
   },
   {
     "id": "1314",
-    "province": "江苏",
-    "city": "淮安",
+    "province": "江苏省",
+    "city": "淮安市",
     "name": "淮安水渡口万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1314/1314-淮安水渡口万达店-营业执照.jpeg",
@@ -11470,8 +11471,8 @@ const STORES = [
   },
   {
     "id": "1376",
-    "province": "江苏",
-    "city": "淮安",
+    "province": "江苏省",
+    "city": "淮安市",
     "name": "淮安涟水大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1376/1376-淮安涟水大润发店-营业执照.jpg",
@@ -11480,8 +11481,8 @@ const STORES = [
   },
   {
     "id": "1334",
-    "province": "江苏",
-    "city": "淮安",
+    "province": "江苏省",
+    "city": "淮安市",
     "name": "淮安盱眙凤凰广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1334/1334-淮安盱眙凤凰广场店-营业执照.jpg",
@@ -11490,8 +11491,8 @@ const STORES = [
   },
   {
     "id": "1636",
-    "province": "江苏",
-    "city": "淮安",
+    "province": "江苏省",
+    "city": "淮安市",
     "name": "淮安第一人民医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1636/1636-淮安第一人民医院店-营业执照.jpeg",
@@ -11500,8 +11501,8 @@ const STORES = [
   },
   {
     "id": "1250",
-    "province": "江苏",
-    "city": "淮安",
+    "province": "江苏省",
+    "city": "淮安市",
     "name": "淮安苏宁广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1250/1250-淮安苏宁广场餐厅-营业执照.jpg",
@@ -11510,8 +11511,8 @@ const STORES = [
   },
   {
     "id": "1413",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1413/1413-盐城万达店-营业执照.jpg",
@@ -11520,8 +11521,8 @@ const STORES = [
   },
   {
     "id": "1915",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城东台市大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1915/1915-盐城东台市大润发店-营业执照.jpg",
@@ -11530,8 +11531,8 @@ const STORES = [
   },
   {
     "id": "1528",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城中韩未来科技城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1528/1528-盐城中韩未来科技城店-营业执照.jpg",
@@ -11540,8 +11541,8 @@ const STORES = [
   },
   {
     "id": "1604",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城大丰吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1604/1604-盐城大丰吾悦广场店-营业执照.jpeg",
@@ -11550,8 +11551,8 @@ const STORES = [
   },
   {
     "id": "1371",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城射阳吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1371/1371-盐城射阳吾悦广场店-营业执照.jpg",
@@ -11560,8 +11561,8 @@ const STORES = [
   },
   {
     "id": "1A04",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城市大有境店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A04/1A04-盐城市大有境店-营业执照.jpg",
@@ -11570,8 +11571,8 @@ const STORES = [
   },
   {
     "id": "1414",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城新龙广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1414/1414-盐城新龙广场店-营业执照.jpg",
@@ -11580,8 +11581,8 @@ const STORES = [
   },
   {
     "id": "1791",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城聚龙湖金鹰购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1791/1791-盐城聚龙湖金鹰购物中心店-营业执照.jpg",
@@ -11590,8 +11591,8 @@ const STORES = [
   },
   {
     "id": "1311",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城金融城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1311/1311-盐城金融城店-营业执照.jpg",
@@ -11600,202 +11601,12 @@ const STORES = [
   },
   {
     "id": "1379",
-    "province": "江苏",
-    "city": "盐城",
+    "province": "江苏省",
+    "city": "盐城市",
     "name": "盐城金鹰购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1379/1379-盐城金鹰购物中心店-营业执照.jpg",
       "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1379/1379-盐城金鹰购物中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1930",
-    "province": "江苏",
-    "city": "连云港",
-    "name": "连云港中山西路大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1930/1930-连云港中山西路大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1930/1930-连云港中山西路大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1430",
-    "province": "江苏",
-    "city": "连云港",
-    "name": "连云港利群京东电器店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1430/1430-连云港利群京东电器店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1430/1430-连云港利群京东电器店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1363",
-    "province": "江苏",
-    "city": "连云港",
-    "name": "连云港嘉瑞宝商业广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1363/1363-连云港嘉瑞宝商业广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1363/1363-连云港嘉瑞宝商业广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1728",
-    "province": "江苏",
-    "city": "连云港",
-    "name": "连云港海州大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1728/1728-连云港海州大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1728/1728-连云港海州大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1887",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "丹阳梦想城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1887/1887-丹阳梦想城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1887/1887-丹阳梦想城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1155",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "江苏镇江八佰伴店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1155/1155-江苏镇江八佰伴店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1155/1155-江苏镇江八佰伴店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1289",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1289/1289-镇江万达店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1289/1289-镇江万达店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1972",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江丹阳丹曻邻里中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1972/1972-镇江丹阳丹曻邻里中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1972/1972-镇江丹阳丹曻邻里中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1368",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江丹阳吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1368/1368-镇江丹阳吾悦广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1368/1368-镇江丹阳吾悦广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1969",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江丹阳大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1969/1969-镇江丹阳大润发店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1969/1969-镇江丹阳大润发店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1803",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江丹阳金鹰天地广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1803/1803-镇江丹阳金鹰天地广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1803/1803-镇江丹阳金鹰天地广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1294",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江凤凰广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1294/1294-镇江凤凰广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1294/1294-镇江凤凰广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1383",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江句容吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1383/1383-镇江句容吾悦广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1383/1383-镇江句容吾悦广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1302",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1302/1302-镇江吾悦广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1302/1302-镇江吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1307",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江宝龙广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1307/1307-镇江宝龙广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1307/1307-镇江宝龙广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1815",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江市大港大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1815/1815-镇江市大港大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1815/1815-镇江市大港大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1674",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江悦然广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1674/1674-镇江悦然广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1674/1674-镇江悦然广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1816",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江永隆城市广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1816/1816-镇江永隆城市广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1816/1816-镇江永隆城市广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1A26",
-    "province": "江苏",
-    "city": "镇江",
-    "name": "镇江红豆万花城购物广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A26/1A26-镇江红豆万花城购物广场店-营业执照.jpg",
-      "food": ""
     }
   },
   {
@@ -12039,9 +11850,199 @@ const STORES = [
     }
   },
   {
+    "id": "1930",
+    "province": "江苏省",
+    "city": "连云港市",
+    "name": "连云港中山西路大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1930/1930-连云港中山西路大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1930/1930-连云港中山西路大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1430",
+    "province": "江苏省",
+    "city": "连云港市",
+    "name": "连云港利群京东电器店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1430/1430-连云港利群京东电器店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1430/1430-连云港利群京东电器店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1363",
+    "province": "江苏省",
+    "city": "连云港市",
+    "name": "连云港嘉瑞宝商业广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1363/1363-连云港嘉瑞宝商业广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1363/1363-连云港嘉瑞宝商业广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1728",
+    "province": "江苏省",
+    "city": "连云港市",
+    "name": "连云港海州大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1728/1728-连云港海州大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1728/1728-连云港海州大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1887",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "丹阳梦想城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1887/1887-丹阳梦想城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1887/1887-丹阳梦想城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1155",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "江苏镇江八佰伴店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1155/1155-江苏镇江八佰伴店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1155/1155-江苏镇江八佰伴店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1289",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1289/1289-镇江万达店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1289/1289-镇江万达店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1972",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江丹阳丹曻邻里中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1972/1972-镇江丹阳丹曻邻里中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1972/1972-镇江丹阳丹曻邻里中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1368",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江丹阳吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1368/1368-镇江丹阳吾悦广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1368/1368-镇江丹阳吾悦广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1969",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江丹阳大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1969/1969-镇江丹阳大润发店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1969/1969-镇江丹阳大润发店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1803",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江丹阳金鹰天地广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1803/1803-镇江丹阳金鹰天地广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1803/1803-镇江丹阳金鹰天地广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1294",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江凤凰广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1294/1294-镇江凤凰广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1294/1294-镇江凤凰广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1383",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江句容吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1383/1383-镇江句容吾悦广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1383/1383-镇江句容吾悦广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1302",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1302/1302-镇江吾悦广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1302/1302-镇江吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1307",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江宝龙广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1307/1307-镇江宝龙广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1307/1307-镇江宝龙广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1815",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江市大港大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1815/1815-镇江市大港大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1815/1815-镇江市大港大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1674",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江悦然广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1674/1674-镇江悦然广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1674/1674-镇江悦然广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1816",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江永隆城市广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1816/1816-镇江永隆城市广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1816/1816-镇江永隆城市广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1A26",
+    "province": "江苏省",
+    "city": "镇江市",
+    "name": "镇江红豆万花城购物广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A26/1A26-镇江红豆万花城购物广场店-营业执照.jpg",
+      "food": ""
+    }
+  },
+  {
     "id": "1987",
-    "province": "江西",
-    "city": "上饶",
+    "province": "江西省",
+    "city": "上饶市",
     "name": "上饶万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1987/1987-上饶万达广场店-营业执照.jpeg",
@@ -12050,8 +12051,8 @@ const STORES = [
   },
   {
     "id": "1A07",
-    "province": "江西",
-    "city": "上饶",
+    "province": "江西省",
+    "city": "上饶市",
     "name": "上饶余干鹏颂百货店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A07/1A07-上饶余干鹏颂百货店-营业执照.jpg",
@@ -12060,8 +12061,8 @@ const STORES = [
   },
   {
     "id": "1614",
-    "province": "江西",
-    "city": "九江",
+    "province": "江西省",
+    "city": "九江市",
     "name": "江西九江联盛快乐城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1614/1614-江西九江联盛快乐城店-营业执照.jpg",
@@ -12070,8 +12071,8 @@ const STORES = [
   },
   {
     "id": "1615",
-    "province": "江西",
-    "city": "景德镇",
+    "province": "江西省",
+    "city": "景德镇市",
     "name": "景德镇华润万家店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1615/1615-景德镇华润万家店-营业执照.jpeg",
@@ -12080,8 +12081,8 @@ const STORES = [
   },
   {
     "id": "1771",
-    "province": "江西",
-    "city": "景德镇",
+    "province": "江西省",
+    "city": "景德镇市",
     "name": "景德镇金鼎广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1771/1771-景德镇金鼎广场店-营业执照.jpg",
@@ -12090,8 +12091,8 @@ const STORES = [
   },
   {
     "id": "1323",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳光山西亚广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1323/1323-信阳光山西亚广场店-营业执照.jpg",
@@ -12100,8 +12101,8 @@ const STORES = [
   },
   {
     "id": "1595",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳固始万佳店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1595/1595-信阳固始万佳店-营业执照.jpg",
@@ -12110,8 +12111,8 @@ const STORES = [
   },
   {
     "id": "1087",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳固始古城路店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1087/1087-信阳固始古城路店-营业执照.jpeg",
@@ -12120,8 +12121,8 @@ const STORES = [
   },
   {
     "id": "1086",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳市固始县店.",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1086/1086-信阳市固始县店.-营业执照.jpeg",
@@ -12130,8 +12131,8 @@ const STORES = [
   },
   {
     "id": "1709",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳息县荣誉购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1709/1709-信阳息县荣誉购物中心店-营业执照.jpg",
@@ -12140,8 +12141,8 @@ const STORES = [
   },
   {
     "id": "1672",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳新天地广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1672/1672-信阳新天地广场店-营业执照.jpeg",
@@ -12150,8 +12151,8 @@ const STORES = [
   },
   {
     "id": "1596",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "信阳美邻荟店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1596/1596-信阳美邻荟店-营业执照.jpg",
@@ -12160,8 +12161,8 @@ const STORES = [
   },
   {
     "id": "1A00",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "光山县慧泉广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A00/1A00-光山县慧泉广场店-营业执照.jpg",
@@ -12170,8 +12171,8 @@ const STORES = [
   },
   {
     "id": "1975",
-    "province": "河南",
-    "city": "信阳",
+    "province": "河南省",
+    "city": "信阳市",
     "name": "河南信阳西亚城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1975/1975-河南信阳西亚城店-营业执照.jpg",
@@ -12180,8 +12181,8 @@ const STORES = [
   },
   {
     "id": "1914",
-    "province": "河南",
-    "city": "南阳",
+    "province": "河南省",
+    "city": "南阳市",
     "name": "河南南阳摩根吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1914/1914-河南南阳摩根吾悦广场店-营业执照.jpg",
@@ -12190,8 +12191,8 @@ const STORES = [
   },
   {
     "id": "1883",
-    "province": "河南",
-    "city": "周口",
+    "province": "河南省",
+    "city": "周口市",
     "name": "周口川汇万顺达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1883/1883-周口川汇万顺达店-营业执照.jpg",
@@ -12200,8 +12201,8 @@ const STORES = [
   },
   {
     "id": "1375",
-    "province": "河南",
-    "city": "周口",
+    "province": "河南省",
+    "city": "周口市",
     "name": "周口沈丘新田360广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1375/1375-周口沈丘新田360广场店-营业执照.jpeg",
@@ -12210,8 +12211,8 @@ const STORES = [
   },
   {
     "id": "1594",
-    "province": "河南",
-    "city": "商丘",
+    "province": "河南省",
+    "city": "商丘市",
     "name": "商丘夏邑家庭茂店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1594/1594-商丘夏邑家庭茂店-营业执照.jpg",
@@ -12220,8 +12221,8 @@ const STORES = [
   },
   {
     "id": "1679",
-    "province": "河南",
-    "city": "商丘",
+    "province": "河南省",
+    "city": "商丘市",
     "name": "商丘柘城欣泰百货店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1679/1679-商丘柘城欣泰百货店-营业执照.jpg",
@@ -12230,8 +12231,8 @@ const STORES = [
   },
   {
     "id": "1951",
-    "province": "河南",
-    "city": "商丘",
+    "province": "河南省",
+    "city": "商丘市",
     "name": "商丘梁园正弘汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1951/1951-商丘梁园正弘汇店-营业执照.jpg",
@@ -12240,8 +12241,8 @@ const STORES = [
   },
   {
     "id": "1632",
-    "province": "河南",
-    "city": "商丘",
+    "province": "河南省",
+    "city": "商丘市",
     "name": "商丘民权县圣晖广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1632/1632-商丘民权县圣晖广场餐厅-营业执照.jpeg",
@@ -12250,8 +12251,8 @@ const STORES = [
   },
   {
     "id": "1773",
-    "province": "河南",
-    "city": "商丘",
+    "province": "河南省",
+    "city": "商丘市",
     "name": "商丘金博大商场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1773/1773-商丘金博大商场店-营业执照.jpg",
@@ -12260,7 +12261,7 @@ const STORES = [
   },
   {
     "id": "1873",
-    "province": "河南",
+    "province": "河南省",
     "city": "郑州",
     "name": "河南农业大学龙子湖校区店",
     "licenses": {
@@ -12270,8 +12271,8 @@ const STORES = [
   },
   {
     "id": "1543",
-    "province": "浙江",
-    "city": "丽水",
+    "province": "浙江省",
+    "city": "丽水市",
     "name": "丽水市万地广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1543/1543-丽水市万地广场店-营业执照.jpeg",
@@ -12280,8 +12281,8 @@ const STORES = [
   },
   {
     "id": "1578",
-    "province": "浙江",
-    "city": "丽水",
+    "province": "浙江省",
+    "city": "丽水市",
     "name": "丽水绿谷信息产业园店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1578/1578-丽水绿谷信息产业园店-营业执照.jpg",
@@ -12290,8 +12291,8 @@ const STORES = [
   },
   {
     "id": "1366",
-    "province": "浙江",
-    "city": "丽水",
+    "province": "浙江省",
+    "city": "丽水市",
     "name": "丽水银泰城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1366/1366-丽水银泰城店-营业执照.jpg",
@@ -12300,7 +12301,7 @@ const STORES = [
   },
   {
     "id": "1391",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州中盛广场店",
     "licenses": {
@@ -12310,7 +12311,7 @@ const STORES = [
   },
   {
     "id": "1344",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州临海靖江中心广场店",
     "licenses": {
@@ -12320,7 +12321,7 @@ const STORES = [
   },
   {
     "id": "1258",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州市立医院餐厅",
     "licenses": {
@@ -12330,7 +12331,7 @@ const STORES = [
   },
   {
     "id": "1295",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州意得广场店",
     "licenses": {
@@ -12340,7 +12341,7 @@ const STORES = [
   },
   {
     "id": "1736",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州新世纪广场店",
     "licenses": {
@@ -12350,7 +12351,7 @@ const STORES = [
   },
   {
     "id": "1733",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州温岭CC广场店",
     "licenses": {
@@ -12360,7 +12361,7 @@ const STORES = [
   },
   {
     "id": "1925",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州温岭九龙店",
     "licenses": {
@@ -12370,7 +12371,7 @@ const STORES = [
   },
   {
     "id": "1750",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州温岭宝龙店",
     "licenses": {
@@ -12380,7 +12381,7 @@ const STORES = [
   },
   {
     "id": "1841",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州玉环吾悦广场店",
     "licenses": {
@@ -12390,7 +12391,7 @@ const STORES = [
   },
   {
     "id": "1262",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州经开万达广场店",
     "licenses": {
@@ -12400,7 +12401,7 @@ const STORES = [
   },
   {
     "id": "1871",
-    "province": "浙江",
+    "province": "浙江省",
     "city": "台州",
     "name": "台州黄岩吾悦广场店",
     "licenses": {
@@ -12410,8 +12411,8 @@ const STORES = [
   },
   {
     "id": "1418",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴中关村广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1418/1418-嘉兴中关村广场店-营业执照.jpg",
@@ -12420,8 +12421,8 @@ const STORES = [
   },
   {
     "id": "1713",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴中山路八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1713/1713-嘉兴中山路八佰伴店-营业执照.jpg",
@@ -12430,8 +12431,8 @@ const STORES = [
   },
   {
     "id": "1976",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴华府八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1976/1976-嘉兴华府八佰伴店-营业执照.jpg",
@@ -12440,8 +12441,8 @@ const STORES = [
   },
   {
     "id": "1731",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴合乐城广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1731/1731-嘉兴合乐城广场店-营业执照.jpg",
@@ -12450,8 +12451,8 @@ const STORES = [
   },
   {
     "id": "1846",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴嘉善中山西路店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1846/1846-嘉兴嘉善中山西路店-营业执照.jpg",
@@ -12460,8 +12461,8 @@ const STORES = [
   },
   {
     "id": "1854",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴嘉善江南邻里中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1854/1854-嘉兴嘉善江南邻里中心店-营业执照.png",
@@ -12470,8 +12471,8 @@ const STORES = [
   },
   {
     "id": "1855",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴市嘉善县星座标盒马店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1855/1855-嘉兴市嘉善县星座标盒马店-营业执照.jpg",
@@ -12480,8 +12481,8 @@ const STORES = [
   },
   {
     "id": "1810",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴平湖八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1810/1810-嘉兴平湖八佰伴店-营业执照.jpg",
@@ -12490,8 +12491,8 @@ const STORES = [
   },
   {
     "id": "1419",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴平湖吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1419/1419-嘉兴平湖吾悦广场店-营业执照.png",
@@ -12500,8 +12501,8 @@ const STORES = [
   },
   {
     "id": "1899",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴星河COCOCity购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1899/1899-嘉兴星河COCOCity购物中心店-营业执照.jpeg",
@@ -12510,8 +12511,8 @@ const STORES = [
   },
   {
     "id": "1387",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴杉杉in象店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1387/1387-嘉兴杉杉in象店-营业执照.jpeg",
@@ -12520,8 +12521,8 @@ const STORES = [
   },
   {
     "id": "1895",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴海宁许巷新大街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1895/1895-嘉兴海宁许巷新大街店-营业执照.jpg",
@@ -12530,8 +12531,8 @@ const STORES = [
   },
   {
     "id": "1935",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴海盐县云兴商业中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1935/1935-嘉兴海盐县云兴商业中心店-营业执照.jpeg",
@@ -12540,8 +12541,8 @@ const STORES = [
   },
   {
     "id": "1393",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴海盐吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1393/1393-嘉兴海盐吾悦广场店-营业执照.jpg",
@@ -12550,8 +12551,8 @@ const STORES = [
   },
   {
     "id": "1260",
-    "province": "浙江",
-    "city": "嘉兴",
+    "province": "浙江省",
+    "city": "嘉兴市",
     "name": "嘉兴龙鼎万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1260/1260-嘉兴龙鼎万达广场店-营业执照.jpg",
@@ -12560,8 +12561,8 @@ const STORES = [
   },
   {
     "id": "1886",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波世纪东方店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1886/1886-宁波世纪东方店-营业执照.jpg",
@@ -12570,8 +12571,8 @@ const STORES = [
   },
   {
     "id": "1830",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波世纪金源店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1830/1830-宁波世纪金源店-营业执照.jpg",
@@ -12580,8 +12581,8 @@ const STORES = [
   },
   {
     "id": "1923",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波余姚万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1923/1923-宁波余姚万达广场店-营业执照.jpg",
@@ -12590,8 +12591,8 @@ const STORES = [
   },
   {
     "id": "1918",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波余姚五彩城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1918/1918-宁波余姚五彩城店-营业执照.jpg",
@@ -12600,8 +12601,8 @@ const STORES = [
   },
   {
     "id": "1835",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波北仑大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1835/1835-宁波北仑大润发店-营业执照.jpg",
@@ -12610,8 +12611,8 @@ const STORES = [
   },
   {
     "id": "1938",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波北仑银泰城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1938/1938-宁波北仑银泰城店-营业执照.jpg",
@@ -12620,8 +12621,8 @@ const STORES = [
   },
   {
     "id": "1827",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波南部商务区店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1827/1827-宁波南部商务区店-营业执照.jpg",
@@ -12630,8 +12631,8 @@ const STORES = [
   },
   {
     "id": "1944",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波和丰创意广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1944/1944-宁波和丰创意广场店-营业执照.jpg",
@@ -12640,8 +12641,8 @@ const STORES = [
   },
   {
     "id": "1933",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波天一广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1933/1933-宁波天一广场店-营业执照.jpg",
@@ -12650,8 +12651,8 @@ const STORES = [
   },
   {
     "id": "1831",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波宁兴财富广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1831/1831-宁波宁兴财富广场店-营业执照.jpg",
@@ -12660,8 +12661,8 @@ const STORES = [
   },
   {
     "id": "1977",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波宁海桃源广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1977/1977-宁波宁海桃源广场店-营业执照.jpeg",
@@ -12670,8 +12671,8 @@ const STORES = [
   },
   {
     "id": "1849",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波山丘市集店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1849/1849-宁波山丘市集店-营业执照.jpeg",
@@ -12680,8 +12681,8 @@ const STORES = [
   },
   {
     "id": "1877",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波慈溪利时广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1877/1877-宁波慈溪利时广场店-营业执照.jpeg",
@@ -12690,8 +12691,8 @@ const STORES = [
   },
   {
     "id": "1848",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波慈溪吾悦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1848/1848-宁波慈溪吾悦店-营业执照.jpg",
@@ -12700,8 +12701,8 @@ const STORES = [
   },
   {
     "id": "1845",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波慈溪天鸿大厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1845/1845-宁波慈溪天鸿大厦店-营业执照.jpeg",
@@ -12710,8 +12711,8 @@ const STORES = [
   },
   {
     "id": "1880",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波慈溪银泰城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1880/1880-宁波慈溪银泰城店-营业执照.jpg",
@@ -12720,8 +12721,8 @@ const STORES = [
   },
   {
     "id": "1828",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波来福士广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1828/1828-宁波来福士广场店-营业执照.jpg",
@@ -12730,8 +12731,8 @@ const STORES = [
   },
   {
     "id": "1834",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波江北万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1834/1834-宁波江北万达广场店-营业执照.jpeg",
@@ -12740,8 +12741,8 @@ const STORES = [
   },
   {
     "id": "1833",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波海曙龙湖天街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1833/1833-宁波海曙龙湖天街店-营业执照.jpeg",
@@ -12750,8 +12751,8 @@ const STORES = [
   },
   {
     "id": "1A13",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波观海卫悦美广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A13/1A13-宁波观海卫悦美广场店-营业执照.jpeg",
@@ -12760,8 +12761,8 @@ const STORES = [
   },
   {
     "id": "1872",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波镇海万科广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1872/1872-宁波镇海万科广场店-营业执照.jpg",
@@ -12770,8 +12771,8 @@ const STORES = [
   },
   {
     "id": "1A14",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波骆驼印象汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A14/1A14-宁波骆驼印象汇店-营业执照.jpg",
@@ -12780,8 +12781,8 @@ const STORES = [
   },
   {
     "id": "1829",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波高新宝龙店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1829/1829-宁波高新宝龙店-营业执照.jpeg",
@@ -12790,592 +12791,12 @@ const STORES = [
   },
   {
     "id": "1832",
-    "province": "浙江",
-    "city": "宁波",
+    "province": "浙江省",
+    "city": "宁波市",
     "name": "宁波高鑫广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1832/1832-宁波高鑫广场店-营业执照.jpg",
       "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1832/1832-宁波高鑫广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1396",
-    "province": "浙江",
-    "city": "杭州",
-    "name": "杭州建德恒太城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1396/1396-杭州建德恒太城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1396/1396-杭州建德恒太城店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1401",
-    "province": "浙江",
-    "city": "杭州",
-    "name": "杭州桐庐大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1401/1401-杭州桐庐大润发店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1401/1401-杭州桐庐大润发店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1288",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州东吴银泰店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1288/1288-湖州东吴银泰店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1288/1288-湖州东吴银泰店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1988",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1988/1988-湖州吾悦广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1988/1988-湖州吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1328",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州安吉万象城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1328/1328-湖州安吉万象城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1328/1328-湖州安吉万象城店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1613",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州安吉春天尚居景尚街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1613/1613-湖州安吉春天尚居景尚街店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1613/1613-湖州安吉春天尚居景尚街店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1427",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州德清儿童医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1427/1427-湖州德清儿童医院店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1427/1427-湖州德清儿童医院店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1577",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州德清正翔广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1577/1577-湖州德清正翔广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1577/1577-湖州德清正翔广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1859",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州星火外滩广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1859/1859-湖州星火外滩广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1859/1859-湖州星火外滩广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1397",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州浙北大厦东迁店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1397/1397-湖州浙北大厦东迁店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1397/1397-湖州浙北大厦东迁店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1293",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州浙北大厦运动中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1293/1293-湖州浙北大厦运动中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1293/1293-湖州浙北大厦运动中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1971",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州爱山广场步行街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1971/1971-湖州爱山广场步行街店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1971/1971-湖州爱山广场步行街店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1756",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州爱山浙北大厦店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1756/1756-湖州爱山浙北大厦店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1756/1756-湖州爱山浙北大厦店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1715",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州织里春风长住盒马店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1715/1715-湖州织里春风长住盒马店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1715/1715-湖州织里春风长住盒马店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1802",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州织里财富大厦店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1802/1802-湖州织里财富大厦店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1802/1802-湖州织里财富大厦店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1309",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州织里长安路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1309/1309-湖州织里长安路店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1309/1309-湖州织里长安路店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1642",
-    "province": "浙江",
-    "city": "湖州",
-    "name": "湖州长兴九汇城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1642/1642-湖州长兴九汇城店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1642/1642-湖州长兴九汇城店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1768",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴万达广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1768/1768-绍兴万达广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1768/1768-绍兴万达广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1286",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴上虞大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1286/1286-绍兴上虞大润发店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1286/1286-绍兴上虞大润发店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1912",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴世茂大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1912/1912-绍兴世茂大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1912/1912-绍兴世茂大润发店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1724",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴利佰家广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1724/1724-绍兴利佰家广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1724/1724-绍兴利佰家广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1257",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴大悦城餐厅",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1257/1257-绍兴大悦城餐厅-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1257/1257-绍兴大悦城餐厅-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1853",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴天悦城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1853/1853-绍兴天悦城店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1853/1853-绍兴天悦城店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1671",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴宝龙天地店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1671/1671-绍兴宝龙天地店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1671/1671-绍兴宝龙天地店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1410",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴宝龙广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1410/1410-绍兴宝龙广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1410/1410-绍兴宝龙广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1755",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴嵊州吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1755/1755-绍兴嵊州吾悦广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1755/1755-绍兴嵊州吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1867",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴嵊州西皮茂店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1867/1867-绍兴嵊州西皮茂店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1867/1867-绍兴嵊州西皮茂店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1579",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴永利中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1579/1579-绍兴永利中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1579/1579-绍兴永利中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1749",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴港越路店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1749/1749-绍兴港越路店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1749/1749-绍兴港越路店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1907",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴滨海万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1907/1907-绍兴滨海万达店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1907/1907-绍兴滨海万达店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1800",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴滨海商业中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1800/1800-绍兴滨海商业中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1800/1800-绍兴滨海商业中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1631",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴祥源广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1631/1631-绍兴祥源广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1631/1631-绍兴祥源广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1310",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴紫金广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1310/1310-绍兴紫金广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1310/1310-绍兴紫金广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1357",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴自在天地店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1357/1357-绍兴自在天地店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1357/1357-绍兴自在天地店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1929",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴诸暨大唐大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1929/1929-绍兴诸暨大唐大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1929/1929-绍兴诸暨大唐大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1666",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴诸暨宝龙广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1666/1666-绍兴诸暨宝龙广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1666/1666-绍兴诸暨宝龙广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1531",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴都市春天店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1531/1531-绍兴都市春天店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1531/1531-绍兴都市春天店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1407",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴银泰城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1407/1407-绍兴银泰城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1407/1407-绍兴银泰城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1402",
-    "province": "浙江",
-    "city": "绍兴",
-    "name": "绍兴颐高广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1402/1402-绍兴颐高广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1402/1402-绍兴颐高广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1792",
-    "province": "浙江",
-    "city": "舟山",
-    "name": "舟山宝龙广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1792/1792-舟山宝龙广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1792/1792-舟山宝龙广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1784",
-    "province": "浙江",
-    "city": "舟山",
-    "name": "舟山普陀大润发店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1784/1784-舟山普陀大润发店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1784/1784-舟山普陀大润发店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1993",
-    "province": "浙江",
-    "city": "舟山",
-    "name": "舟山海山广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1993/1993-舟山海山广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1993/1993-舟山海山广场店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1429",
-    "province": "浙江",
-    "city": "衢州",
-    "name": "衢州南湖东方商厦店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1429/1429-衢州南湖东方商厦店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1429/1429-衢州南湖东方商厦店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1339",
-    "province": "浙江",
-    "city": "金华",
-    "name": "义乌万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1339/1339-义乌万达店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1339/1339-义乌万达店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1412",
-    "province": "浙江",
-    "city": "金华",
-    "name": "义乌之心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1412/1412-义乌之心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1412/1412-义乌之心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1878",
-    "province": "浙江",
-    "city": "金华",
-    "name": "义乌吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1878/1878-义乌吾悦广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1878/1878-义乌吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1665",
-    "province": "浙江",
-    "city": "金华",
-    "name": "义乌市银海店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1665/1665-义乌市银海店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1665/1665-义乌市银海店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1324",
-    "province": "浙江",
-    "city": "金华",
-    "name": "义乌新光汇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1324/1324-义乌新光汇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1324/1324-义乌新光汇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1656",
-    "province": "浙江",
-    "city": "金华",
-    "name": "义乌江东广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1656/1656-义乌江东广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1656/1656-义乌江东广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1860",
-    "province": "浙江",
-    "city": "金华",
-    "name": "横店万盛南街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1860/1860-横店万盛南街店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1860/1860-横店万盛南街店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1284",
-    "province": "浙江",
-    "city": "金华",
-    "name": "浙江金华万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1284/1284-浙江金华万达店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1284/1284-浙江金华万达店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1774",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华义乌北苑商贸区店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1774/1774-金华义乌北苑商贸区店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1774/1774-金华义乌北苑商贸区店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1630",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华之心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1630/1630-金华之心店-营业执照.png",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1630/1630-金华之心店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1730",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华兰溪宝龙广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1730/1730-金华兰溪宝龙广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1730/1730-金华兰溪宝龙广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1532",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华和悦邻里店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1532/1532-金华和悦邻里店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1532/1532-金华和悦邻里店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1664",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华武义金湖中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1664/1664-金华武义金湖中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1664/1664-金华武义金湖中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1557",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华永康世贸中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1557/1557-金华永康世贸中心店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1557/1557-金华永康世贸中心店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1423",
-    "province": "浙江",
-    "city": "金华",
-    "name": "金华永盛购物广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1423/1423-金华永盛购物广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1423/1423-金华永盛购物广场店-经营许可证.jpg"
     }
   },
   {
@@ -13489,6 +12910,16 @@ const STORES = [
     }
   },
   {
+    "id": "1396",
+    "province": "浙江省",
+    "city": "杭州市",
+    "name": "杭州建德恒太城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1396/1396-杭州建德恒太城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1396/1396-杭州建德恒太城店-经营许可证.png"
+    }
+  },
+  {
     "id": "C020",
     "province": "浙江省",
     "city": "杭州市",
@@ -13516,6 +12947,16 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/e9b50fcb-dbb4-4ee1-bddf-8216562e9b071662621929798.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/c9013007-c3aa-42d5-8247-e7fccfe190ef1662621930143.jpg"
+    }
+  },
+  {
+    "id": "1401",
+    "province": "浙江省",
+    "city": "杭州市",
+    "name": "杭州桐庐大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1401/1401-杭州桐庐大润发店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1401/1401-杭州桐庐大润发店-经营许可证.png"
     }
   },
   {
@@ -13689,9 +13130,569 @@ const STORES = [
     }
   },
   {
+    "id": "1288",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州东吴银泰店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1288/1288-湖州东吴银泰店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1288/1288-湖州东吴银泰店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1988",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1988/1988-湖州吾悦广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1988/1988-湖州吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1328",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州安吉万象城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1328/1328-湖州安吉万象城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1328/1328-湖州安吉万象城店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1613",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州安吉春天尚居景尚街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1613/1613-湖州安吉春天尚居景尚街店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1613/1613-湖州安吉春天尚居景尚街店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1427",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州德清儿童医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1427/1427-湖州德清儿童医院店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1427/1427-湖州德清儿童医院店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1577",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州德清正翔广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1577/1577-湖州德清正翔广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1577/1577-湖州德清正翔广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1859",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州星火外滩广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1859/1859-湖州星火外滩广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1859/1859-湖州星火外滩广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1397",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州浙北大厦东迁店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1397/1397-湖州浙北大厦东迁店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1397/1397-湖州浙北大厦东迁店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1293",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州浙北大厦运动中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1293/1293-湖州浙北大厦运动中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1293/1293-湖州浙北大厦运动中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1971",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州爱山广场步行街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1971/1971-湖州爱山广场步行街店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1971/1971-湖州爱山广场步行街店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1756",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州爱山浙北大厦店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1756/1756-湖州爱山浙北大厦店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1756/1756-湖州爱山浙北大厦店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1715",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州织里春风长住盒马店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1715/1715-湖州织里春风长住盒马店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1715/1715-湖州织里春风长住盒马店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1802",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州织里财富大厦店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1802/1802-湖州织里财富大厦店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1802/1802-湖州织里财富大厦店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1309",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州织里长安路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1309/1309-湖州织里长安路店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1309/1309-湖州织里长安路店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1642",
+    "province": "浙江省",
+    "city": "湖州",
+    "name": "湖州长兴九汇城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1642/1642-湖州长兴九汇城店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1642/1642-湖州长兴九汇城店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1768",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴万达广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1768/1768-绍兴万达广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1768/1768-绍兴万达广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1286",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴上虞大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1286/1286-绍兴上虞大润发店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1286/1286-绍兴上虞大润发店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1912",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴世茂大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1912/1912-绍兴世茂大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1912/1912-绍兴世茂大润发店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1724",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴利佰家广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1724/1724-绍兴利佰家广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1724/1724-绍兴利佰家广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1257",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴大悦城餐厅",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1257/1257-绍兴大悦城餐厅-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1257/1257-绍兴大悦城餐厅-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1853",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴天悦城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1853/1853-绍兴天悦城店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1853/1853-绍兴天悦城店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1671",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴宝龙天地店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1671/1671-绍兴宝龙天地店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1671/1671-绍兴宝龙天地店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1410",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴宝龙广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1410/1410-绍兴宝龙广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1410/1410-绍兴宝龙广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1755",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴嵊州吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1755/1755-绍兴嵊州吾悦广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1755/1755-绍兴嵊州吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1867",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴嵊州西皮茂店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1867/1867-绍兴嵊州西皮茂店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1867/1867-绍兴嵊州西皮茂店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1579",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴永利中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1579/1579-绍兴永利中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1579/1579-绍兴永利中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1749",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴港越路店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1749/1749-绍兴港越路店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1749/1749-绍兴港越路店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1907",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴滨海万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1907/1907-绍兴滨海万达店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1907/1907-绍兴滨海万达店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1800",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴滨海商业中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1800/1800-绍兴滨海商业中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1800/1800-绍兴滨海商业中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1631",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴祥源广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1631/1631-绍兴祥源广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1631/1631-绍兴祥源广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1310",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴紫金广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1310/1310-绍兴紫金广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1310/1310-绍兴紫金广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1357",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴自在天地店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1357/1357-绍兴自在天地店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1357/1357-绍兴自在天地店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1929",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴诸暨大唐大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1929/1929-绍兴诸暨大唐大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1929/1929-绍兴诸暨大唐大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1666",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴诸暨宝龙广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1666/1666-绍兴诸暨宝龙广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1666/1666-绍兴诸暨宝龙广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1531",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴都市春天店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1531/1531-绍兴都市春天店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1531/1531-绍兴都市春天店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1407",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴银泰城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1407/1407-绍兴银泰城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1407/1407-绍兴银泰城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1402",
+    "province": "浙江省",
+    "city": "绍兴市",
+    "name": "绍兴颐高广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1402/1402-绍兴颐高广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1402/1402-绍兴颐高广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1792",
+    "province": "浙江省",
+    "city": "舟山市",
+    "name": "舟山宝龙广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1792/1792-舟山宝龙广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1792/1792-舟山宝龙广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1784",
+    "province": "浙江省",
+    "city": "舟山市",
+    "name": "舟山普陀大润发店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1784/1784-舟山普陀大润发店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1784/1784-舟山普陀大润发店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1993",
+    "province": "浙江省",
+    "city": "舟山市",
+    "name": "舟山海山广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1993/1993-舟山海山广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1993/1993-舟山海山广场店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1429",
+    "province": "浙江省",
+    "city": "衢州",
+    "name": "衢州南湖东方商厦店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1429/1429-衢州南湖东方商厦店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1429/1429-衢州南湖东方商厦店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1339",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "义乌万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1339/1339-义乌万达店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1339/1339-义乌万达店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1412",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "义乌之心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1412/1412-义乌之心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1412/1412-义乌之心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1878",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "义乌吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1878/1878-义乌吾悦广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1878/1878-义乌吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1665",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "义乌市银海店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1665/1665-义乌市银海店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1665/1665-义乌市银海店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1324",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "义乌新光汇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1324/1324-义乌新光汇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1324/1324-义乌新光汇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1656",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "义乌江东广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1656/1656-义乌江东广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1656/1656-义乌江东广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1860",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "横店万盛南街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1860/1860-横店万盛南街店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1860/1860-横店万盛南街店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1284",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "浙江金华万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1284/1284-浙江金华万达店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1284/1284-浙江金华万达店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1774",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华义乌北苑商贸区店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1774/1774-金华义乌北苑商贸区店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1774/1774-金华义乌北苑商贸区店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1630",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华之心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1630/1630-金华之心店-营业执照.png",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1630/1630-金华之心店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1730",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华兰溪宝龙广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1730/1730-金华兰溪宝龙广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1730/1730-金华兰溪宝龙广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1532",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华和悦邻里店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1532/1532-金华和悦邻里店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1532/1532-金华和悦邻里店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1664",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华武义金湖中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1664/1664-金华武义金湖中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1664/1664-金华武义金湖中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1557",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华永康世贸中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1557/1557-金华永康世贸中心店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1557/1557-金华永康世贸中心店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1423",
+    "province": "浙江省",
+    "city": "金华市",
+    "name": "金华永盛购物广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1423/1423-金华永盛购物广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1423/1423-金华永盛购物广场店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "1369",
-    "province": "湖北",
-    "city": "仙桃",
+    "province": "湖北省",
+    "city": "仙桃市",
     "name": "仙桃吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1369/1369-仙桃吾悦广场店-营业执照.png",
@@ -13700,8 +13701,8 @@ const STORES = [
   },
   {
     "id": "1361",
-    "province": "湖北",
-    "city": "孝感",
+    "province": "湖北省",
+    "city": "孝感市",
     "name": "孝感万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1361/1361-孝感万达店-营业执照.jpg",
@@ -13710,8 +13711,8 @@ const STORES = [
   },
   {
     "id": "1948",
-    "province": "湖北",
-    "city": "孝感",
+    "province": "湖北省",
+    "city": "孝感市",
     "name": "孝感乾坤大道店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1948/1948-孝感乾坤大道店-营业执照.jpeg",
@@ -13720,8 +13721,8 @@ const STORES = [
   },
   {
     "id": "1785",
-    "province": "湖北",
-    "city": "孝感",
+    "province": "湖北省",
+    "city": "孝感市",
     "name": "孝感保丽广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1785/1785-孝感保丽广场店-营业执照.jpg",
@@ -13730,8 +13731,8 @@ const STORES = [
   },
   {
     "id": "1685",
-    "province": "湖北",
-    "city": "孝感",
+    "province": "湖北省",
+    "city": "孝感市",
     "name": "孝感吾悦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1685/1685-孝感吾悦店-营业执照.jpg",
@@ -13740,8 +13741,8 @@ const STORES = [
   },
   {
     "id": "1616",
-    "province": "湖北",
-    "city": "孝感",
+    "province": "湖北省",
+    "city": "孝感市",
     "name": "孝感恒泰购物广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1616/1616-孝感恒泰购物广场店-营业执照.jpg",
@@ -13750,8 +13751,8 @@ const STORES = [
   },
   {
     "id": "1958",
-    "province": "湖北",
-    "city": "宜昌",
+    "province": "湖北省",
+    "city": "宜昌市",
     "name": "宜昌国贸店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1958/1958-宜昌国贸店-营业执照.jpg",
@@ -13760,8 +13761,8 @@ const STORES = [
   },
   {
     "id": "1422",
-    "province": "湖北",
-    "city": "宜昌",
+    "province": "湖北省",
+    "city": "宜昌市",
     "name": "宜昌宜都万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1422/1422-宜昌宜都万达店-营业执照.jpg",
@@ -13770,8 +13771,8 @@ const STORES = [
   },
   {
     "id": "1495",
-    "province": "湖北",
-    "city": "宜昌",
+    "province": "湖北省",
+    "city": "宜昌市",
     "name": "阜阳国贸商城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1495/1495-阜阳国贸商城餐厅-营业执照.jpeg",
@@ -13780,8 +13781,8 @@ const STORES = [
   },
   {
     "id": "1403",
-    "province": "湖北",
-    "city": "武汉",
+    "province": "湖北省",
+    "city": "武汉市",
     "name": "仙桃武商MAll店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1403/1403-仙桃武商MAll店-营业执照.jpg",
@@ -13790,8 +13791,8 @@ const STORES = [
   },
   {
     "id": "1625",
-    "province": "湖北",
-    "city": "武汉",
+    "province": "湖北省",
+    "city": "武汉市",
     "name": "武商MALL·众圆",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1625/1625-武商MALL·众圆-营业执照.jpg",
@@ -13800,222 +13801,12 @@ const STORES = [
   },
   {
     "id": "1A08",
-    "province": "湖北",
-    "city": "武汉",
+    "province": "湖北省",
+    "city": "武汉市",
     "name": "武商超市常青花园店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A08/1A08-武商超市常青花园店-营业执照.jpg",
       "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A08/1A08-武商超市常青花园店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1673",
-    "province": "湖北",
-    "city": "武汉",
-    "name": "武汉武商梦时代店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1673/1673-武汉武商梦时代店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1673/1673-武汉武商梦时代店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1A10",
-    "province": "湖北",
-    "city": "武汉",
-    "name": "武汉蔡甸服务区西店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A10/1A10-武汉蔡甸服务区西店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A10/1A10-武汉蔡甸服务区西店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1825",
-    "province": "湖北",
-    "city": "武汉",
-    "name": "武汉长江存储CB大楼店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1825/1825-武汉长江存储CB大楼店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1825/1825-武汉长江存储CB大楼店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1574",
-    "province": "湖北",
-    "city": "荆州",
-    "name": "荆州人信汇店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1574/1574-荆州人信汇店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1574/1574-荆州人信汇店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1573",
-    "province": "湖北",
-    "city": "襄阳",
-    "name": "襄阳东津民发世纪广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1573/1573-襄阳东津民发世纪广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1573/1573-襄阳东津民发世纪广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1304",
-    "province": "湖北",
-    "city": "襄阳",
-    "name": "襄阳天元四季城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1304/1304-襄阳天元四季城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1304/1304-襄阳天元四季城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1330",
-    "province": "湖北",
-    "city": "襄阳",
-    "name": "襄阳民发广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1330/1330-襄阳民发广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1330/1330-襄阳民发广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1303",
-    "province": "湖北",
-    "city": "襄阳",
-    "name": "襄阳环球金融城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1303/1303-襄阳环球金融城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1303/1303-襄阳环球金融城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1764",
-    "province": "湖北",
-    "city": "鄂州",
-    "name": "鄂州吾悦广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1764/1764-鄂州吾悦广场店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1764/1764-鄂州吾悦广场店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1761",
-    "province": "湖北",
-    "city": "鄂州",
-    "name": "鄂州银泰百货店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1761/1761-鄂州银泰百货店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1761/1761-鄂州银泰百货店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1770",
-    "province": "湖北",
-    "city": "随州",
-    "name": "随州中心医院店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1770/1770-随州中心医院店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1770/1770-随州中心医院店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1682",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "麻城黄商购物中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1682/1682-麻城黄商购物中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1682/1682-麻城黄商购物中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1331",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "黄冈万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1331/1331-黄冈万达店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1331/1331-黄冈万达店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1992",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "黄冈武穴武商购物中心店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1992/1992-黄冈武穴武商购物中心店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1992/1992-黄冈武穴武商购物中心店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1024",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "黄冈罗田义水外滩步行街店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1024/1024-黄冈罗田义水外滩步行街店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1024/1024-黄冈罗田义水外滩步行街店-经营许可证.png"
-    }
-  },
-  {
-    "id": "1735",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "黄冈英山中央城店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1735/1735-黄冈英山中央城店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1735/1735-黄冈英山中央城店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1807",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "黄冈蕲春大中华购物广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1807/1807-黄冈蕲春大中华购物广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1807/1807-黄冈蕲春大中华购物广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1797",
-    "province": "湖北",
-    "city": "黄冈",
-    "name": "黄冈黄梅鹏泰百货店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1797/1797-黄冈黄梅鹏泰百货店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1797/1797-黄冈黄梅鹏泰百货店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1332",
-    "province": "湖北",
-    "city": "黄石",
-    "name": "黄石大冶雨润广场店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1332/1332-黄石大冶雨润广场店-营业执照.jpeg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1332/1332-黄石大冶雨润广场店-经营许可证.jpeg"
-    }
-  },
-  {
-    "id": "1908",
-    "province": "湖北",
-    "city": "黄石",
-    "name": "黄石武商MALL店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1908/1908-黄石武商MALL店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1908/1908-黄石武商MALL店-经营许可证.jpg"
-    }
-  },
-  {
-    "id": "1337",
-    "province": "湖北",
-    "city": "黄石",
-    "name": "黄石港万达店",
-    "licenses": {
-      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1337/1337-黄石港万达店-营业执照.jpg",
-      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1337/1337-黄石港万达店-经营许可证.jpg"
     }
   },
   {
@@ -14509,6 +14300,16 @@ const STORES = [
     }
   },
   {
+    "id": "1673",
+    "province": "湖北省",
+    "city": "武汉市",
+    "name": "武汉武商梦时代店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1673/1673-武汉武商梦时代店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1673/1673-武汉武商梦时代店-经营许可证.jpeg"
+    }
+  },
+  {
     "id": "6128",
     "province": "湖北省",
     "city": "武汉市",
@@ -14719,6 +14520,16 @@ const STORES = [
     }
   },
   {
+    "id": "1A10",
+    "province": "湖北省",
+    "city": "武汉市",
+    "name": "武汉蔡甸服务区西店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A10/1A10-武汉蔡甸服务区西店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A10/1A10-武汉蔡甸服务区西店-经营许可证.jpg"
+    }
+  },
+  {
     "id": "6180",
     "province": "湖北省",
     "city": "武汉市",
@@ -14809,6 +14620,16 @@ const STORES = [
     }
   },
   {
+    "id": "1825",
+    "province": "湖北省",
+    "city": "武汉市",
+    "name": "武汉长江存储CB大楼店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1825/1825-武汉长江存储CB大楼店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1825/1825-武汉长江存储CB大楼店-经营许可证.png"
+    }
+  },
+  {
     "id": "6061",
     "province": "湖北省",
     "city": "武汉市",
@@ -14886,6 +14707,186 @@ const STORES = [
     "licenses": {
       "business": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/1b112dcf-7237-4c7f-bc32-161af6dfa3211773680786148.jpg",
       "food": "http://lxj-business-center-file.oss-cn-hangzhou.aliyuncs.com/archives-service/pro/images/4c9a6169-8771-4c0d-86b3-bbba72e4d3dd1773680786485.jpg"
+    }
+  },
+  {
+    "id": "1574",
+    "province": "湖北省",
+    "city": "荆州",
+    "name": "荆州人信汇店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1574/1574-荆州人信汇店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1574/1574-荆州人信汇店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1573",
+    "province": "湖北省",
+    "city": "襄阳市",
+    "name": "襄阳东津民发世纪广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1573/1573-襄阳东津民发世纪广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1573/1573-襄阳东津民发世纪广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1304",
+    "province": "湖北省",
+    "city": "襄阳市",
+    "name": "襄阳天元四季城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1304/1304-襄阳天元四季城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1304/1304-襄阳天元四季城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1330",
+    "province": "湖北省",
+    "city": "襄阳市",
+    "name": "襄阳民发广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1330/1330-襄阳民发广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1330/1330-襄阳民发广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1303",
+    "province": "湖北省",
+    "city": "襄阳市",
+    "name": "襄阳环球金融城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1303/1303-襄阳环球金融城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1303/1303-襄阳环球金融城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1764",
+    "province": "湖北省",
+    "city": "鄂州",
+    "name": "鄂州吾悦广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1764/1764-鄂州吾悦广场店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1764/1764-鄂州吾悦广场店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1761",
+    "province": "湖北省",
+    "city": "鄂州",
+    "name": "鄂州银泰百货店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1761/1761-鄂州银泰百货店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1761/1761-鄂州银泰百货店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1770",
+    "province": "湖北省",
+    "city": "随州",
+    "name": "随州中心医院店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1770/1770-随州中心医院店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1770/1770-随州中心医院店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1682",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "麻城黄商购物中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1682/1682-麻城黄商购物中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1682/1682-麻城黄商购物中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1331",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "黄冈万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1331/1331-黄冈万达店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1331/1331-黄冈万达店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1992",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "黄冈武穴武商购物中心店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1992/1992-黄冈武穴武商购物中心店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1992/1992-黄冈武穴武商购物中心店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1024",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "黄冈罗田义水外滩步行街店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1024/1024-黄冈罗田义水外滩步行街店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1024/1024-黄冈罗田义水外滩步行街店-经营许可证.png"
+    }
+  },
+  {
+    "id": "1735",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "黄冈英山中央城店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1735/1735-黄冈英山中央城店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1735/1735-黄冈英山中央城店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1807",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "黄冈蕲春大中华购物广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1807/1807-黄冈蕲春大中华购物广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1807/1807-黄冈蕲春大中华购物广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1797",
+    "province": "湖北省",
+    "city": "黄冈市",
+    "name": "黄冈黄梅鹏泰百货店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1797/1797-黄冈黄梅鹏泰百货店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1797/1797-黄冈黄梅鹏泰百货店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1332",
+    "province": "湖北省",
+    "city": "黄石市",
+    "name": "黄石大冶雨润广场店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1332/1332-黄石大冶雨润广场店-营业执照.jpeg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1332/1332-黄石大冶雨润广场店-经营许可证.jpeg"
+    }
+  },
+  {
+    "id": "1908",
+    "province": "湖北省",
+    "city": "黄石市",
+    "name": "黄石武商MALL店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1908/1908-黄石武商MALL店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1908/1908-黄石武商MALL店-经营许可证.jpg"
+    }
+  },
+  {
+    "id": "1337",
+    "province": "湖北省",
+    "city": "黄石市",
+    "name": "黄石港万达店",
+    "licenses": {
+      "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1337/1337-黄石港万达店-营业执照.jpg",
+      "food": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1337/1337-黄石港万达店-经营许可证.jpg"
     }
   }
 ];
