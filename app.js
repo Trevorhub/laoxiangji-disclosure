@@ -21,6 +21,10 @@
   const DOC_ICON =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2.5L18.5 9H13V4.5zM8 13h8v1.5H8V13zm0 3.5h5V18H8v-1.5z"/></svg>';
 
+  function getAvailableLicenseTypes(store) {
+    return LICENSE_TYPES.filter((type) => !!store.licenses[type]);
+  }
+
   function buildRegionMaps() {
     const provinces = new Map();
     for (const store of STORES) {
@@ -82,7 +86,7 @@
   }
 
   function buildLicenseBlocks(store) {
-    return LICENSE_TYPES.map((type) => ({
+    return getAvailableLicenseTypes(store).map((type) => ({
       type,
       label: LICENSE_LABELS[type],
       src: store.licenses[type],
@@ -91,15 +95,18 @@
   }
 
   function openAllLicensesModal(store) {
+    const blocks = buildLicenseBlocks(store);
+    if (blocks.length === 0) return;
     modal.openMultiple({
       tag: "门店资质",
       title: "门店证照公示",
       subtitle: store.name,
-      blocks: buildLicenseBlocks(store),
+      blocks,
     });
   }
 
   function openLicenseModal(store, type) {
+    if (!store.licenses[type]) return;
     const label = LICENSE_LABELS[type];
     modal.openSingle({
       tag: "门店资质",
@@ -111,6 +118,7 @@
   }
 
   function renderStoreItem(store) {
+    const availableTypes = getAvailableLicenseTypes(store);
     const li = document.createElement("li");
     li.className = "store-card";
     li.innerHTML = `
@@ -121,12 +129,15 @@
         <h3 class="store-name">${escapeHtml(store.name)}</h3>
       </div>
       <div class="store-licenses">
-        <button type="button" class="license-chip" data-license="business">
-          ${DOC_ICON}营业执照
-        </button>
-        <button type="button" class="license-chip" data-license="food">
-          ${DOC_ICON}食品经营许可证
-        </button>
+        ${availableTypes
+          .map(
+            (type) => `
+          <button type="button" class="license-chip" data-license="${type}">
+            ${DOC_ICON}${LICENSE_LABELS[type]}
+          </button>
+        `
+          )
+          .join("")}
       </div>
     `;
 

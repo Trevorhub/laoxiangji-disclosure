@@ -19,6 +19,10 @@
   const DOC_ICON =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2.5L18.5 9H13V4.5zM8 13h8v1.5H8V13zm0 3.5h5V18H8v-1.5z"/></svg>';
 
+  function getAvailableLicenseTypes(platform) {
+    return LICENSE_TYPES.filter((type) => !!platform.licenses[type]);
+  }
+
   function escapeHtml(str) {
     return str
       .replace(/&/g, "&amp;")
@@ -37,7 +41,7 @@
   }
 
   function buildLicenseBlocks(platform) {
-    return LICENSE_TYPES.map((type) => ({
+    return getAvailableLicenseTypes(platform).map((type) => ({
       type,
       label: LICENSE_LABELS[type],
       src: platform.licenses[type],
@@ -46,15 +50,18 @@
   }
 
   function openAllLicensesModal(platform) {
+    const blocks = buildLicenseBlocks(platform);
+    if (blocks.length === 0) return;
     modal.openMultiple({
       tag: "平台资质",
       title: "平台证照公示",
       subtitle: platform.name,
-      blocks: buildLicenseBlocks(platform),
+      blocks,
     });
   }
 
   function openLicenseModal(platform, type) {
+    if (!platform.licenses[type]) return;
     const label = LICENSE_LABELS[type];
     modal.openSingle({
       tag: "平台资质",
@@ -66,7 +73,7 @@
   }
 
   function renderLicenseChips(platform) {
-    return LICENSE_TYPES.map(
+    return getAvailableLicenseTypes(platform).map(
       (type) => `
         <button type="button" class="license-chip" data-license="${type}">
           ${DOC_ICON}${LICENSE_LABELS[type]}
