@@ -89,6 +89,14 @@ window.LicenseModal = (function () {
     viewport.classList.toggle("is-loading", loading);
   }
 
+  function syncImageOrientationClass(imgEl) {
+    if (!imgEl) return;
+    imgEl.classList.remove("license-image--portrait");
+    if (imgEl.naturalHeight > imgEl.naturalWidth) {
+      imgEl.classList.add("license-image--portrait");
+    }
+  }
+
   function touchDistance(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
@@ -284,11 +292,13 @@ window.LicenseModal = (function () {
     const img = block.querySelector(".license-image");
     if (img) {
       img.onload = () => {
+        syncImageOrientationClass(img);
         setViewportLoading(viewport, false);
         applyBlockRotation(block);
         resetZoom(viewport);
       };
       img.onerror = () => {
+        img.classList.remove("license-image--portrait");
         setViewportLoading(viewport, false);
       };
     }
@@ -351,13 +361,16 @@ window.LicenseModal = (function () {
     setLicenseMode("single");
     licenseAllEl.innerHTML = "";
     setViewportLoading(licenseViewportEl, true);
+    licenseImageEl.classList.remove("license-image--portrait");
     ensureZoomLayer(licenseRotatorEl);
     licenseImageEl.onload = () => {
+      syncImageOrientationClass(licenseImageEl);
       setViewportLoading(licenseViewportEl, false);
       applySingleRotation();
       resetZoom(licenseViewportEl);
     };
     licenseImageEl.onerror = () => {
+      licenseImageEl.classList.remove("license-image--portrait");
       setViewportLoading(licenseViewportEl, false);
     };
     licenseImageEl.src = "";
