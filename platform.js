@@ -12,10 +12,9 @@
   const LICENSE_LABELS = {
     business: "平台营业执照",
     operating: "经营许可证",
-    prepaid: "单用途预付卡备案",
   };
 
-  const LICENSE_TYPES = ["business", "operating", "prepaid"];
+  const LICENSE_TYPES = ["business", "operating"];
 
   const DOC_ICON =
     '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2.5L18.5 9H13V4.5zM8 13h8v1.5H8V13zm0 3.5h5V18H8v-1.5z"/></svg>';

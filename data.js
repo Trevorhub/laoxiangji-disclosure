@@ -1092,7 +1092,7 @@ const STORES = [
   {
     "id": "1947",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州万达华府店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1947/1947-亳州万达华府店-营业执照.jpeg",
@@ -1102,7 +1102,7 @@ const STORES = [
   {
     "id": "1564",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州上善名郡店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1564/1564-亳州上善名郡店-营业执照.jpeg",
@@ -1112,7 +1112,7 @@ const STORES = [
   {
     "id": "1678",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州亳芜家园店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1678/1678-亳州亳芜家园店-营业执照.jpeg",
@@ -1122,7 +1122,7 @@ const STORES = [
   {
     "id": "1793",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州依立腾奥莱店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1793/1793-亳州依立腾奥莱店-营业执照.jpeg",
@@ -1132,7 +1132,7 @@ const STORES = [
   {
     "id": "1093",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州利辛七彩世界餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1093/1093-亳州利辛七彩世界餐厅-营业执照.jpeg",
@@ -1142,7 +1142,7 @@ const STORES = [
   {
     "id": "1075",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州利辛向阳路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1075/1075-亳州利辛向阳路餐厅-营业执照.jpg",
@@ -1152,7 +1152,7 @@ const STORES = [
   {
     "id": "1092",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州利辛淝河大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1092/1092-亳州利辛淝河大道餐厅-营业执照.jpg",
@@ -1162,7 +1162,7 @@ const STORES = [
   {
     "id": "1527",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州华富广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1527/1527-亳州华富广场餐厅-营业执照.jpg",
@@ -1172,7 +1172,7 @@ const STORES = [
   {
     "id": "1533",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州南半球餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1533/1533-亳州南半球餐厅-营业执照.jpeg",
@@ -1182,7 +1182,7 @@ const STORES = [
   {
     "id": "1662",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州市万达广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1662/1662-亳州市万达广场餐厅-营业执照.jpeg",
@@ -1192,7 +1192,7 @@ const STORES = [
   {
     "id": "1588",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州市缤纷城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1588/1588-亳州市缤纷城餐厅-营业执照.jpg",
@@ -1202,7 +1202,7 @@ const STORES = [
   {
     "id": "1522",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州希夷大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1522/1522-亳州希夷大道餐厅-营业执照.jpg",
@@ -1212,7 +1212,7 @@ const STORES = [
   {
     "id": "1563",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州建安文化广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1563/1563-亳州建安文化广场店-营业执照.jpeg",
@@ -1222,7 +1222,7 @@ const STORES = [
   {
     "id": "1826",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州建投东方名府店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1826/1826-亳州建投东方名府店-营业执照.jpeg",
@@ -1232,7 +1232,7 @@ const STORES = [
   {
     "id": "1986",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州恒大城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1986/1986-亳州恒大城店-营业执照.jpeg",
@@ -1242,7 +1242,7 @@ const STORES = [
   {
     "id": "1525",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州文帝路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1525/1525-亳州文帝路餐厅-营业执照.jpg",
@@ -1252,7 +1252,7 @@ const STORES = [
   {
     "id": "1521",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州旺角广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1521/1521-亳州旺角广场餐厅-营业执照.jpg",
@@ -1262,7 +1262,7 @@ const STORES = [
   {
     "id": "1668",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州桐花路店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1668/1668-亳州桐花路店-营业执照.jpeg",
@@ -1272,7 +1272,7 @@ const STORES = [
   {
     "id": "1524",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州汇金广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1524/1524-亳州汇金广场餐厅-营业执照.jpg",
@@ -1282,7 +1282,7 @@ const STORES = [
   {
     "id": "1669",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州涡阳新街里店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1669/1669-亳州涡阳新街里店-营业执照.jpg",
@@ -1292,7 +1292,7 @@ const STORES = [
   {
     "id": "1520",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州涡阳站前路餐厅",
     "licenses": {
       "business": "",
@@ -1302,7 +1302,7 @@ const STORES = [
   {
     "id": "1850",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州涡阳青牛广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1850/1850-亳州涡阳青牛广场店-营业执照.jpg",
@@ -1312,7 +1312,7 @@ const STORES = [
   {
     "id": "1609",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州百大购物广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1609/1609-亳州百大购物广场餐厅-营业执照.jpeg",
@@ -1322,7 +1322,7 @@ const STORES = [
   {
     "id": "1428",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州蒙城万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1428/1428-亳州蒙城万达广场店-营业执照.jpg",
@@ -1332,7 +1332,7 @@ const STORES = [
   {
     "id": "1519",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州蒙城天河广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1519/1519-亳州蒙城天河广场餐厅-营业执照.jpeg",
@@ -1342,7 +1342,7 @@ const STORES = [
   {
     "id": "1517",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州蒙城宝业餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1517/1517-亳州蒙城宝业餐厅-营业执照.jpg",
@@ -1352,7 +1352,7 @@ const STORES = [
   {
     "id": "1518",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州蒙城建材城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1518/1518-亳州蒙城建材城餐厅-营业执照.jpeg",
@@ -1362,7 +1362,7 @@ const STORES = [
   {
     "id": "1516",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州蒙城梦蝶广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1516/1516-亳州蒙城梦蝶广场餐厅-营业执照.jpeg",
@@ -1372,7 +1372,7 @@ const STORES = [
   {
     "id": "1515",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州蒙城玖隆广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1515/1515-亳州蒙城玖隆广场餐厅-营业执照.jpeg",
@@ -1382,7 +1382,7 @@ const STORES = [
   {
     "id": "1667",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州观澜天下店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1667/1667-亳州观澜天下店-营业执照.jpg",
@@ -1392,7 +1392,7 @@ const STORES = [
   {
     "id": "1526",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州谯城万达餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1526/1526-亳州谯城万达餐厅-营业执照.png",
@@ -1402,7 +1402,7 @@ const STORES = [
   {
     "id": "1587",
     "province": "安徽省",
-    "city": "亳州",
+    "city": "亳州市",
     "name": "亳州谯陵路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1587/1587-亳州谯陵路餐厅-营业执照.jpg",
@@ -5652,7 +5652,7 @@ const STORES = [
   {
     "id": "1509",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州万达二餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1509/1509-宿州万达二餐厅-营业执照.jpg",
@@ -5662,7 +5662,7 @@ const STORES = [
   {
     "id": "1566",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州利群时代广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1566/1566-宿州利群时代广场餐厅-营业执照.jpg",
@@ -5672,7 +5672,7 @@ const STORES = [
   {
     "id": "1767",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州天鹅湾店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1767/1767-宿州天鹅湾店-营业执照.jpg",
@@ -5682,7 +5682,7 @@ const STORES = [
   {
     "id": "1507",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州市万达餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1507/1507-宿州市万达餐厅-营业执照.png",
@@ -5692,7 +5692,7 @@ const STORES = [
   {
     "id": "1650",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州市国购广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1650/1650-宿州市国购广场店-营业执照.jpg",
@@ -5702,7 +5702,7 @@ const STORES = [
   {
     "id": "1765",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州市立医院北区店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1765/1765-宿州市立医院北区店-营业执照.jpg",
@@ -5712,7 +5712,7 @@ const STORES = [
   {
     "id": "1511",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州拂晓广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1511/1511-宿州拂晓广场餐厅-营业执照.jpeg",
@@ -5722,7 +5722,7 @@ const STORES = [
   {
     "id": "1512",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州新一佳餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1512/1512-宿州新一佳餐厅-营业执照.jpeg",
@@ -5732,7 +5732,7 @@ const STORES = [
   {
     "id": "1757",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州汴河丽景店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1757/1757-宿州汴河丽景店-营业执照.jpg",
@@ -5742,7 +5742,7 @@ const STORES = [
   {
     "id": "1510",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州汴河路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1510/1510-宿州汴河路餐厅-营业执照.jpeg",
@@ -5752,7 +5752,7 @@ const STORES = [
   {
     "id": "1017",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州泗县同辉广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1017/1017-宿州泗县同辉广场餐厅-营业执照.jpeg",
@@ -5762,7 +5762,7 @@ const STORES = [
   {
     "id": "1077",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州泗县清水湾餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1077/1077-宿州泗县清水湾餐厅-营业执照.jpeg",
@@ -5772,7 +5772,7 @@ const STORES = [
   {
     "id": "1021",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州泗县玉兰大道店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1021/1021-宿州泗县玉兰大道店-营业执照.jpg",
@@ -5782,7 +5782,7 @@ const STORES = [
   {
     "id": "1076",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州泗县盛世豪庭餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1076/1076-宿州泗县盛世豪庭餐厅-营业执照.jpeg",
@@ -5792,7 +5792,7 @@ const STORES = [
   {
     "id": "1514",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州淮海学府餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1514/1514-宿州淮海学府餐厅-营业执照.jpeg",
@@ -5802,7 +5802,7 @@ const STORES = [
   {
     "id": "1019",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州灵璧茂和广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1019/1019-宿州灵璧茂和广场餐厅-营业执照.jpg",
@@ -5812,7 +5812,7 @@ const STORES = [
   {
     "id": "1030",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州灵璧莱迪广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1030/1030-宿州灵璧莱迪广场店-营业执照.jpeg",
@@ -5822,7 +5822,7 @@ const STORES = [
   {
     "id": "1902",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州皖北总院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1902/1902-宿州皖北总院店-营业执照.jpg",
@@ -5832,7 +5832,7 @@ const STORES = [
   {
     "id": "1157",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州砀山万达餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1157/1157-宿州砀山万达餐厅-营业执照.jpg",
@@ -5842,7 +5842,7 @@ const STORES = [
   {
     "id": "1015",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州砀山不夜城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1015/1015-宿州砀山不夜城餐厅-营业执照.jpg",
@@ -5852,7 +5852,7 @@ const STORES = [
   {
     "id": "1026",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州砀山县大润发餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1026/1026-宿州砀山县大润发餐厅-营业执照.jpeg",
@@ -5862,7 +5862,7 @@ const STORES = [
   {
     "id": "1508",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州磬云路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1508/1508-宿州磬云路餐厅-营业执照.jpg",
@@ -5872,7 +5872,7 @@ const STORES = [
   {
     "id": "1338",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州符离镇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1338/1338-宿州符离镇店-营业执照.jpeg",
@@ -5882,7 +5882,7 @@ const STORES = [
   {
     "id": "1754",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州苏宁店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1754/1754-宿州苏宁店-营业执照.jpg",
@@ -5892,7 +5892,7 @@ const STORES = [
   {
     "id": "1020",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州萧县亿洲城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1020/1020-宿州萧县亿洲城餐厅-营业执照.jpeg",
@@ -5902,7 +5902,7 @@ const STORES = [
   {
     "id": "1513",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州金方世纪城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1513/1513-宿州金方世纪城餐厅-营业执照.jpg",
@@ -5912,7 +5912,7 @@ const STORES = [
   {
     "id": "1271",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州高速驿达符离服务区东区餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1271/1271-宿州高速驿达符离服务区东区餐厅-营业执照.jpg",
@@ -5922,7 +5922,7 @@ const STORES = [
   {
     "id": "1272",
     "province": "安徽省",
-    "city": "宿州",
+    "city": "宿州市",
     "name": "宿州高速驿达符离服务区西区餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1272/1272-宿州高速驿达符离服务区西区餐厅-营业执照.jpg",
@@ -5932,7 +5932,7 @@ const STORES = [
   {
     "id": "1702",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州万成香格里拉店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1702/1702-池州万成香格里拉店-营业执照.jpeg",
@@ -5942,7 +5942,7 @@ const STORES = [
   {
     "id": "1704",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州万盛广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1704/1704-池州万盛广场店-营业执照.jpeg",
@@ -5952,7 +5952,7 @@ const STORES = [
   {
     "id": "1547",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州东至大渡口镇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1547/1547-池州东至大渡口镇店-营业执照.jpg",
@@ -5962,7 +5962,7 @@ const STORES = [
   {
     "id": "1700",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州东至新天地广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1700/1700-池州东至新天地广场餐厅-营业执照.jpg",
@@ -5972,7 +5972,7 @@ const STORES = [
   {
     "id": "1699",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州东至汇金广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1699/1699-池州东至汇金广场店-营业执照.jpeg",
@@ -5982,7 +5982,7 @@ const STORES = [
   {
     "id": "1583",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州东至花园服务区东区店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1583/1583-池州东至花园服务区东区店-营业执照.jpg",
@@ -5992,7 +5992,7 @@ const STORES = [
   {
     "id": "1584",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州东至花园服务区西区店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1584/1584-池州东至花园服务区西区店-营业执照.jpg",
@@ -6002,7 +6002,7 @@ const STORES = [
   {
     "id": "1353",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州九华山游客服务中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1353/1353-池州九华山游客服务中心店-营业执照.jpg",
@@ -6012,7 +6012,7 @@ const STORES = [
   {
     "id": "1273",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州升金湖服务区东餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1273/1273-池州升金湖服务区东餐厅-营业执照.jpeg",
@@ -6022,7 +6022,7 @@ const STORES = [
   {
     "id": "1274",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州升金湖服务区西餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1274/1274-池州升金湖服务区西餐厅-营业执照.jpeg",
@@ -6032,7 +6032,7 @@ const STORES = [
   {
     "id": "1703",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州商之都店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1703/1703-池州商之都店-营业执照.jpg",
@@ -6042,7 +6042,7 @@ const STORES = [
   {
     "id": "1701",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州远东国际广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1701/1701-池州远东国际广场店-营业执照.jpg",
@@ -6052,7 +6052,7 @@ const STORES = [
   {
     "id": "1882",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州青阳城上城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1882/1882-池州青阳城上城店-营业执照.jpeg",
@@ -6062,7 +6062,7 @@ const STORES = [
   {
     "id": "1705",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "池州青阳大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1705/1705-池州青阳大润发店-营业执照.jpeg",
@@ -6072,7 +6072,7 @@ const STORES = [
   {
     "id": "1016",
     "province": "安徽省",
-    "city": "池州",
+    "city": "池州市",
     "name": "滁州天长吾悦广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1016/1016-滁州天长吾悦广场餐厅-营业执照.jpg",
@@ -6542,7 +6542,7 @@ const STORES = [
   {
     "id": "1467",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "全椒城东花园餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1467/1467-全椒城东花园餐厅-营业执照.jpeg",
@@ -6552,7 +6552,7 @@ const STORES = [
   {
     "id": "1892",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "凤阳临淮关镇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1892/1892-凤阳临淮关镇店-营业执照.jpg",
@@ -6562,7 +6562,7 @@ const STORES = [
   {
     "id": "1022",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "天长天发广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1022/1022-天长天发广场店-营业执照.jpg",
@@ -6572,7 +6572,7 @@ const STORES = [
   {
     "id": "1049",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "来安嘉年华店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1049/1049-来安嘉年华店-营业执照.jpg",
@@ -6582,7 +6582,7 @@ const STORES = [
   {
     "id": "1922",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州七彩联华超市店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1922/1922-滁州七彩联华超市店-营业执照.jpg",
@@ -6592,7 +6592,7 @@ const STORES = [
   {
     "id": "1A12",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州东升花园店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A12/1A12-滁州东升花园店-营业执照.jpg",
@@ -6602,7 +6602,7 @@ const STORES = [
   {
     "id": "1461",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州中州国际广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1461/1461-滁州中州国际广场餐厅-营业执照.jpg",
@@ -6612,7 +6612,7 @@ const STORES = [
   {
     "id": "1463",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州中都大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1463/1463-滁州中都大道餐厅-营业执照.jpg",
@@ -6622,7 +6622,7 @@ const STORES = [
   {
     "id": "1593",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州丰乐大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1593/1593-滁州丰乐大道餐厅-营业执照.jpg",
@@ -6632,7 +6632,7 @@ const STORES = [
   {
     "id": "1822",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州乐彩城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1822/1822-滁州乐彩城店-营业执照.jpeg",
@@ -6642,7 +6642,7 @@ const STORES = [
   {
     "id": "1283",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州全椒十字店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1283/1283-滁州全椒十字店-营业执照.jpg",
@@ -6652,7 +6652,7 @@ const STORES = [
   {
     "id": "1470",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州全椒县城南大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1470/1470-滁州全椒县城南大道餐厅-营业执照.jpg",
@@ -6662,7 +6662,7 @@ const STORES = [
   {
     "id": "1469",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州全椒新江海城市广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1469/1469-滁州全椒新江海城市广场餐厅-营业执照.jpg",
@@ -6672,7 +6672,7 @@ const STORES = [
   {
     "id": "1277",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州全椒服务区北餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1277/1277-滁州全椒服务区北餐厅-营业执照.jpg",
@@ -6682,7 +6682,7 @@ const STORES = [
   {
     "id": "1278",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州全椒服务区南餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1278/1278-滁州全椒服务区南餐厅-营业执照.jpg",
@@ -6692,7 +6692,7 @@ const STORES = [
   {
     "id": "1471",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州全椒站前广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1471/1471-滁州全椒站前广场餐厅-营业执照.jpeg",
@@ -6702,7 +6702,7 @@ const STORES = [
   {
     "id": "1567",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州凤阳商贸城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1567/1567-滁州凤阳商贸城店-营业执照.jpg",
@@ -6712,7 +6712,7 @@ const STORES = [
   {
     "id": "1456",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州凤阳联华超市店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1456/1456-滁州凤阳联华超市店-营业执照.jpg",
@@ -6722,7 +6722,7 @@ const STORES = [
   {
     "id": "1606",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州凯迪置地广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1606/1606-滁州凯迪置地广场餐厅-营业执照.jpeg",
@@ -6732,7 +6732,7 @@ const STORES = [
   {
     "id": "1590",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1590/1590-滁州吾悦广场店-营业执照.png",
@@ -6742,7 +6742,7 @@ const STORES = [
   {
     "id": "1027",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州天长市苏果店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1027/1027-滁州天长市苏果店-营业执照.jpg",
@@ -6752,7 +6752,7 @@ const STORES = [
   {
     "id": "1458",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州定远县餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1458/1458-滁州定远县餐厅-营业执照.jpg",
@@ -6762,7 +6762,7 @@ const STORES = [
   {
     "id": "1637",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州定远大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1637/1637-滁州定远大润发店-营业执照.jpg",
@@ -6772,7 +6772,7 @@ const STORES = [
   {
     "id": "1457",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州定远曲阳国际餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1457/1457-滁州定远曲阳国际餐厅-营业执照.jpeg",
@@ -6782,7 +6782,7 @@ const STORES = [
   {
     "id": "1409",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州定远炉桥镇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1409/1409-滁州定远炉桥镇店-营业执照.jpg",
@@ -6792,7 +6792,7 @@ const STORES = [
   {
     "id": "1459",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州定远金山丽景餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1459/1459-滁州定远金山丽景餐厅-营业执照.jpg",
@@ -6802,7 +6802,7 @@ const STORES = [
   {
     "id": "1753",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州定远金鹏玖玖店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1753/1753-滁州定远金鹏玖玖店-营业执照.jpeg",
@@ -6812,7 +6812,7 @@ const STORES = [
   {
     "id": "1964",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州市全椒店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1964/1964-滁州市全椒店-营业执照.jpeg",
@@ -6822,7 +6822,7 @@ const STORES = [
   {
     "id": "1124",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州明光名都汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1124/1124-滁州明光名都汇店-营业执照.jpg",
@@ -6832,7 +6832,7 @@ const STORES = [
   {
     "id": "1029",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州明光大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1029/1029-滁州明光大润发店-营业执照.jpg",
@@ -6842,7 +6842,7 @@ const STORES = [
   {
     "id": "1031",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州明光市餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1031/1031-滁州明光市餐厅-营业执照.jpeg",
@@ -6852,7 +6852,7 @@ const STORES = [
   {
     "id": "1023",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州来安世纪华联店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1023/1023-滁州来安世纪华联店-营业执照.jpg",
@@ -6862,7 +6862,7 @@ const STORES = [
   {
     "id": "1411",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州来安汊河店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1411/1411-滁州来安汊河店-营业执照.jpg",
@@ -6872,7 +6872,7 @@ const STORES = [
   {
     "id": "1053",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州来安苏润国际餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1053/1053-滁州来安苏润国际餐厅-营业执照.jpg",
@@ -6882,7 +6882,7 @@ const STORES = [
   {
     "id": "1676",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州白云商厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1676/1676-滁州白云商厦店-营业执照.jpg",
@@ -6892,7 +6892,7 @@ const STORES = [
   {
     "id": "1466",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州紫金广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1466/1466-滁州紫金广场餐厅-营业执照.jpg",
@@ -6902,7 +6902,7 @@ const STORES = [
   {
     "id": "1460",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州金鹏琅琊玖玖广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1460/1460-滁州金鹏琅琊玖玖广场餐厅-营业执照.jpeg",
@@ -6912,7 +6912,7 @@ const STORES = [
   {
     "id": "1542",
     "province": "安徽省",
-    "city": "滁州",
+    "city": "滁州市",
     "name": "滁州龙蟠大道餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1542/1542-滁州龙蟠大道餐厅-营业执照.jpeg",
@@ -10332,7 +10332,7 @@ const STORES = [
   {
     "id": "1358",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州T-PARK蓝海豚店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1358/1358-常州T-PARK蓝海豚店-营业执照.jpg",
@@ -10342,7 +10342,7 @@ const STORES = [
   {
     "id": "1300",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州万和城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1300/1300-常州万和城店-营业执照.jpeg",
@@ -10352,7 +10352,7 @@ const STORES = [
   {
     "id": "1868",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州世茂广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1868/1868-常州世茂广场店-营业执照.jpg",
@@ -10362,7 +10362,7 @@ const STORES = [
   {
     "id": "1141",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州九洲新世界店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1141/1141-常州九洲新世界店-营业执照.jpg",
@@ -10372,7 +10372,7 @@ const STORES = [
   {
     "id": "1150",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州关河大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1150/1150-常州关河大润发店-营业执照.jpg",
@@ -10382,7 +10382,7 @@ const STORES = [
   {
     "id": "1298",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州典雅广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1298/1298-常州典雅广场店-营业执照.jpg",
@@ -10392,7 +10392,7 @@ const STORES = [
   {
     "id": "1348",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州天宁吾悦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1348/1348-常州天宁吾悦店-营业执照.jpg",
@@ -10402,7 +10402,7 @@ const STORES = [
   {
     "id": "1382",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州好利广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1382/1382-常州好利广场店-营业执照.jpeg",
@@ -10412,7 +10412,7 @@ const STORES = [
   {
     "id": "1879",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州弘阳广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1879/1879-常州弘阳广场店-营业执照.jpeg",
@@ -10422,7 +10422,7 @@ const STORES = [
   {
     "id": "1A09",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州怀德大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A09/1A09-常州怀德大润发店-营业执照.png",
@@ -10432,7 +10432,7 @@ const STORES = [
   {
     "id": "1775",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州星湖荟店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1775/1775-常州星湖荟店-营业执照.jpeg",
@@ -10442,7 +10442,7 @@ const STORES = [
   {
     "id": "1966",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州星耀吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1966/1966-常州星耀吾悦广场店-营业执照.jpg",
@@ -10452,7 +10452,7 @@ const STORES = [
   {
     "id": "1356",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州曼哈顿广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1356/1356-常州曼哈顿广场店-营业执照.jpg",
@@ -10462,7 +10462,7 @@ const STORES = [
   {
     "id": "1865",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州歌林公园店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1865/1865-常州歌林公园店-营业执照.jpeg",
@@ -10472,7 +10472,7 @@ const STORES = [
   {
     "id": "1264",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州武进万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1264/1264-常州武进万达店-营业执照.jpg",
@@ -10482,7 +10482,7 @@ const STORES = [
   {
     "id": "1148",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州武进大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1148/1148-常州武进大润发店-营业执照.jpg",
@@ -10492,7 +10492,7 @@ const STORES = [
   {
     "id": "1601",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州湖塘万博店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1601/1601-常州湖塘万博店-营业执照.jpg",
@@ -10502,7 +10502,7 @@ const STORES = [
   {
     "id": "1160",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州溧阳大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1160/1160-常州溧阳大润发店-营业执照.jpeg",
@@ -10512,7 +10512,7 @@ const STORES = [
   {
     "id": "1153",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州火车站店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1153/1153-常州火车站店-营业执照.jpg",
@@ -10522,7 +10522,7 @@ const STORES = [
   {
     "id": "1384",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州环球港店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1384/1384-常州环球港店-营业执照.jpeg",
@@ -10532,7 +10532,7 @@ const STORES = [
   {
     "id": "1342",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州科教城北店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1342/1342-常州科教城北店-营业执照.jpg",
@@ -10542,7 +10542,7 @@ const STORES = [
   {
     "id": "1259",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州购物中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1259/1259-常州购物中心店-营业执照.jpg",
@@ -10552,7 +10552,7 @@ const STORES = [
   {
     "id": "1556",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州遥观大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1556/1556-常州遥观大润发店-营业执照.jpg",
@@ -10562,7 +10562,7 @@ const STORES = [
   {
     "id": "1268",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州邹区泰富时代广场",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1268/1268-常州邹区泰富时代广场-营业执照.jpg",
@@ -10572,7 +10572,7 @@ const STORES = [
   {
     "id": "1123",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州金坛万科店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1123/1123-常州金坛万科店-营业执照.jpg",
@@ -10582,7 +10582,7 @@ const STORES = [
   {
     "id": "1657",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州金坛八佰伴店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1657/1657-常州金坛八佰伴店-营业执照.jpg",
@@ -10592,7 +10592,7 @@ const STORES = [
   {
     "id": "1377",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州金坛吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1377/1377-常州金坛吾悦广场店-营业执照.jpeg",
@@ -10602,7 +10602,7 @@ const STORES = [
   {
     "id": "1349",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州金坛新天地店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1349/1349-常州金坛新天地店-营业执照.jpg",
@@ -10612,7 +10612,7 @@ const STORES = [
   {
     "id": "1149",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州马杭店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1149/1149-常州马杭店-营业执照.jpg",
@@ -10622,7 +10622,7 @@ const STORES = [
   {
     "id": "1891",
     "province": "江苏省",
-    "city": "常州",
+    "city": "常州市",
     "name": "常州高力国际汽博城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1891/1891-常州高力国际汽博城店-营业执照.jpeg",
@@ -10632,7 +10632,7 @@ const STORES = [
   {
     "id": "1012",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州万福街餐厅（儿童医院）",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1012/1012-徐州万福街餐厅（儿童医院）-营业执照.jpg",
@@ -10642,7 +10642,7 @@ const STORES = [
   {
     "id": "1981",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州万科新淮印象城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1981/1981-徐州万科新淮印象城店-营业执照.jpg",
@@ -10652,7 +10652,7 @@ const STORES = [
   {
     "id": "1A05",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州东关大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A05/1A05-徐州东关大润发店-营业执照.jpg",
@@ -10662,7 +10662,7 @@ const STORES = [
   {
     "id": "1560",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州云龙万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1560/1560-徐州云龙万达店-营业执照.jpeg",
@@ -10672,7 +10672,7 @@ const STORES = [
   {
     "id": "1010",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州和信宝龙广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1010/1010-徐州和信宝龙广场店-营业执照.jpeg",
@@ -10682,7 +10682,7 @@ const STORES = [
   {
     "id": "1869",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州市中医院新院区店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1869/1869-徐州市中医院新院区店-营业执照.jpg",
@@ -10692,7 +10692,7 @@ const STORES = [
   {
     "id": "1661",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州市建国路大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1661/1661-徐州市建国路大润发店-营业执照.png",
@@ -10702,7 +10702,7 @@ const STORES = [
   {
     "id": "1646",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州市铜山万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1646/1646-徐州市铜山万达广场店-营业执照.jpg",
@@ -10712,7 +10712,7 @@ const STORES = [
   {
     "id": "1852",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州彭城苏宁广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1852/1852-徐州彭城苏宁广场店-营业执照.jpg",
@@ -10722,7 +10722,7 @@ const STORES = [
   {
     "id": "1747",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州招商花园城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1747/1747-徐州招商花园城店-营业执照.png",
@@ -10732,7 +10732,7 @@ const STORES = [
   {
     "id": "1105",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州新沂金桥国际店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1105/1105-徐州新沂金桥国际店-营业执照.jpg",
@@ -10742,7 +10742,7 @@ const STORES = [
   {
     "id": "1037",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州泰隆商业街餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1037/1037-徐州泰隆商业街餐厅-营业执照.jpg",
@@ -10752,7 +10752,7 @@ const STORES = [
   {
     "id": "1911",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州淮海环球港店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1911/1911-徐州淮海环球港店-营业执照.jpg",
@@ -10762,7 +10762,7 @@ const STORES = [
   {
     "id": "1655",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州第一人民医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1655/1655-徐州第一人民医院店-营业执照.jpg",
@@ -10772,7 +10772,7 @@ const STORES = [
   {
     "id": "1035",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州美的广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1035/1035-徐州美的广场餐厅-营业执照.jpeg",
@@ -10782,7 +10782,7 @@ const STORES = [
   {
     "id": "1620",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州苏宁广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1620/1620-徐州苏宁广场餐厅-营业执照.jpg",
@@ -10792,7 +10792,7 @@ const STORES = [
   {
     "id": "1045",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州邳州大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1045/1045-徐州邳州大润发店-营业执照.jpg",
@@ -10802,7 +10802,7 @@ const STORES = [
   {
     "id": "1013",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "徐州颐和汇邻湾餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1013/1013-徐州颐和汇邻湾餐厅-营业执照.jpg",
@@ -10812,7 +10812,7 @@ const STORES = [
   {
     "id": "1838",
     "province": "江苏省",
-    "city": "徐州",
+    "city": "徐州市",
     "name": "邳州通城欢乐买店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1838/1838-邳州通城欢乐买店-营业执照.jpg",
@@ -10822,7 +10822,7 @@ const STORES = [
   {
     "id": "1038",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州三盛国际餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1038/1038-扬州三盛国际餐厅-营业执照.jpeg",
@@ -10832,7 +10832,7 @@ const STORES = [
   {
     "id": "1042",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州仪征宝能餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1042/1042-扬州仪征宝能餐厅-营业执照.jpg",
@@ -10842,7 +10842,7 @@ const STORES = [
   {
     "id": "1072",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州国庆路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1072/1072-扬州国庆路餐厅-营业执照.jpg",
@@ -10852,7 +10852,7 @@ const STORES = [
   {
     "id": "1036",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州广陵新城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1036/1036-扬州广陵新城餐厅-营业执照.jpg",
@@ -10862,7 +10862,7 @@ const STORES = [
   {
     "id": "1063",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州昌建广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1063/1063-扬州昌建广场店-营业执照.jpg",
@@ -10872,7 +10872,7 @@ const STORES = [
   {
     "id": "1074",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州江都东方红路餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1074/1074-扬州江都东方红路餐厅-营业执照.jpeg",
@@ -10882,7 +10882,7 @@ const STORES = [
   {
     "id": "1089",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州江都大润发店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1089/1089-扬州江都大润发店-营业执照.jpg",
@@ -10892,7 +10892,7 @@ const STORES = [
   {
     "id": "1723",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州邗江吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1723/1723-扬州邗江吾悦广场店-营业执照.jpg",
@@ -10902,7 +10902,7 @@ const STORES = [
   {
     "id": "1308",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州邗江宝龙广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1308/1308-扬州邗江宝龙广场店-营业执照.jpg",
@@ -10912,7 +10912,7 @@ const STORES = [
   {
     "id": "1078",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州顺达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1078/1078-扬州顺达广场店-营业执照.png",
@@ -10922,7 +10922,7 @@ const STORES = [
   {
     "id": "1073",
     "province": "江苏省",
-    "city": "扬州",
+    "city": "扬州市",
     "name": "扬州高邮世贸广场餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1073/1073-扬州高邮世贸广场餐厅-营业执照.jpg",
@@ -11322,7 +11322,7 @@ const STORES = [
   {
     "id": "1726",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰兴新城吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1726/1726-泰兴新城吾悦广场店-营业执照.jpg",
@@ -11332,7 +11332,7 @@ const STORES = [
   {
     "id": "1A06",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州万象城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1A06/1A06-泰州万象城店-营业执照.jpg",
@@ -11342,7 +11342,7 @@ const STORES = [
   {
     "id": "1605",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州中骏世界城餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1605/1605-泰州中骏世界城餐厅-营业执照.jpg",
@@ -11352,7 +11352,7 @@ const STORES = [
   {
     "id": "1290",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州人民医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1290/1290-泰州人民医院店-营业执照.jpg",
@@ -11362,7 +11362,7 @@ const STORES = [
   {
     "id": "1385",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州兴化吾悦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1385/1385-泰州兴化吾悦店-营业执照.jpg",
@@ -11372,7 +11372,7 @@ const STORES = [
   {
     "id": "1158",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州天虹广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1158/1158-泰州天虹广场店-营业执照.jpg",
@@ -11382,7 +11382,7 @@ const STORES = [
   {
     "id": "1415",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州市靖江吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1415/1415-泰州市靖江吾悦广场店-营业执照.jpeg",
@@ -11392,7 +11392,7 @@ const STORES = [
   {
     "id": "1135",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州时代商业广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1135/1135-泰州时代商业广场店-营业执照.jpeg",
@@ -11402,7 +11402,7 @@ const STORES = [
   {
     "id": "1347",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州泰兴中南悠曼里店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1347/1347-泰州泰兴中南悠曼里店-营业执照.jpg",
@@ -11412,7 +11412,7 @@ const STORES = [
   {
     "id": "1350",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州海陵万达店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1350/1350-泰州海陵万达店-营业执照.jpeg",
@@ -11422,7 +11422,7 @@ const STORES = [
   {
     "id": "1968",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州靖江荟品仓店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1968/1968-泰州靖江荟品仓店-营业执照.jpg",
@@ -11432,7 +11432,7 @@ const STORES = [
   {
     "id": "1599",
     "province": "江苏省",
-    "city": "泰州",
+    "city": "泰州市",
     "name": "泰州龙河城投店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1599/1599-泰州龙河城投店-营业执照.jpg",
@@ -12262,7 +12262,7 @@ const STORES = [
   {
     "id": "1873",
     "province": "河南省",
-    "city": "郑州",
+    "city": "郑州市",
     "name": "河南农业大学龙子湖校区店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1873/1873-河南农业大学龙子湖校区店-营业执照.jpeg",
@@ -12302,7 +12302,7 @@ const STORES = [
   {
     "id": "1391",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州中盛广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1391/1391-台州中盛广场店-营业执照.jpg",
@@ -12312,7 +12312,7 @@ const STORES = [
   {
     "id": "1344",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州临海靖江中心广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1344/1344-台州临海靖江中心广场店-营业执照.jpg",
@@ -12322,7 +12322,7 @@ const STORES = [
   {
     "id": "1258",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州市立医院餐厅",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1258/1258-台州市立医院餐厅-营业执照.jpeg",
@@ -12332,7 +12332,7 @@ const STORES = [
   {
     "id": "1295",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州意得广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1295/1295-台州意得广场店-营业执照.jpg",
@@ -12342,7 +12342,7 @@ const STORES = [
   {
     "id": "1736",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州新世纪广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1736/1736-台州新世纪广场店-营业执照.jpg",
@@ -12352,7 +12352,7 @@ const STORES = [
   {
     "id": "1733",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州温岭CC广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1733/1733-台州温岭CC广场店-营业执照.jpg",
@@ -12362,7 +12362,7 @@ const STORES = [
   {
     "id": "1925",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州温岭九龙店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1925/1925-台州温岭九龙店-营业执照.jpg",
@@ -12372,7 +12372,7 @@ const STORES = [
   {
     "id": "1750",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州温岭宝龙店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1750/1750-台州温岭宝龙店-营业执照.jpeg",
@@ -12382,7 +12382,7 @@ const STORES = [
   {
     "id": "1841",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州玉环吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1841/1841-台州玉环吾悦广场店-营业执照.jpg",
@@ -12392,7 +12392,7 @@ const STORES = [
   {
     "id": "1262",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州经开万达广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1262/1262-台州经开万达广场店-营业执照.jpeg",
@@ -12402,7 +12402,7 @@ const STORES = [
   {
     "id": "1871",
     "province": "浙江省",
-    "city": "台州",
+    "city": "台州市",
     "name": "台州黄岩吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1871/1871-台州黄岩吾悦广场店-营业执照.jpg",
@@ -13132,7 +13132,7 @@ const STORES = [
   {
     "id": "1288",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州东吴银泰店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1288/1288-湖州东吴银泰店-营业执照.jpg",
@@ -13142,7 +13142,7 @@ const STORES = [
   {
     "id": "1988",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1988/1988-湖州吾悦广场店-营业执照.jpg",
@@ -13152,7 +13152,7 @@ const STORES = [
   {
     "id": "1328",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州安吉万象城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1328/1328-湖州安吉万象城店-营业执照.jpeg",
@@ -13162,7 +13162,7 @@ const STORES = [
   {
     "id": "1613",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州安吉春天尚居景尚街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1613/1613-湖州安吉春天尚居景尚街店-营业执照.jpeg",
@@ -13172,7 +13172,7 @@ const STORES = [
   {
     "id": "1427",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州德清儿童医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1427/1427-湖州德清儿童医院店-营业执照.jpg",
@@ -13182,7 +13182,7 @@ const STORES = [
   {
     "id": "1577",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州德清正翔广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1577/1577-湖州德清正翔广场店-营业执照.jpeg",
@@ -13192,7 +13192,7 @@ const STORES = [
   {
     "id": "1859",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州星火外滩广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1859/1859-湖州星火外滩广场店-营业执照.jpg",
@@ -13202,7 +13202,7 @@ const STORES = [
   {
     "id": "1397",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州浙北大厦东迁店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1397/1397-湖州浙北大厦东迁店-营业执照.jpg",
@@ -13212,7 +13212,7 @@ const STORES = [
   {
     "id": "1293",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州浙北大厦运动中心店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1293/1293-湖州浙北大厦运动中心店-营业执照.jpg",
@@ -13222,7 +13222,7 @@ const STORES = [
   {
     "id": "1971",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州爱山广场步行街店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1971/1971-湖州爱山广场步行街店-营业执照.jpg",
@@ -13232,7 +13232,7 @@ const STORES = [
   {
     "id": "1756",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州爱山浙北大厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1756/1756-湖州爱山浙北大厦店-营业执照.jpg",
@@ -13242,7 +13242,7 @@ const STORES = [
   {
     "id": "1715",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州织里春风长住盒马店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1715/1715-湖州织里春风长住盒马店-营业执照.jpg",
@@ -13252,7 +13252,7 @@ const STORES = [
   {
     "id": "1802",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州织里财富大厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1802/1802-湖州织里财富大厦店-营业执照.jpg",
@@ -13262,7 +13262,7 @@ const STORES = [
   {
     "id": "1309",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州织里长安路店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1309/1309-湖州织里长安路店-营业执照.jpeg",
@@ -13272,7 +13272,7 @@ const STORES = [
   {
     "id": "1642",
     "province": "浙江省",
-    "city": "湖州",
+    "city": "湖州市",
     "name": "湖州长兴九汇城店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1642/1642-湖州长兴九汇城店-营业执照.jpeg",
@@ -13532,7 +13532,7 @@ const STORES = [
   {
     "id": "1429",
     "province": "浙江省",
-    "city": "衢州",
+    "city": "衢州市",
     "name": "衢州南湖东方商厦店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1429/1429-衢州南湖东方商厦店-营业执照.jpeg",
@@ -14712,7 +14712,7 @@ const STORES = [
   {
     "id": "1574",
     "province": "湖北省",
-    "city": "荆州",
+    "city": "荆州市",
     "name": "荆州人信汇店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1574/1574-荆州人信汇店-营业执照.jpg",
@@ -14762,7 +14762,7 @@ const STORES = [
   {
     "id": "1764",
     "province": "湖北省",
-    "city": "鄂州",
+    "city": "鄂州市",
     "name": "鄂州吾悦广场店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1764/1764-鄂州吾悦广场店-营业执照.jpg",
@@ -14772,7 +14772,7 @@ const STORES = [
   {
     "id": "1761",
     "province": "湖北省",
-    "city": "鄂州",
+    "city": "鄂州市",
     "name": "鄂州银泰百货店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1761/1761-鄂州银泰百货店-营业执照.jpeg",
@@ -14782,7 +14782,7 @@ const STORES = [
   {
     "id": "1770",
     "province": "湖北省",
-    "city": "随州",
+    "city": "随州市",
     "name": "随州中心医院店",
     "licenses": {
       "business": "https://lxj-sso-file.oss-cn-hangzhou.aliyuncs.com/sso-memo/file-jiameng/1770/1770-随州中心医院店-营业执照.jpeg",
