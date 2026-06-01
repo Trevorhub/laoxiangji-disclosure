@@ -70,7 +70,7 @@
       if (city && store.city !== city) return false;
       if (keyword && !store.name.toLowerCase().includes(keyword)) return false;
       return true;
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name, "zh-Hans-CN-u-co-pinyin"));
   }
 
   function escapeHtml(str) {

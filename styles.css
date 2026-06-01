@@ -834,6 +834,25 @@ body {
   cursor: grab;
 }
 
+.license-viewport.is-loading::before {
+  content: "加载中...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.293rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.107rem 0.213rem;
+  border-radius: 0.32rem;
+  border: 1px solid var(--border);
+  z-index: 2;
+}
+
+.license-viewport.is-loading .license-image {
+  opacity: 0.45;
+}
+
 .license-viewport--stack {
   min-height: 3.2rem;
   max-height: 38vh;
@@ -892,6 +911,7 @@ body {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  transition: opacity 0.2s ease;
   border-radius: 0.053rem;
   box-shadow: 0 0.053rem 0.213rem rgba(0, 0, 0, 0.08);
   user-select: none;

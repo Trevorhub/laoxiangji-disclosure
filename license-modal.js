@@ -84,6 +84,11 @@ window.LicenseModal = (function () {
     applyZoom(viewport);
   }
 
+  function setViewportLoading(viewport, loading) {
+    if (!viewport) return;
+    viewport.classList.toggle("is-loading", loading);
+  }
+
   function touchDistance(touches) {
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
@@ -279,8 +284,12 @@ window.LicenseModal = (function () {
     const img = block.querySelector(".license-image");
     if (img) {
       img.onload = () => {
+        setViewportLoading(viewport, false);
         applyBlockRotation(block);
         resetZoom(viewport);
+      };
+      img.onerror = () => {
+        setViewportLoading(viewport, false);
       };
     }
   }
@@ -319,10 +328,10 @@ window.LicenseModal = (function () {
         (block) => `
         <section class="license-block" data-license-type="${block.type}">
           <h4 class="license-block__title">${block.label}</h4>
-          <div class="license-viewport license-viewport--stack">
+          <div class="license-viewport license-viewport--stack is-loading">
             <div class="license-rotator">
               <div class="license-zoom-layer">
-                <img class="license-image" src="${block.src}" alt="${block.alt}" />
+                <img class="license-image" data-src="${block.src}" alt="${block.alt}" />
               </div>
             </div>
           </div>
@@ -341,16 +350,24 @@ window.LicenseModal = (function () {
     resetSingleView();
     setLicenseMode("single");
     licenseAllEl.innerHTML = "";
+    setViewportLoading(licenseViewportEl, true);
     ensureZoomLayer(licenseRotatorEl);
     licenseImageEl.onload = () => {
+      setViewportLoading(licenseViewportEl, false);
       applySingleRotation();
       resetZoom(licenseViewportEl);
     };
-    licenseImageEl.src = src;
+    licenseImageEl.onerror = () => {
+      setViewportLoading(licenseViewportEl, false);
+    };
+    licenseImageEl.src = "";
     licenseImageEl.alt = alt || title;
     modalEl.classList.remove("hidden");
     lockScroll();
     bindPinchZoom(licenseViewportEl);
+    requestAnimationFrame(() => {
+      licenseImageEl.src = src;
+    });
   }
 
   function openMultiple(options) {
@@ -361,21 +378,29 @@ window.LicenseModal = (function () {
     resetBlockRotations(blocks.map((b) => b.type));
     resetRotation();
     setLicenseMode("all");
-    licenseAllEl.innerHTML = buildAllLicensesHtml(blocks);
-    licenseAllEl.querySelectorAll(".license-block").forEach((block) => {
-      bindBlockToolbar(block);
-      applyBlockRotation(block);
-    });
-    licenseImageEl.onload = null;
-    licenseImageEl.src = "";
     modalEl.classList.remove("hidden");
     lockScroll();
+    licenseAllEl.innerHTML = buildAllLicensesHtml(blocks);
+    licenseAllEl.querySelectorAll(".license-block").forEach((block) => {
+      const viewport = block.querySelector(".license-viewport");
+      setViewportLoading(viewport, true);
+      bindBlockToolbar(block);
+      applyBlockRotation(block);
+      const img = block.querySelector(".license-image");
+      if (img) {
+        img.src = img.dataset.src || "";
+      }
+    });
+    licenseImageEl.onload = null;
+    licenseImageEl.onerror = null;
+    licenseImageEl.src = "";
     bindAllPinchZoom();
   }
 
   function close() {
     modalEl.classList.add("hidden");
     licenseImageEl.onload = null;
+    licenseImageEl.onerror = null;
     licenseImageEl.src = "";
     licenseAllEl.innerHTML = "";
     setLicenseMode("single");
