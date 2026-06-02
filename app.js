@@ -308,4 +308,59 @@
   } else {
     renderList();
   }
+
+  function initStoresScrollUi() {
+    const stickyBar = document.getElementById("storesStickyBar");
+    const stickySentinel = document.getElementById("storesStickySentinel");
+    const backToTopBtn = document.getElementById("backToTop");
+    if (!stickyBar || !stickySentinel || !backToTopBtn) return;
+
+    const stickyTopPx = () => {
+      const topBar = document.querySelector(".top-bar");
+      const h = topBar ? topBar.getBoundingClientRect().height : 44;
+      return `${Math.ceil(h)}px`;
+    };
+
+    document.documentElement.style.setProperty("--stores-sticky-top", stickyTopPx());
+
+    const stickyObserver = new IntersectionObserver(
+      ([entry]) => {
+        stickyBar.classList.toggle("is-compact", !entry.isIntersecting);
+      },
+      {
+        root: null,
+        threshold: 0,
+        rootMargin: `-${stickyTopPx()} 0px 0px 0px`,
+      }
+    );
+    stickyObserver.observe(stickySentinel);
+
+    let scrollTicking = false;
+    function updateBackToTop() {
+      backToTopBtn.classList.toggle("is-visible", window.scrollY > 360);
+      scrollTicking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!scrollTicking) {
+          scrollTicking = true;
+          requestAnimationFrame(updateBackToTop);
+        }
+      },
+      { passive: true }
+    );
+    updateBackToTop();
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("resize", () => {
+      document.documentElement.style.setProperty("--stores-sticky-top", stickyTopPx());
+    });
+  }
+
+  initStoresScrollUi();
 })();
