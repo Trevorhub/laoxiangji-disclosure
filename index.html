@@ -59,5 +59,16 @@
       </nav>
     </main>
   </div>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var storeId = params.get("storeId") || params.get("store_id");
+      if (storeId) {
+        window.location.replace(
+          "stores.html?storeId=" + encodeURIComponent(storeId.trim())
+        );
+      }
+    })();
+  </script>
 </body>
 </html>

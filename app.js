@@ -25,6 +25,23 @@
     return LICENSE_TYPES.filter((type) => !!store.licenses[type]);
   }
 
+  const storeById = new Map(
+    STORES.map((store) => [String(store.id).toLowerCase(), store])
+  );
+
+  let deepLinkTargetId = null;
+
+  function parseStoreIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("storeId") || params.get("store_id");
+    return id ? String(id).trim() : "";
+  }
+
+  function findStoreById(id) {
+    if (!id) return null;
+    return storeById.get(String(id).toLowerCase()) || null;
+  }
+
   function buildRegionMaps() {
     const provinces = new Map();
     for (const store of STORES) {
@@ -117,10 +134,25 @@
     });
   }
 
+  function scrollToStoreCard(storeId) {
+    const card = storeListEl.querySelector(
+      `[data-store-id="${CSS.escape(String(storeId))}"]`
+    );
+    if (!card) return;
+    card.classList.add("is-target");
+    requestAnimationFrame(() => {
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+    window.setTimeout(() => {
+      card.classList.remove("is-target");
+    }, 3200);
+  }
+
   function renderStoreItem(store) {
     const availableTypes = getAvailableLicenseTypes(store);
     const li = document.createElement("li");
     li.className = "store-card";
+    li.dataset.storeId = String(store.id);
     li.innerHTML = `
       <div class="store-card__body" role="button" tabindex="0" aria-label="查看${escapeHtml(store.name)}全部证照">
         <div class="store-card__head">
@@ -160,7 +192,8 @@
     return li;
   }
 
-  function renderList() {
+  function renderList(options) {
+    const scrollToId = options && options.scrollToId;
     const list = getFilteredStores();
     storeListEl.innerHTML = "";
 
@@ -168,38 +201,91 @@
       emptyStateEl.classList.remove("hidden");
       storeListEl.classList.add("hidden");
       resultCountEl.textContent = "";
-      return;
+      return false;
     }
 
     emptyStateEl.classList.add("hidden");
     storeListEl.classList.remove("hidden");
-    resultCountEl.innerHTML = `共找到 <strong>${list.length}</strong> 家门店`;
+
+    const targetStore =
+      scrollToId && list.find((store) => String(store.id) === String(scrollToId));
+    if (targetStore) {
+      resultCountEl.innerHTML = `共找到 <strong>${list.length}</strong> 家门店 · 已定位 <strong>${escapeHtml(targetStore.name)}</strong>`;
+    } else {
+      resultCountEl.innerHTML = `共找到 <strong>${list.length}</strong> 家门店`;
+    }
 
     const frag = document.createDocumentFragment();
     for (const store of list) {
       frag.appendChild(renderStoreItem(store));
     }
     storeListEl.appendChild(frag);
+
+    if (scrollToId && targetStore) {
+      scrollToStoreCard(scrollToId);
+    }
+
+    return true;
   }
 
-  function resetFilters() {
+  function showStoreNotFound(storeId) {
     provinceEl.value = "";
     fillCityOptions("");
     cityEl.value = "";
     keywordEl.value = "";
     clearKeywordEl.classList.add("hidden");
+    storeListEl.innerHTML = "";
+    storeListEl.classList.add("hidden");
+    emptyStateEl.classList.remove("hidden");
+    emptyStateEl.querySelector(".empty-title").textContent = "未找到该门店";
+    emptyStateEl.querySelector(".empty-desc").textContent =
+      `门店编号「${storeId}」不存在或已下线，请检查链接参数 storeId 是否正确。`;
+    resultCountEl.textContent = "";
+  }
+
+  function applyStoreDeepLink(storeId) {
+    const store = findStoreById(storeId);
+    if (!store) {
+      showStoreNotFound(storeId);
+      return;
+    }
+
+    deepLinkTargetId = String(store.id);
+    provinceEl.value = store.province;
+    fillCityOptions(store.province);
+    cityEl.value = store.city;
+    keywordEl.value = "";
+    clearKeywordEl.classList.add("hidden");
+    renderList({ scrollToId: store.id });
+  }
+
+  function resetFilters() {
+    deepLinkTargetId = null;
+    provinceEl.value = "";
+    fillCityOptions("");
+    cityEl.value = "";
+    keywordEl.value = "";
+    clearKeywordEl.classList.add("hidden");
+    emptyStateEl.querySelector(".empty-title").textContent = "暂无匹配门店";
+    emptyStateEl.querySelector(".empty-desc").textContent =
+      "试试调整省份、城市或搜索关键词";
     renderList();
   }
 
   provinceEl.addEventListener("change", () => {
+    deepLinkTargetId = null;
     fillCityOptions(provinceEl.value);
     cityEl.value = "";
     renderList();
   });
 
-  cityEl.addEventListener("change", renderList);
+  cityEl.addEventListener("change", () => {
+    deepLinkTargetId = null;
+    renderList();
+  });
 
   keywordEl.addEventListener("input", () => {
+    deepLinkTargetId = null;
     clearKeywordEl.classList.toggle("hidden", !keywordEl.value);
     renderList();
   });
@@ -215,5 +301,11 @@
 
   fillProvinceOptions();
   fillCityOptions("");
-  renderList();
+
+  const deepLinkStoreId = parseStoreIdFromUrl();
+  if (deepLinkStoreId) {
+    applyStoreDeepLink(deepLinkStoreId);
+  } else {
+    renderList();
+  }
 })();

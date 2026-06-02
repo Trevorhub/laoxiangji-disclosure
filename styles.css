@@ -529,6 +529,17 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+.store-card.is-target {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 0.08rem rgba(0, 122, 55, 0.28), var(--shadow-md);
+  animation: storeTargetPulse 1.2s ease-in-out 2;
+}
+
+@keyframes storeTargetPulse {
+  0%, 100% { box-shadow: 0 0 0 0.08rem rgba(0, 122, 55, 0.28), var(--shadow-md); }
+  50% { box-shadow: 0 0 0 0.16rem rgba(0, 122, 55, 0.42), var(--shadow-lg); }
+}
+
 .store-card__head {
   display: flex;
   align-items: center;

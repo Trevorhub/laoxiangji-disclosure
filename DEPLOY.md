@@ -61,3 +61,13 @@ python3 -m http.server 8080
 ## 更新数据
 
 门店列表在 `data.js` 的 `STORES` 数组；平台在 `platform-data.js` 的 `PLATFORMS`。替换后重新上传整站或仅替换对应 JS 文件即可。
+
+## 外部跳转（门店 deep link）
+
+外部系统可通过 URL 参数 `storeId` 打开指定门店并自动定位，详见 **[EXTERNAL_LINK.md](./EXTERNAL_LINK.md)**。
+
+示例：
+
+```
+https://your-domain.com/stores.html?storeId=8037
+```
