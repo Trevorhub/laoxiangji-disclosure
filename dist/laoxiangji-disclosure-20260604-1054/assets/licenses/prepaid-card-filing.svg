@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="510" viewBox="0 0 360 510">
+  <rect width="360" height="510" fill="#f0fdf4"/>
+  <rect x="20" y="20" width="320" height="470" fill="#fff" stroke="#007a37" stroke-width="3" rx="8"/>
+  <text x="180" y="70" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="20" font-weight="700" fill="#007a37">单用途预付卡备案</text>
+  <text x="180" y="100" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="13" fill="#666">（公示样例）</text>
+  <text x="40" y="150" font-family="PingFang SC, sans-serif" font-size="13" fill="#333">发卡企业：安徽老乡鸡餐饮有限公司</text>
+  <text x="40" y="180" font-family="PingFang SC, sans-serif" font-size="13" fill="#333">业务类型：预付卡发行与受理</text>
+  <rect x="40" y="210" width="280" height="200" fill="#e8f5ec" rx="4"/>
+  <text x="180" y="320" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="12" fill="#888">备案凭证展示区域</text>
+  <text x="180" y="450" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="11" fill="#999">老乡鸡 · 平台资质公示</text>
+</svg>
