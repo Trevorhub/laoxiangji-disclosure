@@ -1,16 +1,11 @@
 /** 证照预览弹层（门店 / 平台页共用，支持旋转与双指缩放） */
 window.LicenseModal = (function () {
-  const ROTATE_LEFT_SVG =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.11 8.53 5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32 1.41 1.42c1.04-1.17 1.65-2.61 1.73-4.14H8.14c-.07 1.16-.45 2.25-1.04 3.22zM12 4.07V2.05c-2.01.2-3.86.88-5.32 1.93l1.42 1.42A7.94 7.94 0 0 1 12 4.07zm7.92 2.97-1.41-1.41A7.948 7.948 0 0 0 12 5.09V7.1c1.57.18 3.02.76 4.24 1.58l1.68-1.63zm-2.02 6.98c-.14.87-.49 1.72-1.02 2.47l1.41 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.01zm-1.04 5.32c-.59.97-.97 2.06-1.04 3.22h2.02c.08-1.53.69-2.97 1.73-4.14l-1.41-1.42c-.53.75-.88 1.6-1.02 2.47zM12 19.93v2.02c2.01-.2 3.86-.88 5.32-1.93l-1.42-1.42a7.948 7.948 0 0 1-3.9 1.33zm-5.32-1.93 1.42 1.42A7.948 7.948 0 0 0 12 21.95v-2.02a7.94 7.94 0 0 1-3.9-1.33l-1.42 1.33z"/></svg>';
-
-  const ROTATE_RIGHT_SVG =
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.55 5.55 14.12 4.12a8.003 8.003 0 0 0-8.07 11.88h2.02c.14-1.16.49-2.01 1.02-2.76l1.41 1.41c-.9 1.16-1.45 2.5-1.62 3.89h2.02c.17-1.39.72-2.73 1.62-3.89l-1.42-1.42c.53-.75.88-1.6 1.02-2.47zm-1.04 5.32c-.14.87-.49 1.72-1.02 2.47l1.41 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.01c-.07 1.16-.45 2.25-1.04 3.22zM12 4.07V2.05c-2.01.2-3.86.88-5.32 1.93l1.42 1.42A7.94 7.94 0 0 1 12 4.07zm7.92 2.97-1.41-1.41A7.948 7.948 0 0 0 12 5.09V7.1c1.57.18 3.02.76 4.24 1.58l1.68-1.63zm-2.02 6.98c-.14.87-.49 1.72-1.02 2.47l1.41 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.01zm-1.04 5.32c-.59.97-.97 2.06-1.04 3.22h2.02c.08-1.53.69-2.97 1.73-4.14l-1.41-1.42c-.53.75-.88 1.6-1.02 2.47zM12 19.93v2.02c2.01-.2 3.86-.88 5.32-1.93l-1.42-1.42a7.948 7.948 0 0 1-3.9 1.33zm-5.32-1.93 1.42 1.42A7.948 7.948 0 0 0 12 21.95v-2.02a7.94 7.94 0 0 1-3.9-1.33l-1.42 1.33z"/></svg>';
-
   const MIN_SCALE = 1;
   const MAX_SCALE = 4;
 
   let scrollLockY = 0;
   let imageRotation = 0;
+  let imageRotationApplied = 0;
   const blockRotations = {};
   const zoomStates = new WeakMap();
 
@@ -235,16 +230,16 @@ window.LicenseModal = (function () {
     licenseAllEl.querySelectorAll(".license-viewport").forEach(bindPinchZoom);
   }
 
+  function normalizeRotation(deg) {
+    return ((deg % 360) + 360) % 360;
+  }
+
   function buildBlockToolbarHtml() {
     return `
       <div class="license-toolbar license-toolbar--block">
-        <button type="button" class="toolbar-btn" data-action="left" aria-label="逆时针旋转">
-          ${ROTATE_LEFT_SVG}左转
-        </button>
+        <button type="button" class="toolbar-btn" data-action="left" aria-label="逆时针旋转">左转</button>
         <span class="rotate-degree" data-degree>0°</span>
-        <button type="button" class="toolbar-btn" data-action="right" aria-label="顺时针旋转">
-          ${ROTATE_RIGHT_SVG}右转
-        </button>
+        <button type="button" class="toolbar-btn" data-action="right" aria-label="顺时针旋转">右转</button>
         <button type="button" class="toolbar-btn toolbar-btn--ghost" data-action="reset" aria-label="重置">重置</button>
       </div>
     `;
@@ -252,18 +247,19 @@ window.LicenseModal = (function () {
 
   function applySingleRotation() {
     if (!licenseRotatorEl) return;
-    licenseRotatorEl.style.transform = `rotate(${imageRotation}deg)`;
+    licenseRotatorEl.style.transform = `rotate(${imageRotationApplied}deg)`;
     licenseRotatorEl.classList.toggle("is-landscape", imageRotation % 180 !== 0);
     if (rotateDegreeEl) rotateDegreeEl.textContent = `${imageRotation}°`;
   }
 
   function applyBlockRotation(block) {
     const type = block.dataset.licenseType;
-    const deg = blockRotations[type] || 0;
+    const applied = blockRotations[type] || 0;
+    const deg = normalizeRotation(applied);
     const rotator = block.querySelector(".license-rotator");
     const degreeEl = block.querySelector("[data-degree]");
     if (rotator) {
-      rotator.style.transform = `rotate(${deg}deg)`;
+      rotator.style.transform = `rotate(${applied}deg)`;
       rotator.classList.toggle("is-landscape", deg % 180 !== 0);
     }
     if (degreeEl) degreeEl.textContent = `${deg}°`;
@@ -278,9 +274,9 @@ window.LicenseModal = (function () {
       btn.addEventListener("click", () => {
         const action = btn.dataset.action;
         if (action === "left") {
-          blockRotations[type] = ((blockRotations[type] || 0) - 90 + 360) % 360;
+          blockRotations[type] = (blockRotations[type] || 0) - 90;
         } else if (action === "right") {
-          blockRotations[type] = ((blockRotations[type] || 0) + 90) % 360;
+          blockRotations[type] = (blockRotations[type] || 0) + 90;
         } else if (action === "reset") {
           blockRotations[type] = 0;
           resetZoom(viewport);
@@ -320,6 +316,7 @@ window.LicenseModal = (function () {
 
   function resetRotation() {
     imageRotation = 0;
+    imageRotationApplied = 0;
     applySingleRotation();
   }
 
@@ -442,13 +439,15 @@ window.LicenseModal = (function () {
 
     if (rotateLeftEl) {
       rotateLeftEl.addEventListener("click", () => {
-        imageRotation = ((imageRotation - 90) % 360 + 360) % 360;
+        imageRotationApplied -= 90;
+        imageRotation = normalizeRotation(imageRotationApplied);
         applySingleRotation();
       });
     }
     if (rotateRightEl) {
       rotateRightEl.addEventListener("click", () => {
-        imageRotation = ((imageRotation + 90) % 360 + 360) % 360;
+        imageRotationApplied += 90;
+        imageRotation = normalizeRotation(imageRotationApplied);
         applySingleRotation();
       });
     }
